@@ -63,47 +63,47 @@
     });
 });
 
-  const signIn=document.getElementById('submitSignIn');
-  signIn.addEventListener('click', (event) => {
+  const signIn = document.getElementById('submitSignIn');
+
+signIn.addEventListener('click', async (event) => {
   event.preventDefault();
 
+  // 🔒 STEP 1: CHECK reCAPTCHA
   const recaptchaResponse = grecaptcha.getResponse();
 
-if (!recaptchaResponse) {
-  showMessage('Please complete reCAPTCHA', 'signInMessage');
-  return;
-}
+  if (!recaptchaResponse) {
+    showMessage('Please complete reCAPTCHA', 'signInMessage');
+    return;
+  }
 
-// VERIFY USING GOOGLE APPS SCRIPT
-const verify = await fetch("YOUR_APPS_SCRIPT_URL", {
-  method: "POST",
-  body: JSON.stringify({ token: recaptchaResponse })
-});
-
-const result = await verify.json();
-
-if (!result.success) {
-  showMessage('reCAPTCHA verification failed', 'signInMessage');
-  return;
-}
-
+  // 🔑 STEP 2: GET USER INPUT
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const auth = getAuth();
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
+  try {
+    // 🔓 STEP 3: FIREBASE LOGIN
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
 
-      localStorage.setItem('loggedInUserId', user.uid);
-      showMessage('Login successful', 'signInMessage');
-      window.location.href = 'homepage.html';
-    })
-    .catch((error) => {
-      if (error.code === 'auth/invalid-credential') {
-        showMessage('Incorrect Email or Password', 'signInMessage');
-      } else {
-        showMessage('Account does not Exist', 'signInMessage');
-      }
-    });
+    // ✅ STEP 4: STORE SESSION
+    localStorage.setItem('loggedInUserId', user.uid);
+
+    showMessage('Login successful', 'signInMessage');
+
+    // 🔁 RESET CAPTCHA
+    grecaptcha.reset();
+
+    // 🚀 STEP 5: REDIRECT TO HOMEPAGE
+    window.location.href = "homepage.html";
+
+  } catch (error) {
+    grecaptcha.reset();
+
+    if (error.code === 'auth/invalid-credential') {
+      showMessage('Incorrect Email or Password', 'signInMessage');
+    } else {
+      showMessage('Account does not Exist', 'signInMessage');
+    }
+  }
 });
