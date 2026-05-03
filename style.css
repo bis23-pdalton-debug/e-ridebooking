@@ -28,31 +28,37 @@ input{
     padding:0.3rem;
     margin-bottom:0.4rem;
 }
-input{
-    color:inherit;
-    width:100%;
-    background-color:transparent;
-    border:none;
-    border-bottom:1px solid #757575;
-    padding-left:-1.5rem;
-    font-size12px;
-}
 .input-group{
-    padding:-2% 0;
-    position:relative;
+    margin-bottom:15px;
+}
 
+.input-group label{
+    display:block;
+    margin-bottom:5px;
+    font-size:14px;
+    color:#333;
+    position:static;
 }
-.input-group i{
-    position:absolute;
-    color:black;
+
+.input-group .input-box{
+    display:flex;
+    align-items:center;
+    border:1px solid #ccc;
+    border-radius:6px;
+    padding:10px;
+    background:#fff;
 }
-input:focus{
-    background-color: transparent;
-    outline:transparent;
-    border-bottom:2px solid hsl(327,90%,28%);
+
+.input-box input{
+    border:none;
+    outline:none;
+    width:100%;
+    font-size:16px;
 }
-input::placeholder{
-    color:transparent;
+
+.input-box i{
+    margin-right:10px;
+    color:#555;
 }
 label{
     color:#757575;
@@ -168,4 +174,55 @@ button:hover{
         align-items:center;
         gap:5px;
     }
+}
+.auth-container{
+  max-width:400px;
+  margin:80px auto;
+  padding:30px;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.auth-container input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+.auth-container button{
+  width:100%;
+  padding:12px;
+  background:#222;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+}
+
+.password-row{
+  position:relative;
+}
+
+.password-row span{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:12px;
+  cursor:pointer;
+  color:#007bff;
+}
+
+.auth-container span{
+  color:#007bff;
+  cursor:pointer;
 }
