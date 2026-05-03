@@ -21,7 +21,7 @@ nav{
   align-items:center;
   padding:15px 40px;
 
-  background:#fafa04; /* Firebase yellow */
+  background:#0e0e0e; /* Firebase yellow */
   
   position:fixed;
   top:0;
@@ -52,6 +52,7 @@ nav{
   align-items:center;
   font-weight:bold;
   font-size:20px;
+  color:white; /* ✅ force white on desktop */
 }
 
 .logo i{
@@ -67,7 +68,7 @@ nav ul{
 
 nav a{
   text-decoration:none;
-  color:#333;
+  color:white;
 }
 
 .register-btn{
@@ -239,10 +240,13 @@ footer li{
 @media (max-width: 768px) {
 
   /* NAVBAR */
-  nav {
-    padding: 10px 15px;
-    flex-wrap: wrap;
-  }
+  nav ul{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  list-style:none;
+}
 
   nav ul {
     gap: 10px;
@@ -383,12 +387,32 @@ footer li{
   }
 
   /* FIX logout (IMPORTANT) */
-  .logout-btn {
-    width: 100% !important;  /* override old 10% */
-    padding: 10px 0;
-    font-size: 14px;
-    background: transparent;
-  }
+  nav ul li a,
+.logout-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:70px;
+  height:70px;
+  border-radius:50%;
+
+  background:white;
+  color:#0d2b4c;
+  font-weight:bold;
+  font-size:12px;
+  text-align:center;
+  text-decoration:none;
+
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+nav ul li a:hover,
+.logout-btn:hover{
+  background:#0d2b4c;
+  color:white;
+  transform:scale(1.1);
+}
 }
 @media (max-width: 768px) {
 
@@ -403,8 +427,11 @@ footer li{
   align-items:center;
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
   font-weight:700;
-  font-size:28px; /* increased size */
-  color:#000;
+  font-size:28px;
+  color:white; /* ✅ changed to white */
+  .logo i{
+  color:white;
+}
 }
 
   /* BOTTOM: MENU */
@@ -492,14 +519,12 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     <i class="fas fa-bus"></i> MUBAS | COACHES
   </div>
 
- <ul>
+<ul>
   <li><a href="#">HOME</a></li>
   <li><a href="#pickup">PAY</a></li>
   <li><a href="https://wa.me/265885451030" target="_blank">HELP</a></li>
-
-  <li><a href="register.html" class="register-btn">REGISTER</a></li>
-
-  <li><a href="#" class="logout-btn" onclick="logoutUser()">LOGOUT</a></li>
+  <li><a href="register.html">REGISTER</a></li>
+  <li><a href="#" onclick="logoutUser()">LOGOUT</a></li>
 </ul>
 </nav>
 
