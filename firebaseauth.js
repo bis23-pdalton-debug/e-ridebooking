@@ -1,6 +1,11 @@
 // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-  import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js"
+ import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
   import {getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js"
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -105,5 +110,57 @@ signIn.addEventListener('click', async (event) => {
     } else {
       showMessage('Account does not Exist', 'signInMessage');
     }
+  }
+});
+
+// ===============================
+// RESET PASSWORD (FINAL FIX)
+// ===============================
+
+const auth = getAuth(app);
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const resetBtn = document.getElementById("resetBtn");
+
+  if (!resetBtn) return;
+
+  resetBtn.addEventListener("click", async () => {
+
+    const email = document.getElementById("resetEmail").value;
+    const msg = document.getElementById("resetMessage");
+
+    if (!email) {
+      msg.style.display = "block";
+      msg.innerText = "Please enter your email";
+      return;
+    }
+
+    try {
+  await sendPasswordResetEmail(auth, email, {
+    url: "https://login-form-be4da.web.app/set-password.html"
+  });
+
+  msg.style.display = "block";
+  msg.innerText = "Reset link sent! Check your email ✔";
+
+} catch (error) {
+  msg.style.display = "block";
+  msg.innerText = error.message;
+}
+
+  });
+
+});
+const toggleSignUpPassword = document.getElementById("toggleSignUpPassword");
+const rPassword = document.getElementById("rPassword");
+
+toggleSignUpPassword.addEventListener("click", () => {
+  if (rPassword.type === "password") {
+    rPassword.type = "text";
+    toggleSignUpPassword.classList.replace("fa-eye", "fa-eye-slash");
+  } else {
+    rPassword.type = "password";
+    toggleSignUpPassword.classList.replace("fa-eye-slash", "fa-eye");
   }
 });
