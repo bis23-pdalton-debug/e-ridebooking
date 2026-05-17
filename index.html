@@ -1,134 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPOTO RIDE COACHES</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script type="module" src="firebaseauth.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MPOTO RIDE COACHES</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="module" src="firebaseauth.js"></script>
+
 </head>
+
 <body>
+
+<div class="auth-wrapper">
+
+  <!-- LEFT SIDE -->
+  <div class="auth-left">
+
+    <!-- SIGNUP -->
     <div class="container" id="signup" style="display:none;">
       <img src="https://static.vecteezy.com/system/resources/thumbnails/029/887/719/small_2x/minimal-and-abstract-logo-of-bus-icon-school-bus-silhouette-isolated-design-dark-bus-vector.jpg"
-      style="width:180px; display:block; margin:10px auto;">
-      <h1 class="form-title">SignUp</h1>
-      <form method="post" action="">
+      class="auth-logo">
+
+      <h1 class="brand-title">Register</h1>
+      <p class="welcome-text">Get started with Mpoto Ride</p>
+    
+      <form>
         <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
-        <!-- First Name -->
-<div class="input-group">
-  <label>First Name</label>
-  <div class="input-box">
-    <i class="fas fa-user"></i>
-    <input type="text" id="fName" placeholder="John" required>
-  </div>
-</div>
 
-<!-- Last Name -->
-<div class="input-group">
-  <label>Last Name</label>
-  <div class="input-box">
-    <i class="fas fa-user"></i>
-    <input type="text" id="lName" placeholder="Doe" required>
-  </div>
-</div>
+        <div class="input-group">
+          <label>First Name</label>
+          <div class="input-box">
+            <i class="fas fa-user"></i>
+            <input type="text" id="fName" required>
+          </div>
+        </div>
 
-<!-- Email -->
-<div class="input-group">
-  <label>Email</label>
-  <div class="input-box">
-    <i class="fas fa-envelope"></i>
-    <input type="email" id="rEmail" placeholder="email@gmail.com" required>
-  </div>
-</div>
+        <div class="input-group">
+          <label>Last Name</label>
+          <div class="input-box">
+            <i class="fas fa-user"></i>
+            <input type="text" id="lName" required>
+          </div>
+        </div>
 
-<!-- Password -->
-<div class="input-group">
-  <label>Password</label>
-  <div class="input-box">
-    <i class="fas fa-lock"></i>
-    <input type="password" id="rPassword" placeholder="Enter password" required>
-    <i class="fas fa-eye" id="toggleSignUpPassword" style="cursor:pointer;"></i>
-  </div>
-</div>
-        
+        <div class="input-group">
+          <label>Email</label>
+          <div class="input-box">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="rEmail" placeholder="email@gmail.com" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <div class="input-box">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="rPassword" placeholder="xxxxxx" required>
+            <i class="fas fa-eye" id="toggleSignUpPassword"></i>
+          </div>
+        </div>
+
         <button type="button" class="btn" id="submitSignUp">Sign Up</button>
-        </form>
-        <p class="or">
-        ----------or--------
-      </p>
+      </form>
+
       <div class="links">
-        <p>Already Have Account ?</p>
+        <p>Are you a member?</p>
         <button id="signInButton">Sign In</button>
       </div>
     </div>
 
-  <div class="container" id="signIn">
-    <img src="https://static.vecteezy.com/system/resources/thumbnails/029/887/719/small_2x/minimal-and-abstract-logo-of-bus-icon-school-bus-silhouette-isolated-design-dark-bus-vector.jpg"
-     style="width:180px; display:block; margin:10px auto;">
-        <h1 class="form-title">MUBAS | MPOTO RIDE</h1>
-        <h1 class="form-title">Log In</h1>
-        <form method="post" action="">
-          <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+    <!-- SIGNIN -->
+    <div class="container" id="signIn">
 
-          <div class="input-group">
-            <label>Email</label>
-             <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="email" id="email" placeholder="email@gmail.com" required>
-              </div>
-              </div>
-          <div class="input-group">
-              <label>Password</label>
-               <div class="input-box">
-                <i class="fas fa-lock"></i>
-          <input type="password" id="password" placeholder="Enter password" required>
-    
-    <!-- 👁 TOGGLE ICON -->
-    <i class="fas fa-eye" id="togglePassword" style="cursor:pointer;"></i>
-  </div>
-</div>
-          <p class="recover">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/029/887/719/small_2x/minimal-and-abstract-logo-of-bus-icon-school-bus-silhouette-isolated-design-dark-bus-vector.jpg"
+      class="auth-logo">
+
+      <h1 class="brand-title">Welcome back !</h1>
+      <p class="welcome-text">LogIn to your Mpoto Ride</p>
+      <div class="divider"><span>continue with email</span></div>
+
+      <form>
+        <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+
+        <div class="input-group">
+          <label>Email</label>
+          <div class="input-box">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="email@gmail.com" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <div class="input-box">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="xxxxxx" required>
+            <i class="fas fa-eye" id="togglePassword"></i>
+          </div>
+        </div>
+
+        <p class="recover">
           <a href="#" id="recoverPassword">Forgot Password</a>
-          </p>
-          <div class="g-recaptcha" data-sitekey="6LfyrNMsAAAAAG_l4grUAPc3YWl-78X00Xd_XXns"></div>
-         <button  class="btn"  id="submitSignIn">LogIn</button>
-        </form>
-        <p class="or">
-          ----------or--------
         </p>
-        
-        <div class="links">
-          <p>First Time to be here?</p>
-          <button id="signUpButton">Sign Up</button>
+
+        <div class="g-recaptcha" data-sitekey="6LfyrNMsAAAAAG_l4grUAPc3YWl-78X00Xd_XXns"></div>
+
+        <button type="button" id="submitSignIn">Login</button>
+      </form>
+
+      <div class="links signin-links">
+        <p>First time to be here?</p>
+        <button id="signUpButton">Sign up for free</button>
+      </div>
+    </div>
+
+    <!-- RESET -->
+    <div class="container" id="resetPassword" style="display:none;">
+
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/029/887/719/small_2x/minimal-and-abstract-logo-of-bus-icon-school-bus-silhouette-isolated-design-dark-bus-vector.jpg"
+      class="auth-logo">
+
+      <h1 class="brand-title">MPOTO RIDE</h1>
+      <p class="welcome-text">Welcome back!</p>
+      <div class="divider"><span>continue with email</span></div>
+
+      <h1 class="form-title">Reset Password</h1>
+
+      <div id="resetMessage" class="messageDiv"></div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <div class="input-box">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="resetEmail" placeholder="email@gmail.com">
         </div>
       </div>
-      <!-- RESET PASSWORD PAGE -->
-<div class="container" id="resetPassword" style="display:none;">
-  <img src="https://static.vecteezy.com/system/resources/thumbnails/029/887/719/small_2x/minimal-and-abstract-logo-of-bus-icon-school-bus-silhouette-isolated-design-dark-bus-vector.jpg"
-  style="width:180px; display:block; margin:10px auto;">
 
-  <h1 class="form-title">Reset Password</h1>
+      <button type="button" id="resetBtn">Reset</button>
 
-  <div id="resetMessage" class="messageDiv" style="display:none;"></div>
+      <div class="links">
+        <p>Back to LogIn?</p>
+        <button id="backToLogin">Login</button>
+      </div>
 
-  <div class="input-group">
-  <label>Email</label>
-  <div class="input-box">
-    <i class="fas fa-envelope"></i>
-    <input type="email" id="email" placeholder="email@gmail.com" required>
+    </div>
+
   </div>
-</div>
-  
 
-  <button class="btn" id="resetBtn">Reset</button>
-
-  <div class="links">
-    <p>Have an account?</p>
-    <button id="backToLogin">Login</button>
+  <!-- RIGHT SIDE IMAGE -->
+  <div class="auth-right">
+    <img src="https://22253773.fs1.hubspotusercontent-na1.net/hubfs/22253773/Imported_Blog_Media/shutterstock_1710009919-2-1-1-1.jpg">
   </div>
+
 </div>
-      <script src="script.js"></script>
+
+<script src="script.js"></script>
+
 </body>
 </html>
