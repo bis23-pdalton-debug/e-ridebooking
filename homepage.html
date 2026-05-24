@@ -11,125 +11,531 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
 }
 
-/* NAVBAR */
+body{
+  background:#f4f6f8;
+  color:#111;
+  transition:background 0.25s ease, color 0.25s ease;
+}
+
+body.dark-mode{
+  background:#101418;
+  color:#f5f7fa;
+}
+
+body.live-mode-paused{
+  cursor:not-allowed;
+}
+
+body.live-mode-paused button:not(.live-mode-toggle),
+body.live-mode-paused a,
+body.live-mode-paused input,
+body.live-mode-paused select{
+  cursor:not-allowed;
+}
+
 nav{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:15px 40px;
-
-  background:#0e0e0e; /* Firebase yellow */
-  
+  gap:14px;
+  padding:15px 20px;
+  background:white;
   position:fixed;
   top:0;
   left:0;
   width:100%;
   z-index:1000;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-.logout-btn{
-  text-decoration:none;
-  color:#333;
-  padding:8px 15px;
-  border-radius:6px;
-  display:block;
-  width:100%;
-  text-align:center;
-  background:transparent;
-  border:none;
-  cursor:pointer;
+  box-shadow:0 2px 12px rgba(0,0,0,0.08);
 }
 
-.logout-btn:hover{
-  background:#fafa04;
-  color:rgb(34, 16, 169);
-}
-.logo{
-  display:flex;
-  align-items:center;
-  font-weight:bold;
-  font-size:20px;
-  color:white; /* ✅ force white on desktop */
+.sidebar-brand{
+  display:none;
 }
 
-.logo i{
-  margin-right:10px;
-}
-
-nav ul{
-  display:flex;
-  list-style:none;
-  gap:25px;
-  align-items:center;
-}
-
-nav a{
-  text-decoration:none;
+.sidebar-brand-mark,
+.profile-avatar,
+.mobile-account-avatar{
+  background:#fb8500;
   color:white;
-}
-
-.register-btn{
-  background:#C8E6C9;
-  color:black;
-  padding:8px 15px;
-  border-radius:6px;
-}
-
-/* HERO */
-.hero{
-  min-height:100vh;
+  border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background: linear-gradient(145deg, #eef1f5, #cfd6dd);
-
-  padding-top:100px;
+  font-weight:bold;
+  text-transform:uppercase;
 }
 
-.hero p{
-  font-size: 18px;
-  opacity: 0.9;
+.sidebar-brand-mark{
+  width:24px;
+  height:24px;
+  border-radius:6px;
+  font-size:11px;
 }
-.hero-box{
-  background:#e6ebf0;
-  padding:60px 100px;
-  border-radius:20px;
 
-  box-shadow:
-    inset 0 2px 5px rgba(255,255,255,0.8),
-    0 15px 40px rgba(0,0,0,0.2);
+.sidebar-brand-name{
+  color:#111;
+  font-size:15px;
+  font-weight:bold;
 }
-.search-box{
-  margin-top:20px;
-  background:rgba(0,0,0,0.7);
-  padding:20px;
-  border-radius:10px;
+
+.menu-toggle{
+  border:none;
+  background:transparent;
+  color:#111;
+  font-size:22px;
+  cursor:pointer;
+  width:38px;
+  height:38px;
   display:flex;
-  flex-wrap:wrap;
-  gap:10px;
+  align-items:center;
+  justify-content:center;
 }
 
-.search-box input{
-  padding:10px;
-  border:none;
-  border-radius:5px;
+.mobile-toolbar{
   flex:1;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  overflow-x:auto;
+  scrollbar-width:none;
 }
 
-.search-box button{
-  background:#1e90ff;
-  color:white;
+.mobile-toolbar::-webkit-scrollbar{
+  display:none;
+}
+
+.mobile-tool-link{
+  text-decoration:none;
+  color:#25272c;
+  font-size:14px;
+  white-space:nowrap;
+}
+
+.live-mode-toggle{
+  border:1px solid #d5dbe3;
+  background:white;
+  color:#111;
+  border-radius:999px;
+  padding:9px 12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:14px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.live-switch{
+  width:34px;
+  height:18px;
+  border-radius:999px;
+  background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:2px;
+}
+
+.live-switch::after{
+  content:"";
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:white;
+}
+
+.live-mode-toggle:not(.live-mode-on) .live-switch{
+  background:#cbd5e1;
+  justify-content:flex-start;
+}
+
+.nav-icon-btn{
   border:none;
-  padding:10px 20px;
-  border-radius:5px;
+  background:transparent;
+  color:#111;
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  cursor:pointer;
+  position:relative;
+  flex:0 0 auto;
+}
+
+.notification-badge{
+  position:absolute;
+  top:-7px;
+  right:-9px;
+  min-width:20px;
+  height:20px;
+  border-radius:999px;
+  background:#fb8500;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  font-weight:bold;
+  padding:0 5px;
+  border:2px solid white;
+}
+
+.status-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#10c81f;
+  flex:0 0 auto;
+}
+
+nav ul{
+  display:none;
+  flex-direction:column;
+  align-items:stretch;
+  gap:0;
+  list-style:none;
+  position:fixed;
+  top:62px;
+  left:0;
+  bottom:0;
+  width:255px;
+  max-width:82vw;
+  background:#fbfbfc;
+  padding:8px 6px 12px;
+  border-right:1px solid #e5e7eb;
+  box-shadow:8px 0 20px rgba(15,23,42,0.08);
+  overflow-y:auto;
+  z-index:999;
+}
+
+nav.menu-open ul{
+  display:flex;
+}
+
+nav ul li{
+  width:100%;
+}
+
+nav ul a,
+.menu-item{
+  width:100%;
+  min-height:42px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-align:left;
+  font-size:14px;
+  padding:11px 14px;
+  color:#5f6470;
+  text-decoration:none;
+  border:1px solid transparent;
+  border-radius:0 7px 7px 0;
+  background:transparent;
+}
+
+nav ul a i:first-child,
+.menu-item i{
+  width:16px;
+  color:#8b909a;
+  text-align:center;
+  font-size:13px;
+}
+
+.menu-chevron{
+  margin-left:auto;
+  font-size:12px;
+  color:#8c919c;
+}
+
+.menu-item-active a,
+nav ul a:hover,
+.menu-item:hover{
+  background:white;
+  border-color:#e5e7eb;
+  color:#111;
+  box-shadow:0 1px 2px rgba(15,23,42,0.04);
+}
+
+.mobile-menu-spacer{
+  flex:1;
+  min-height:52px;
+}
+
+.mobile-account-button{
+  border:none;
+  background:transparent;
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  padding:10px 6px;
+  color:#5f6470;
+}
+
+.mobile-account-avatar{
+  width:34px;
+  height:34px;
+  font-size:13px;
+}
+
+.mobile-account-name{
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  text-align:left;
+  letter-spacing:1px;
+}
+
+.mobile-account-dropdown{
+  display:none;
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  margin:0 6px 8px 50px;
+  padding:10px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.08);
+}
+
+.mobile-account-item.account-open .mobile-account-dropdown{
+  display:block;
+}
+
+.mobile-account-full-name{
+  color:#111;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.mobile-account-signout{
+  border:none;
+  background:transparent;
+  color:#fb8500;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:bold;
+  padding:0;
+}
+
+.profile-area{
+  position:relative;
+  display:flex;
+  align-items:center;
+  flex:0 0 auto;
+}
+
+.profile-button{
+  border:none;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  padding:0;
+}
+
+.profile-avatar{
+  width:42px;
+  height:42px;
+  font-size:14px;
+}
+
+.profile-dropdown{
+  display:none;
+  position:absolute;
+  top:calc(100% + 12px);
+  right:0;
+  min-width:190px;
+  background:white;
+  border-radius:8px;
+  box-shadow:0 12px 24px rgba(0,0,0,0.25);
+  padding:12px;
+}
+
+.profile-area.profile-open .profile-dropdown{
+  display:block;
+}
+
+.profile-name{
+  color:#0d2b4c;
+  font-size:14px;
+  font-weight:bold;
+  max-width:190px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  margin-bottom:10px;
+}
+
+.profile-logout-btn{
+  width:100%;
+  border:none;
+  background:#0d2b4c;
+  color:white;
+  padding:10px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.hero{
+  background:white;
+  padding:112px 20px 28px;
+}
+
+.dashboard-wrap{
+  width:100%;
+  max-width:760px;
+  margin:0 auto;
+}
+
+.dashboard-layout{
+  display:block;
+}
+
+.dashboard-greeting{
+  font-size:38px;
+  line-height:1.1;
+  font-weight:900;
+  color:#050505;
+  margin-bottom:14px;
+}
+
+.dashboard-subtitle{
+  font-size:16px;
+  color:#111;
+  margin-bottom:32px;
+}
+
+.levy-alert{
+  display:grid;
+  grid-template-columns:24px 1fr 24px;
+  gap:12px;
+  background:#fff4ff;
+  border:1px solid #f1b2ff;
+  border-radius:10px;
+  color:#f000ff;
+  padding:18px 16px;
+  margin-bottom:26px;
+  text-align:left;
+}
+
+.levy-alert i{
+  font-size:18px;
+  margin-top:2px;
+}
+
+.levy-alert h3{
+  font-size:14px;
+  font-weight:500;
+  margin-bottom:10px;
+}
+
+.levy-alert p{
+  font-size:14px;
+  line-height:1.45;
+}
+
+.alert-close{
+  border:none;
+  background:transparent;
+  color:#f000ff;
+  font-size:20px;
   cursor:pointer;
 }
 
-/* DESTINATIONS */
+.dashboard-stats{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:24px;
+}
+
+.stat-card{
+  background:#e9ecf3;
+  border-radius:8px;
+  padding:18px 24px 24px;
+  min-height:102px;
+}
+
+.stat-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  color:#6b7280;
+  font-size:14px;
+  margin-bottom:14px;
+}
+
+.stat-top i{
+  color:#9aa1ad;
+  font-size:18px;
+}
+
+.stat-number{
+  font-size:28px;
+  color:#22252c;
+  font-weight:500;
+}
+
+.quick-actions-panel{
+  display:none;
+}
+
+.quick-actions-panel h2{
+  font-size:20px;
+  margin-bottom:22px;
+}
+
+.quick-action-list{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.quick-action{
+  border:none;
+  background:white;
+  border-radius:12px;
+  min-height:58px;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  cursor:pointer;
+  font-weight:bold;
+  color:#1a1d24;
+  width:100%;
+  text-align:left;
+}
+
+.quick-action i:first-child{
+  width:22px;
+  height:22px;
+  border:2px solid #111;
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+}
+
+.quick-action .quick-action-arrow{
+  margin-left:auto;
+  border:none;
+  width:auto;
+  height:auto;
+  font-size:13px;
+}
+
 .section{
   padding:50px 40px;
   background:#eaeaea;
@@ -187,10 +593,10 @@ nav a{
   cursor:pointer;
 }
 
-/* WHY BOOK */
 .why{
   padding:50px;
   text-align:center;
+  background:white;
 }
 
 .features{
@@ -211,14 +617,15 @@ nav a{
   color:#0d2b4c;
 }
 
-/* FOOTER */
 footer{
   background:#0d2b4c;
   color:white;
   padding:40px;
   display:flex;
   justify-content:space-between;
+  align-items:flex-start;
   flex-wrap:wrap;
+  gap:24px;
 }
 
 footer ul{
@@ -233,324 +640,570 @@ footer li{
   margin-right:10px;
   cursor:pointer;
 }
-/* ============================= */
-/* RESPONSIVE FIX (MOBILE + TABLET)
-/* ============================= */
 
-@media (max-width: 768px) {
-
-  /* NAVBAR */
-  nav ul{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-  list-style:none;
+.admin-footer-btn{
+  border:1px solid rgba(255,255,255,0.65);
+  background:transparent;
+  color:white;
+  padding:10px 16px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-  nav ul {
-    gap: 10px;
-    flex-wrap: wrap;
-    font-size: 18px;
-  }
-  .hero h1{
-  font-size: 48px;
-}
-
-  .logo {
-    font-size: 16px;
-  }
-
-  /* HERO */
-  .hero h1 {
-    font-size: 35px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-  .juice-text{
-    font-size:50px;
-  }
-
-  @media (max-width: 700px) {
-
-  .hero{
-    padding-top:px;
-    padding-left:25px;
-    padding-right:25px;
-  }
-
-  .hero-box{
-    width: 100%;
-    max-width: 100%;
-    padding: 80px 40px;
-    border-radius: 0; /* optional: makes it match full background feel */
-  }
-
-  .juice-text{
-    font-size: 50px;
-  }
-
-}
-
-  .search-box {
-    flex-direction: column;
-  }
-
-  /* SECTIONS */
-  .section {
-    padding: 30px 15px;
-  }
-
-  .section h2 {
-    font-size: 20px;
-  }
-
-  /* CARDS */
-  .card {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .cards {
-    gap: 15px;
-  }
-
-  /* FEATURES */
-  .features {
-    gap: 20px;
-  }
-
-  /* FOOTER */
-  footer {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  /* BOOKING FORM */
-  #bookingForm > div {
-    width: 95% !important;
-    padding: 25px !important;
-  }
-
-  #bookingForm img {
-    width: 180px !important;
-  }
-
-  #bookingForm input {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  nav {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px 15px;
-  }
-
-  .logo {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 8px;
-    font-size: 18px;
-  }
-
-  nav ul {
-    width: 100%;
-    display: flex;
-    padding: 8px 0;
-    border-top: 1px solid #ddd;
-  }
-
-  nav ul li {
-    flex: 1;
-  }
-
-  /* ALL BUTTONS SAME WIDTH + CENTER TEXT */
-  nav ul a,
-  nav ul button {
-    width: 100%;
-    display: block;
-    text-align: center;
-    font-size: 18px;   /* 👈 bigger font */
-    padding: 10px 0;
-  }
-
-  /* Register button */
-  .register-btn {
-    background: #fafa04;
-    border-radius: 10;
-  }
-
-  /* FIX logout (IMPORTANT) */
-  nav ul li a,
-.logout-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  width:70px;
-  height:70px;
-  border-radius:50%;
-
+.admin-footer-btn:hover{
   background:white;
   color:#0d2b4c;
-  font-weight:bold;
-  font-size:12px;
-  text-align:center;
-  text-decoration:none;
-
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
-  transition:0.3s;
 }
-nav ul li a:hover,
-.logout-btn:hover{
-  background:#0d2b4c;
-  color:white;
-  transform:scale(1.1);
-}
-}
-@media (max-width: 768px) {
 
-  nav {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px 15px;
-  }
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+  padding:20px;
+}
 
-.logo{
+.modal-panel{
+  background:white;
+  padding:32px;
+  width:760px;
+  max-width:95%;
+  max-height:90vh;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  overflow:auto;
+}
+
+.modal-header{
   display:flex;
   align-items:center;
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-  font-weight:700;
-  font-size:28px;
-  color:white; /* ✅ changed to white */
-  .logo i{
-  color:white;
-}
+  justify-content:space-between;
+  gap:16px;
 }
 
-  /* BOTTOM: MENU */
-  nav ul {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 0;
-    padding: 8px 0;
-    border-top: 1px solid #ddd;
-  }
-
-  nav ul li {
-  flex: 1;
-  text-align: center;
+.close-btn{
+  border:none;
+  background:#ccc;
+  border-radius:6px;
+  padding:9px 14px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-nav ul a,
-nav ul button {
-  width: 100%;
-  display: block;
-}
-
-  .logout-btn {
-    padding: 2px 4px;
-    font-size: 18px;
-  }
-
-  .register-btn {
-    padding: 6px 8px;
-    font-size: 18px;
-  }
-}
-.input-box{
+.form-field{
   display:flex;
   align-items:center;
   border:2px solid #ccc;
-  border-radius:8px;
+  border-radius:1px;
   padding:12px;
   width:100%;
   max-width:600px;
-  height:50px;
-  background:white;
 }
 
-.input-box i{
+.form-field i{
   margin-right:12px;
-  color:#0d2b4c;
-  min-width:20px;
-  text-align:center;
 }
 
-.input-box input{
+.form-field input,
+.form-field select{
   border:none;
+  width:100%;
   outline:none;
   font-size:16px;
-  width:100%;
-  height:100%;
+  padding:8px;
   background:transparent;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator{
-  opacity:0;
-  position:absolute;
-  right:10px;
-}
-.juice-text{
-  font-family: Impact, Haettenschweiler, 'Arial Black', sans-serif;
-  font-size:120px;
-  font-weight:900;
-  letter-spacing:5px;
-
-  color:#0d2b4c;   /* clean solid color */
-  text-align:center;
+.form-actions{
+  display:flex;
+  gap:15px;
+  width:100%;
+  max-width:600px;
+  margin-top:10px;
 }
 
+.form-actions button{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.cancel-btn{
+  background:#ccc;
+  color:#000;
+}
+
+.continue-btn{
+  background:#1e90ff;
+  color:#fff;
+}
+
+.admin-table-wrap{
+  overflow-x:auto;
+}
+
+.admin-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px;
+}
+
+.admin-table th,
+.admin-table td{
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:left;
+  font-size:14px;
+}
+
+.admin-table th{
+  background:#0d2b4c;
+  color:white;
+}
+
+.status-message{
+  color:#0d2b4c;
+  font-weight:bold;
+}
+
+body.dark-mode nav,
+body.dark-mode .hero,
+body.dark-mode .why{
+  background:#101418;
+}
+
+body.dark-mode .mobile-tool-link,
+body.dark-mode .nav-icon-btn,
+body.dark-mode nav ul a,
+body.dark-mode .dashboard-greeting,
+body.dark-mode .dashboard-subtitle{
+  color:#f5f7fa;
+}
+
+body.dark-mode .live-mode-toggle,
+body.dark-mode .profile-dropdown,
+body.dark-mode .modal-panel,
+body.dark-mode .card{
+  background:#171d24;
+  color:#f5f7fa;
+}
+
+body.dark-mode .live-mode-toggle{
+  border-color:#303946;
+}
+
+body.dark-mode .live-switch{
+  background:#f5f7fa;
+}
+
+body.dark-mode .live-switch::after{
+  background:#111;
+}
+
+body.dark-mode .live-mode-toggle:not(.live-mode-on) .live-switch{
+  background:#46515f;
+}
+
+body.dark-mode .levy-alert{
+  background:#241228;
+  border-color:#723079;
+}
+
+body.dark-mode .stat-card,
+body.dark-mode .quick-actions-panel{
+  background:#171d24;
+}
+
+body.dark-mode .stat-top{
+  color:#aab4c0;
+}
+
+body.dark-mode .stat-number,
+body.dark-mode .quick-actions-panel h2{
+  color:#f5f7fa;
+}
+
+body.dark-mode .quick-action{
+  background:#101418;
+  color:#f5f7fa;
+}
+
+body.dark-mode .quick-action i:first-child{
+  border-color:#f5f7fa;
+}
+
+body.dark-mode .section{
+  background:#121820;
+}
+
+body.dark-mode .section h2,
+body.dark-mode .feature i,
+body.dark-mode .profile-name,
+body.dark-mode .status-message{
+  color:#9fd0ff;
+}
+
+body.dark-mode .form-field{
+  border-color:#384353;
+}
+
+body.dark-mode .form-field input,
+body.dark-mode .form-field select{
+  color:#f5f7fa;
+}
+
+body.dark-mode footer,
+body.dark-mode .profile-logout-btn,
+body.dark-mode .card button{
+  background:#05080c;
+}
+
+body.dark-mode .admin-table th{
+  background:#05080c;
+}
+
+body.dark-mode .admin-table td{
+  border-color:#333d49;
+}
+
+@media (min-width:901px){
+  nav{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) auto;
+    padding:18px 36px 12px 286px;
+    gap:18px;
+    background:white;
+    box-shadow:none;
+  }
+
+  .sidebar-brand{
+    position:fixed;
+    top:0;
+    left:0;
+    width:262px;
+    height:64px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 24px;
+    background:#edf3f2;
+    border-right:1px solid #dfe7e5;
+    z-index:1001;
+  }
+
+  .menu-toggle{
+    display:none;
+  }
+
+  .mobile-toolbar{
+    grid-column:1;
+    grid-row:1;
+  }
+
+  .profile-area{
+    grid-column:2;
+    grid-row:1;
+    justify-content:flex-end;
+  }
+
+  nav ul{
+    display:flex;
+    position:fixed;
+    top:64px;
+    left:0;
+    bottom:0;
+    width:262px;
+    background:#edf3f2;
+    padding:8px 6px 12px;
+    border-top:1px solid #e5e7eb;
+    border-right:1px solid #e5e7eb;
+  }
+
+  .hero,
+  .section,
+  .why,
+  footer{
+    margin-left:262px;
+  }
+
+  .hero{
+    padding:96px 36px 36px;
+    border-radius:18px 0 0 0;
+  }
+
+  .dashboard-wrap{
+    max-width:1040px;
+  }
+
+  .dashboard-layout{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 360px;
+    gap:24px;
+    align-items:start;
+  }
+
+  .quick-actions-panel{
+    display:block;
+    background:#e9ecf3;
+    border-radius:16px;
+    padding:16px;
+    margin-top:104px;
+  }
+
+  .dashboard-stats{
+    gap:26px 24px;
+  }
+
+  .stat-card{
+    min-height:103px;
+  }
+
+  body.dark-mode .sidebar-brand,
+  body.dark-mode nav ul{
+    background:#121820;
+    border-color:#303946;
+  }
+
+  body.dark-mode .sidebar-brand-name,
+  body.dark-mode .mobile-account-full-name{
+    color:#f5f7fa;
+  }
+
+  body.dark-mode .menu-item-active a,
+  body.dark-mode nav ul a:hover,
+  body.dark-mode .mobile-account-dropdown{
+    background:#171d24;
+    border-color:#303946;
+  }
+}
+
+@media (max-width:520px){
+  nav{
+    padding:10px 8px;
+    gap:8px;
+  }
+
+  .mobile-toolbar{
+    gap:8px;
+  }
+
+  .mobile-tool-link{
+    font-size:12px;
+  }
+
+  .live-mode-toggle{
+    padding:8px 10px;
+    gap:8px;
+    font-size:12px;
+  }
+
+  .nav-icon-btn{
+    width:28px;
+    height:28px;
+    font-size:16px;
+  }
+
+  .profile-avatar{
+    width:38px;
+    height:38px;
+  }
+
+  .dashboard-greeting{
+    font-size:34px;
+  }
+
+  .dashboard-stats{
+    gap:18px;
+  }
+
+  .stat-card{
+    padding:16px;
+  }
+
+  .section{
+    padding:30px 15px;
+  }
+
+  .card{
+    width:100%;
+    max-width:320px;
+  }
+
+  footer{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .form-actions{
+    flex-direction:column;
+  }
+}
 </style>
 </head>
 
 <body>
-
-<!-- NAVBAR -->
-<nav>
-  <div class="logo">
-    <i class="fas fa-bus"></i> MUBAS | COACHES
+<nav id="mainNav">
+  <div class="sidebar-brand" aria-label="MPOTO RIDE">
+    <span class="sidebar-brand-mark">MR</span>
+    <span class="sidebar-brand-name">MPOTO RIDE</span>
   </div>
 
-<ul>
-  <li><a href="#">HOME</a></li>
-  <li><a href="#pickup">PAY</a></li>
-  <li><a href="https://wa.me/265885451030" target="_blank">HELP</a></li>
-  <li><a href="register.html">REGISTER</a></li>
-  <li><a href="#" onclick="logoutUser()">LOGOUT</a></li>
-</ul>
+  <button class="menu-toggle" type="button" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="mobile-toolbar" aria-label="Quick actions">
+    <a class="mobile-tool-link" href="#" onclick="closeMobileMenu()">Start guide</a>
+    <button class="live-mode-toggle live-mode-on" type="button" onclick="toggleLiveMode(this)" aria-pressed="true">
+      <span class="live-mode-label">Live Mode</span>
+      <span class="live-switch" aria-hidden="true"></span>
+    </button>
+    <a class="mobile-tool-link docs-link" href="#" onclick="closeMobileMenu()">Docs</a>
+    <button class="nav-icon-btn notification-button" type="button" aria-label="Notifications" onclick="showNotificationCount()">
+      <i class="far fa-bell"></i>
+      <span class="notification-badge" id="studentCountBadge">159</span>
+    </button>
+    <button class="nav-icon-btn theme-toggle" type="button" aria-label="Dark mode" onclick="toggleThemeMode(this)">
+      <i class="far fa-sun"></i>
+    </button>
+    <span class="status-dot" aria-label="Online" title="Online"></span>
+  </div>
+
+  <div class="profile-area" id="profileMenu">
+    <button class="profile-button" type="button" onclick="toggleProfileMenu()" aria-label="Open profile menu" aria-expanded="false">
+      <div class="profile-avatar" id="profileAvatar">ST</div>
+    </button>
+    <div class="profile-dropdown">
+      <div class="profile-name" id="profileName">Student</div>
+      <button class="profile-logout-btn" type="button" onclick="logoutUser()">SIGN OUT</button>
+    </div>
+  </div>
+
+  <ul id="navLinks">
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-home"></i><span>HOME</span></a></li>
+    <li><a href="#pickup" onclick="closeMobileMenu()"><i class="fas fa-credit-card"></i><span>PAY</span></a></li>
+    <li><a href="register.html" onclick="closeMobileMenu()"><i class="fas fa-user-plus"></i><span>REGISTER</span></a></li>
+    <li class="menu-item-active"><a href="#" onclick="closeMobileMenu()"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i><span>Transactions</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-users"></i><span>Customers</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-briefcase"></i><span>Balances</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-link"></i><span>Payment links</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-clipboard"></i><span>Projects</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-exchange-alt"></i><span>Transfers</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-credit-card"></i><span>Virtual Card</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-money-bill-alt"></i><span>Pay Bill</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-file-alt"></i><span>Invoice</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-university"></i><span>Loan</span></a></li>
+    <li class="mobile-menu-spacer" aria-hidden="true"></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+    <li class="mobile-account-item" id="mobileAccountMenu">
+      <button class="mobile-account-button" type="button" onclick="toggleMobileAccountMenu()">
+        <span class="mobile-account-avatar" id="mobileAccountAvatar">ST</span>
+        <span class="mobile-account-name" id="mobileAccountName">Student</span>
+        <i class="fas fa-chevron-down menu-chevron"></i>
+      </button>
+      <div class="mobile-account-dropdown">
+        <div class="mobile-account-full-name" id="mobileAccountFullName">Student</div>
+        <button class="mobile-account-signout" type="button" onclick="logoutUser()">SIGN OUT</button>
+      </div>
+    </li>
+  </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-box">
-    <h1 class="juice-text">MUBAS | MPOTO RIDE</h1>
-    <p>A simple and convenient way to travel home, managed by students for fellow students.</p>
+  <div class="dashboard-wrap">
+    <div class="dashboard-layout">
+      <div class="dashboard-main">
+        <h1 class="dashboard-greeting">Hi, <span id="dashboardUserName">Student</span></h1>
+        <p class="dashboard-subtitle">What would you like to do today?</p>
 
-    <div class="search-box">
-      <input type="text" value="MZUZU TO MUBAS">
-      <input type="text" value="DATE: SATURDAY 25TH July 2026">
-      <input type="text" value="TIME: 18:00 hrs">
+        <div class="levy-alert" id="levyAlert">
+          <i class="fas fa-bell"></i>
+          <div>
+            <h3>Levy fee</h3>
+            <p>Please be informed that, with immediate effect, a 0.05% MRA levy will be applied to all Payment made via bank transactions exceeding K100,000.</p>
+          </div>
+          <button class="alert-close" type="button" onclick="closeLevyAlert()" aria-label="Close levy notice">&times;</button>
+        </div>
+
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-top">
+              <span>Bookings</span>
+              <i class="far fa-file-alt"></i>
+            </div>
+            <div class="stat-number">84</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <span>Invoices</span>
+              <i class="fas fa-bars"></i>
+            </div>
+            <div class="stat-number">84</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <span>Registration</span>
+              <i class="fas fa-link"></i>
+            </div>
+            <div class="stat-number">152</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <span>Products</span>
+              <i class="far fa-shopping-bag"></i>
+            </div>
+            <div class="stat-number">0</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="quick-actions-panel" aria-label="Quick Actions">
+        <h2>Quick Actions</h2>
+        <div class="quick-action-list">
+          <button class="quick-action" type="button">
+            <i class="fas fa-link"></i>
+            <span>Payment Links</span>
+            <i class="fas fa-chevron-right quick-action-arrow"></i>
+          </button>
+          <button class="quick-action" type="button">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Chargebacks</span>
+            <i class="fas fa-chevron-right quick-action-arrow"></i>
+          </button>
+          <button class="quick-action" type="button">
+            <i class="fas fa-phone"></i>
+            <span>Recharge</span>
+            <i class="fas fa-chevron-right quick-action-arrow"></i>
+          </button>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
 
-<!-- DESTINATIONS -->
 <section class="section" id="pickup">
   <h2>PICK-UP AREA | LOCATION</h2>
   <p>Check your location and book your seat today</p>
 
   <div class="cards">
-
     <div class="card">
-      <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/53/fc/f4/karonga-malawi-its-malawi.jpg">
+      <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/53/fc/f4/karonga-malawi-its-malawi.jpg" alt="Karonga">
       <div class="card-body">
         <h3>Karonga</h3>
         <div class="bottom">
@@ -560,8 +1213,8 @@ input[type="date"]::-webkit-calendar-picker-indicator{
       </div>
     </div>
 
-     <div class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfjTcXmcJmKsjPi-ufV8_KYGb-bcWGWtbWBg&s">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfjTcXmcJmKsjPi-ufV8_KYGb-bcWGWtbWBg&s" alt="Rumphi">
       <div class="card-body">
         <h3>Rumphi</h3>
         <div class="bottom">
@@ -571,8 +1224,8 @@ input[type="date"]::-webkit-calendar-picker-indicator{
       </div>
     </div>
 
-     <div class="card">
-      <img src="https://www.yonecofm.com/wp-content/uploads/2019/07/Mzuzu-city_edited.jpg">
+    <div class="card">
+      <img src="https://www.yonecofm.com/wp-content/uploads/2019/07/Mzuzu-city_edited.jpg" alt="Mzuzu">
       <div class="card-body">
         <h3>Mzuzu</h3>
         <div class="bottom">
@@ -582,30 +1235,8 @@ input[type="date"]::-webkit-calendar-picker-indicator{
       </div>
     </div>
 
-     <div class="card">
-      <img src="https://scontent.fllw2-1.fna.fbcdn.net/v/t51.75761-15/487155119_18062860400000661_6311654106094932942_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_aid=0&_nc_ohc=8wklO56EMY4Q7kNvwEJXzdW&_nc_oc=AdpZjLdb-J-OPfXtgNEooY__YlXsHDGUTZBPJcKEZfKXWBqZGQoeLT5VUbjyvWhPYHQ&_nc_pt=5&_nc_zt=23&_nc_ht=scontent.fllw2-1.fna&_nc_gid=M5W-RXFuMfMNWOL9d8RRjg&_nc_ss=7a389&oh=00_Af2Nut1URmlu0JaA87lh1QciKZubWo-H74KD7XBzMynVHA&oe=69E5DF9F">
-      <div class="card-body">
-        <h3>Mzimba</h3>
-        <div class="bottom">
-          <p>K110,000</p>
-          <button onclick="openBooking('Mzimba')">Pay-Deposit</button>
-        </div>
-      </div>
-    </div>
-
     <div class="card">
-      <img src="https://scontent.fllw2-1.fna.fbcdn.net/v/t39.30808-6/482808451_642112355439285_4676285478518826727_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=TYQ3a7a67NgQ7kNvwFl1oQi&_nc_oc=Adql_CPEW9DsyQ7Ncy7lwQPbI45DAXOx21RlGbhaDHnWQTydimRClGB25XJOdwEUFSg&_nc_pt=5&_nc_zt=23&_nc_ht=scontent.fllw2-1.fna&_nc_gid=dez_m6pyxAg1JyI-mvkrxg&_nc_ss=7a389&oh=00_Af0wSBSZ-sIKHyTDUlh5-eC-PPLFYAsLRZzAMYlcHVgdlw&oe=69E5F8F5">
-      <div class="card-body">
-        <h3>Jenda</h3>
-        <div class="bottom">
-          <p>K100,000</p>
-          <button onclick="openBooking('Jenda')">Pay-Deposit</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://sadcmap.com/wp-content/uploads/2024/05/Kasungu_malawi003.jpeg">
+      <img src="https://sadcmap.com/wp-content/uploads/2024/05/Kasungu_malawi003.jpeg" alt="Kasungu">
       <div class="card-body">
         <h3>Kasungu</h3>
         <div class="bottom">
@@ -616,7 +1247,7 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     </div>
 
     <div class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlGXCtrZcw_1HSGqsP_453ZTfQyzIBmOjF4w&s">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlGXCtrZcw_1HSGqsP_453ZTfQyzIBmOjF4w&s" alt="Nkhata-Bay">
       <div class="card-body">
         <h3>Nkhata-Bay</h3>
         <div class="bottom">
@@ -627,7 +1258,7 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     </div>
 
     <div class="card">
-      <img src="https://www.malawitourism.com/wp-content/uploads/2020/03/KK-Arial-Johan-DJI_0139-cropped-1220x800.jpg">
+      <img src="https://www.malawitourism.com/wp-content/uploads/2020/03/KK-Arial-Johan-DJI_0139-cropped-1220x800.jpg" alt="Dwangwa">
       <div class="card-body">
         <h3>Dwangwa</h3>
         <div class="bottom">
@@ -636,58 +1267,23 @@ input[type="date"]::-webkit-calendar-picker-indicator{
         </div>
       </div>
     </div>
-
-    <div class="card">
-      <img src="https://scontent.fllw2-1.fna.fbcdn.net/v/t1.6435-9/121537837_356125832472668_2294902725543825924_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=109&ccb=1-7&_nc_sid=13d280&_nc_ohc=rY_16xdotIQQ7kNvwHK9Coh&_nc_oc=AdqCh3f82XBSIgZtnp8JIyoj8jvLz22i3cevRO3a3g7RMTPn8bWViVWdVJpSHgWVhlM&_nc_pt=5&_nc_zt=23&_nc_ht=scontent.fllw2-1.fna&_nc_gid=2-daf0y-6SyxC5YH6Z9Fyg&_nc_ss=7a389&oh=00_Af0F0YH_2NXua7y2E4y36GzJf_0UKvOqN-MPDzTeV9LWzg&oe=6A07A786">
-      <div class="card-body">
-        <h3>Nkhotakota</h3>
-        <div class="bottom">
-          <p>K95,000</p>
-          <button onclick="openBooking('Nkhotakota')">Pay-Deposit</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://lh3.googleusercontent.com/proxy/y-daD_DtYzjxfEpEOsxz7LT_9cAZA18cBAV-s0a7pa2V_C01E_8DnziI5bG3_aY2XTo2gQ9VBJYCcqdacVnCp0PWseWLlw">
-      <div class="card-body">
-        <h3>Salima</h3>
-        <div class="bottom">
-          <p>K75,000</p>
-          <button onclick="openBooking('Salima')">Pay-Deposit</button>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <img src="https://scontent.fblz1-1.fna.fbcdn.net/v/t39.30808-6/481970486_571555865898756_6542036362810644256_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=8irn5ZGhfAUQ7kNvwExyfEw&_nc_oc=Ado-eqPng9X1lhQInuP5cQEaT0rvS-67JGzz2vWEI77u8gqbbOIOcp-mLHNb-nTZiwU&_nc_pt=5&_nc_zt=23&_nc_ht=scontent.fblz1-1.fna&_nc_gid=wwu8HTN1XIpdPDs4T21ddA&_nc_ss=7a389&oh=00_Af17LIkm0YFYFz0acyGo0_4Fl41dk4QawgJrthlCW6oYaQ&oe=69EAFF0B">
-      <div class="card-body">
-        <h3>Lilongwe</h3>
-        <div class="bottom">
-          <p>K65,000</p>
-          <button onclick="openBooking('Lilongwe')">Pay-Deposit</button>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- WHY BOOK -->
 <section class="why">
   <h2>DO YOU KNOW OUR SERVICES?</h2>
 
   <div class="features">
-
     <div class="feature">
       <i class="fas fa-cookie"></i>
       <h4>FREE SNACKS & DRINKS</h4>
-      <p>Enjoy free snacks and drinks on every trip..</p>
+      <p>Enjoy free snacks and drinks on every trip.</p>
     </div>
 
     <div class="feature">
       <i class="fas fa-tag"></i>
       <h4>FAIR PRICES</h4>
-      <p>Affordable fares designed to suit students’ budgets and help you save money</p>
+      <p>Affordable fares designed to suit students' budgets and help you save money.</p>
     </div>
 
     <div class="feature">
@@ -695,296 +1291,110 @@ input[type="date"]::-webkit-calendar-picker-indicator{
       <h4>FREE WI-FI</h4>
       <p>Remain connected during your entire journey.</p>
     </div>
-
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-
   <div class="social">
     <p>SOCIAL MEDIA</p>
     <i class="fab fa-facebook"></i>
     <i class="fab fa-twitter"></i>
     <a href="https://wa.me/265885451030" target="_blank" style="color:inherit; text-decoration:none;">
-  <i class="fab fa-whatsapp"></i>
-</a>
+      <i class="fab fa-whatsapp"></i>
+    </a>
   </div>
-    <div>
+
+  <div>
     <h3>MUBAS | COACHES</h3>
   </div>
+
   <div>
     <ul>
-      <li>About Us </li>
+      <li>About Us</li>
       <li>FAQs</li>
       <li>Contact Us</li>
+      <li><button class="admin-footer-btn" type="button" onclick="openAdminBookings()">Admin</button></li>
     </ul>
   </div>
-
-
 </footer>
-<!-- BOOKING FORM -->
- 
-<div id="bookingForm" style="
-  display:none;
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.6);
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-">
 
-<div style="
-  background:white;
-  padding:40px;
-  width:520px;
-  max-width:90%;
-  max-height:90vh;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+<div id="bookingForm" class="modal">
+  <div class="modal-panel" style="align-items:center;">
+    <div class="modal-header" style="width:100%;">
+      <h3 id="formTitle">Passenger Details</h3>
+      <button type="button" class="close-btn" onclick="closeForm()">Close</button>
+    </div>
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
+    <div class="form-field">
+      <i class="fas fa-user"></i>
+      <input type="text" id="firstName" placeholder="Joe">
+    </div>
 
-  gap:20px;
-  overflow-y:auto;
-  margin:auto;
-">
+    <div class="form-field">
+      <i class="fas fa-user"></i>
+      <input type="text" id="lastName" placeholder="Bosco">
+    </div>
 
-  <!-- LOGO -->
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQwAAAC8CAMAAAC672BgAAABPlBMVEX///8Ags3s15gfE18AfswAfMsAgM0Aesr135zu7fEAgswAAFAAAFYAAFrb2uD///0TAFsAdslOQWqTj6pKm9Lo8vcYCl5wYnMAc8fHxdMdEV691ur1+/u/rYsAAE8USY5TTXrgy5UbJW3Z6vCnyuSaw+KHut43kNB5tN0Rh83Q5PDF3u1XodRsrdzUyZozKmtRP2QAAEa7xa4eAFifnLMAbMOPgXp4aHTJto3WwpL08/YAAEKBt9w9lc/55J2ik4KAcnhiVG6djn+0oYiikYCEgJ4PWqJHlcB3pbVIQXQ8NG5lX4mNiKZbTG3Tv5VBNGUkGl6OfH1dn77GyKNbT2sALH02IFwNHm4QPYZGOWYEb7sWMnojBlcLYqlup7aLr7Owv6mctq1nobt9rraUs7FqZYqtqsDOzNkuJGpbVYHos4gJAAAYuElEQVR4nO1cjV/aVvdPIG+GYMgkiJBg0wAhvOg6KgVHRInWl3ZUatf1abfVdo92/v//wO+cexMQ1Nrt9zj3ifmuk5Dc3Jzzveft3htlmBgxYsSIESNGjBgxYsSIESNGjBgxYsSIESPG3WBz4e/hvuW+E7xUMn8HpcX7Fvwu8FIpIJLHuULhmB6Sf3iQzKULFHgVkDl+G5yJKBmZJCBtbi2nO1IHvijWOJd4lkkW0paU2E2Tq760jc0yO9KWmS7gqVSkyZA6iknISFudgIyE39n6KYdXRxJhJT0yX0k7uQdAhpnuSZ30DBkdhVhEoWD1uoSMnp8+LjwAy0hYx4nErGVYpi+tY+R4JQ2tDBxktsGZCBcRJ8NM7Fi9OTKsBOVgR3qTeIskpAdb2+kHQIbf8/15MjqZxBjPdBK+hMGjkE4PpaMHEDP8gbRtUTLGaSmIGenEEKOInzAxeBRy/k46QfJKxMkwn239RMnoWr70JoeW0YWES0zEVywfWemOOtJOhMlYomQMhq+6BRNHPfe2C7YBPpExRyM8SGa6z9K7AzjKHXWtYbRjRiEHSKcz8F8aD+GDfMK5yUFu7lJEyVhS1r/764hoOb6kPNuS/iq2jqNKxrKU+KuQIusm15MhzXw8bDIs3ySfvv8wyZAsaUqLmX6FXywlbU056JoPhAxpNO6MO5fI+A8hI10IyZC6y6Y5NqWHQIY5tExzt3MzGb2OafrgPdIDIGN5ZFo9q+NLN5Gx7ZtdcJQ3D8Ayesu+1e34ne9vsozu9rOhb/rm8gMgIzFOPDPNwRAmr9eSYY2t8cj3fWv5IbjJeDDsjTr+lj8i2l4ig9ScQ0saQADtmJ0HQIbUsfzOmx1QtWN2u12rG5KRtHZ3B7tjMyE923mzO7L8qLsJqC0NetLo2XAAdtEZdUf+s4lldKAKlYaSNfCHYwmaRZyMxMCCwABGARbRGfR8yepdcpNEb2AmIHSSRtJY6vn+8lZ0yZBy6fRO4o0lWQnIFZ3x0O8Op25ijhOjwQ6UFz/1TGnQ6abTMM+NLhlbo1fp9NAaDt50uhIUVxAvOzsTyxjDOamDFehgezDe2kn/OYyym4CyptKROmNQ34LjbpBNADS1Qi6BQgM+t31p+QhjSJTJSCSGvkSmYfBDGpI64/sTb39/jZBhdsEskBTfkoaDaAdQtAxIJqhlYqsz7GEsBTJ+EAWZkjGUIIqQamQXWPEjTsZoALqiuqC11NnyE5QM2SVkWD6k1hGWpmA0YBrdSJNhDcEzRuglHVOyOhaUm5fIkEx/9MyyzG247qOdwOXokrE1hIAA8QD+9/2OuW0umzNkDLZ3t02/1wOD6QFj1mA3wqk1MdgFFxgmSFZNDDs7g8RlMoCjgYmZZtjFoAFfhxEmo9fBGhtCRofUmFtYnl8mI4ETNTg38kmSBTIi7CZgGWAUmE8xbOwGU/hLZIDNgIuMxnDYG5qj3U6ELWMLQoU/xDWuZ8ORNLCuIaNrSkOcvUudATTtRdgyJKnrm1hcSMOt7a3dq2RAA9MaSphcd6VeN+J1BmKAZYTUAb1H3VkyRkN/DP6BE5Se+TC2CiCF+D3UebDdWabZhCUVqJQcDnoJSCcwue+FWwXR3msFN7BI3vS3utvbUzJylrQ87tFEswtTky7mml7EyYAyo0P3ira3MzAxSx+vudrrbvotppGjDN0uGYMBbb/KpNOFaLvJLp2oQbRYNzuvEonj9M7ayWg9vQ1XX3X8XDcRtNoeL+ei+ubOlAy6m7a17EtbR7julymADRzjSsZ3EnBAdlc60mBr2H5ciDYZkDfNZ5a0ZY3b21sWeIVkvk2n0z+RVYxkYuvZm4SU8CFyDN+knj+PqmWcK28IGbu9kTkeLafSz38+Tj9OQXSAisLawn3F1OPM259zbXNrZzAaKIX3bG41qUSSjBXlO5ot/fGfSeWX57LMcrL8XPlPD5f9IJ6+Sv8my+9Z4Z3y3fqr/yjvWFZ+/v7XTCR/++ZLCsMC+MDgbfvDbzJLIb//JTPwv1+2xsrPvEtOub8dW9L4A4tN3reP71vuO8FmKQ02YHXayrv3lAqB8rGqHHWHSuY5G+L995Lk/4xt5Oftw/uW+26wnvZ7ECpWBXAQVhYEb1+gdPwMUfSn95QIcuqXsf+WfJffKUv3LfbdYE9Zz5BQgTrv73P47zXqvrqd6P1KqODc/X2BY4XVD4HxFFIr9y323WBFyf0WOIIgC79znsf/TixB/vmoQJxE+GidnqwdiAIbhJT37czmfYt9R8i0QzI+e7y3dnp64vEu2ob7yyoYjMCeHHzaPzj47w9cGD3eZc7uW+i7wp7yIRhx+fPrT59PT3//tP87ZhD58Sr85E9fa5/2/zjQPn7kAwPKRdVLGGZRadNQIPDa6Q9/vH798eRUEyZkyCci93H/4DPHnlDTgFwSzcRK8KJNTEN4/cf+J/4zQPzkfd4XAjI8YEYUeZHXTgIDSirn9y3y3WExRaOGwPGnYAKfD/ZPZceVKRn82ulBgJMfRDSM1XbuviW+S+wpjwUcdY49OAE29tcO+MBN4OxnoOGPjx/h/wOScd+3o2wYUIWm2+8wb7z+3Ts9/Qwh1PvDC2MGd7L/+kDkOO2Tc/AJI+jjzKP7lvdusUIdxeO4/VMA1KD7gWXIrLvmQAjl5DVnTQbLWG0rkZyjXcIeySgCKzhIhiOwk2wi7J+4ByefD9ZeO2uOAJmkFGknIXiUKZD86n46Pf3kBmUHTa2f1jzv44H7+uS/nPxbW9m7b1HvHpvrmSSywX/84YewuKJksNp/T09eH5ycfOYxeF4w6n3L+g/gKFfAKamztuYJM2TI8oG7duJ8Brv4NfPivsX8J7B5mDwutH9zQfVwgSckA1c4IHRivMhk1nMX9y3q3WMvs3lUyLRXJ0xcJoMC8sjZ2cXCj5EPoAullfPUwlmq/UG4gQz5cbu0xyw++bKUiXrQOFtnUpAmnuZyvz6/6ibgO89zuQyaxMURU3p639LeLRafrDwtLSwkD9eTSvvD+zkyZJb70FaS64fr68wXaJmK6soOxaPDzdIZQ5ImlF+/rtIgOiFjtQDlRcDAYXIzE+lS48uPX/aeLDKbAPhymGkXVuVg1irL7vNkO3P0hQkur/x4fv5jlAvyo4vF0gtmJbmOODo8/FOBvPJeBjJc4TlYRfLw8IhcW08uMkeZzePIrvrhYC+ezbxvoZ4fpdq/fnj/+N1qsq20l2ZixHlpCW74h0X85/Dni8XSo9k/8re5cpRS2gWwitzTTXX2b/oVlIX1yFZeT58sHJa+MOeHjyY4hBCxuKcUcoeYTs8fXbqyAqaxt/JjRFeEN5WzldL8biFxjAWFLPxuzmXSzWRp8fDoH5HtH4bKvCwtHk2X/tXFlaWLoz+hqFhaXEgfM1/2DvHLi6cr0wyypLz48iSSRfnCk73zFB3nhZWXF4VSqpRS0plcTkmd5f58UYKjjKLAydKfL5ZWiJFsZlJfLjL3KvUdAfLIcWZv5fzlRQZYAJXPXi4t7V0oSqGQgX/JgpLBMy/PciXkJPdi6XzlInO4+CSCRTkotaQUMikFkEq+OF9QF1bOn56vLJznyN+syqyfw4nz8y+bzOLTi3YJm6UyhdTKmRK9ovxCWcwcH68fPTp7urK4uXh+dqQQXjJPF47wj4NebO6RE0r6aG9lYWHx/OkZFGDHyaPFJ5EryldKe1hVbC4sfkFHSSmZHP2rjgWYr6dKpXXmkUJPJCF0lJIvXp5/WcT2C5uPovaOm1pIlZ6EKKVSyiWUVnAysnT5FMSMafNUKWKVl7pyI84VMBMwhuObm0S08LoO508JHpDGMWLEiBEjRowYMWLEuBVf2/j+pk1xNWynzp29rV/1yhn4VK9peLtk6uUer9z07Xv7hq7r09bwxZheMK45zcxdVuGaPjnQw+b6DR2reNpQydVAVHqCfDD69DRtqF8CFZbgkn56o1i0Vao0uWTo81Anms5rMYeiKPCV8EuZZ8VieCxybnjeEbjm3H0ex1fJQZMX3OCMMDkSq3C/IOph67rIig1y1BAFDY4qcLVMhDRkga+BTqwg9slNgQA1XuBtRhYmkA28C8HKTi3QUG8KIsAtEv5cgW9hHxNwzRbpJugwkOErZLBsqLQqs1MyPIEV6yEZrDBHhs2zgkMMsCyymkGUwteSiPocag7nZ8koBmQQWio8y8qGSu+jZLDAriGyXC0cAHgAM33fB8mAPskvb7ECJ9j49LrAsSzHsbJWoWRwSMb0RRghq2us0KKks4L3dS6YIkjFl+kxdhPIrOq8zHIt9SYyqnAb5QpoIYTXUT1yZINGBloZPyWDv4YMgahtuER/XUYymCwMO2mn8yxXIWQIvEggkD5ZjhyzggsjoLoCy3utJjxZqyMZ2FVFE0XyUjbe5zFNjg5WhWNvMwxChuyg0qqKL+OFloHSsq5xExkONKVjCOZE/AwFZTnQRy3yOKa3k8Fq9hUyyiAysWr0WBvJgIsqQXgSDm3QUCwTsyYDqePAhWRgc6YlgPB4oMLQoHyqe7thUDIoZQ20r5AMB39VavJlngxQTpCDMWxyeFGtcbIgCx7I3Oe5/jeRwWWvkAEGQUNYk3gJJWMCJIP0aRDt0T5dVJip5UV5QgaixU1Gsgm8qMjbrYZByADXwsOsMCUD+HRbQkjBPBlqnxdaLsuT3isoEQmyNVCI9IOdfAMZ5NwsGRCqyKNQ2+rNZKgekblPHw131+uNm8ioizI8xxOCGHcrGeD+Kga5KRlVXmhS37+ODAZctVHjaEypk0iJoQ/DRx39htO/hQyZ+OEcGRVewIc2qJfcYhnQC1+e1CY3kKGCkXl17RsMg5Dh4mio4GZy6BmqA5kPVBbL15IBGslGUZQFkkZAhCJQAi7p4g22Rgz8VjJcsF8Y/TkybB7HkelzNMeB0s0GQX1CBlQpfWgFmRmGS+a8atk2vkIGGWWHZb3bi68iRm2Q28bw3RcCmYFIyJI1jvrPFTJaGCYwJ5LGTQF0KvOgSwuMBXokEt1GhizbYBqcPkeGiu6GT+T7lAwoQxCiR/tkHYDLYaYF5Woi/poTx7s1Y44MYUoGRo1LNcPXyRB1EKBVBS5tjtyjIg0eEVzTr5KhQp2EJtOk7q1WsHGLw9oC80iNI8+9nQwDUjnXnCODATkcTAE0cZPiBcFnAzLwK/6gNVBFFDmSRl39RstQYWihKvqGqpyQAaFWkMHwQjKgV4zpOPYV9QoZGJmxugI/weCAZugaUCPpjA46GFlaed5Oho4pSyzOkYE86FhdkXCHcSXrIVq0T1nU0BqaRlCBG8V+0wV5wIZvIoOkBv4bDIOSwZDfA3HVgAwiMdb7kE+8a8gAk8jCaV2gWR45A2090hCUo4NwhYywHL9EBiZzZ44M8BO+3BICra6pMwwdf5VnKg2k1jqwCuNyk5tghNJumZZcIoPUnhUmJAN4ldE3IeyQmD5LBlTOsotXwwIX/UUgPg7BpIUl8RUyxGvJUFvkF1pnyCAuGqbta7OJWg3EVGmBxdDk07jZMv4aGdAN5IeADNWgrom/AEGz/SwZpPgnEybQw2aCooEGCjDYIAXNkIFJtzzRpx6SwejXkIHBe1L8XptaDZ6GAFXmNdqrTSj+H5HBVPIaiBJYRhFEJCGchwMHuJ8hAwoelqOXBTJ/oBUK0VwnRWxYT0/JAKWoZWPJD6yHZOCMYZ4MEjSpdd1UZ9TooEElxXnhBZib/q/IYMg6QkAGFrBkVcAIxhHI8IoBVBhNrkovg2YumiqGNCKVSoLPRL4pGX1IHNmG3fA4MkedkIFTrXkyajgWxQkZzUb45AkZdpAdSDqq63YZuHa/EkD/KhkkdlMysOII+jQgYZCszwp06ijKKvZsBw/h6CGQEtwBQgRLHzNkgJwc6QJiLhEyJANT0jwZGFZlIyQDLO3yrBWFVXG4SCmPvw0J6QXcVCtSMgKL+psBVBS0qWuLWCNU4Ge4kpHlOZhuOBwHpQ2Bq7rcZNUH2tNxFjmNDmVZ40S6VjSzuKOqhqdBQSBwokeWZXCZRg+eIIhkPQNXhChxUGeFXilMHszRxR0qrK1RIXRHxNgGdRlJay4nhmTw3GUyQL5vIaPhZL0pGV7Wa6i1bDYb3lqGM3WmlZ2giW0mS2NNOAEfdS/sBK9Ssyl6lzpGOopNx3WaRVr7lKGr4I4s9Af1ApwIu+17XuAlavYSDCINcS6UyGtgr2XsNVshDBvNrBdYVxUEm6qP9xn/tl9z+pbRmcFNCsycv6bXf5viMaKH2MYQKqPXas1vmdE8BJTzLZWXY8tANDTXUJvV+xbjXwHDDeol3bZt3UCvsXEn0CYVcKMOc2U8pt/xErazybd6g+zpMPVifdKdjvUG3oF7h7ZBe51aHblv8igDezJov8HdKmPT/tXwGoFKJEFxG+ShKA4VxA5uJj9VEEUN+rXtTdCl0TD+Qjis8kFhntW0fJ6twKxqA3RrbGThVD6fd221vuGBL2GtXNsoqg62y3uM7cJHC+Ty8GuoMLlZLeZ5aN3fKDOuCK2dcFXW3iBlLDxKy8tl+Crm8xrUSc0N2sLN6zoP5/IbfQM/xaBGM1ASB5eWZDwJhdhGn6nlURBRreWz5FagxUGB60w9T/rAsjqf524NhypTbLbcilrPQoVfIwPbFFvVvqw1QFQkQ2syVa1ZrGoO1N9ZKOCxBK9B/e3x/Wq1X1bBohrZfAXuqzVqYlBJ2xrfQjJE/KjCVNvjatUWH5bofVryk0cJYt0WnWrVg96bGrUtR9QNmatC/0VDkKvVrEjX7Wpaq9HXsjCB4mvlLFTfZZhu1/gmtMRPnLE4nA2iNcstmEjVNQf7sOt5p1iWNf2q/jNcGFmYcje1arEpC06LtCYCVbTKlIysCMPb9AxCBlnFJ2TQgl/H8dCdGsyq4Hs2qwZ25sLsQMXNG5uSgTy06LKGqroy2V0kj6pqFRv0Qz9VZ8gQqDGQ3SqXrgw4HHmGUdRauGKQJ2T0g5lRjcfpmcPpOof7KWCbtkbHpootys4tuwWGh/OjJieDknyROhUIBNV/vjglo8lVSG1PLUMWsuT5HmXa0FzqxQ5PNtbp6qTjVqAHlbaekFEOZmP1fNXBtEV5FykZ6jwZ3CUyWlRhjy/jCwxqhWw12/U5MmSY+gIZNllMt+tGPSCjrDW/YS5Q0wQdV0l4mH2HVtTkXFcWIQhMyGjkNdGpGSolo+ZoDaTaE1zHgQBS0zTZAx7K2KpKZ0R1raaDx6hFDVoXKxMytD59bN6u4qsJTbFfrrp5dJNyuYn7xJfJkF3XdVRKRo0qXMyLPDyDGG6gJpDBu47rNpiaWOVEw+P0ukj3OHA7zXHcFmPIouY2618PoLaI+0cGLva7Qjgzb/Iwy+NcfUoGY9eyAu9QMrRqQ3OImwie5+ECVrHliDjk9VqWC8Tow61o0kBGQ3T7c2QYrgyPbuE6EoQ+XH3lBQigEBhnyYD+s8wMGfQZHiVDDciocQ4IAmRoEE9aHg9kBJvMdc2FPuCZRqXpisGbGjehQkJOQxQrOomLlAwaM6pTMsjOmaPVKRl9JsuR/UtcnQWB0Bbqoqvip059G2JCBeJbGckAcmVxQgZxk6LmlSss5JmmWK5jygO7xvTMMHMxA5fFZ9wEnwGxRaeWEbgJIQokgU8DxpQLyAjcBBeNDdSgL369hmqSFZgWLxtlfrLnRARCLVpkB1lrqS6G8taUDJvsg3gi8cMGbrqrvGsQo/AIGQ2REzVe8NBNsDUfBlC6gtvkeFHDhaRQdzu06xtjhkNfYJBx7yKr2UW0V10UZ2MGfOJS4NUA2hJsVOnrZGQFDkoiETppcVxYIUCKrFRdGMyGJlcqcr4BrDTLFV4wQjLotpnDVyvVatngOchFECA8sVUE9yUP18pQ6ziagWQwVRHJ4PuVILUaggtXyxiZr5DB17DPwDLgsNqA1FqphKk1q7WKkKgMAwy57AWptS+2oGVFJRbiCJhaxWy5pbmYWrEPu5iHmOTmv55NKiKw3srDcLHs5F2OJpYwfA0eXgFPhpIIcg6cgghFiq6NGi7NkaILCxqPaUD9o0H9QyodhwygRoymv1FpbLRwPKHowtaa0yB+vkFW57i8ng1qLOyYjg4WSXkXiy4jLLqwWhODZTOdSIKWy2rkodOiS1OhEsREpV0qujY0WnTV4JOrMF+F0cxXql4dh2bynps6qbJJzYtaqVgE06oZSmtSjtdpmQwAj6T+jqUyffHOqJNPKJVJ8Y73qLS0Dl6n0OlzDFLwk5ZBbAsra7hG+6+Hd06kC5/RIAcoSHCTqtcN2i0txw3SLynmVVWnmnwddj3Y5uBvKc9uKexvvqoy6rXXr3sR9PL3vz97/v/e2QzXlR84VL1fN1hO//t8RggQd2pVvn57wwcBvVar6PHSZ4wYMWLEiBEjRowYMWLEiBEjRowYMWLEiPEw8H8k4LYh2PM1OAAAAABJRU5ErkJggg==" 
-       style="width:250px; margin-bottom:10px;">
+    <div class="form-field">
+      <i class="fas fa-phone"></i>
+      <input type="text" id="phone" placeholder="Contact +265">
+    </div>
 
-  <h3 id="formTitle">Passenger Details</h3>
+    <div class="form-field">
+      <i class="fas fa-phone-volume"></i>
+      <input type="text" id="guardian" placeholder="Guardian +265">
+    </div>
 
-<div style="
-  background:white;
-  padding:40px;
-  width:700px;
-  max-width:95%;
-  max-height:90vh;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    <div class="form-field">
+      <i class="fas fa-map-marker-alt"></i>
+      <input type="text" id="location" readonly placeholder="Location">
+    </div>
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
+    <div class="form-field">
+      <i class="fas fa-calendar-alt"></i>
+      <input type="date" id="travelDate">
+    </div>
 
-  gap:20px;
-  overflow-y:auto;
-  margin:auto;
-">
+    <div class="form-field">
+      <i class="fas fa-chair"></i>
+      <select id="seatNumber">
+        <option value="">Select Seat Number</option>
+      </select>
+    </div>
 
-  <!-- First Name -->
-  <div style="
-  display:flex;
-  align-items:center;
-  border:2px solid #ccc;
-  border-radius:1px;
-  margin:-5px 0;
-  padding:12px;
-  width:115%;
-  max-width:600px;
-">
-  <i class="fas fa-user" style="margin-right:12px;"></i>
-  <input type="text"
-    style="
-      border:none;
-      width:100%;
-      outline:none;
-      font-size:16px;
-      padding:8px;
-    "
-    placeholder="Joe">
+    <div class="form-actions">
+      <button type="button" class="cancel-btn" onclick="closeForm()">Cancel</button>
+      <button type="button" class="continue-btn" onclick="submitBooking()">Continue</button>
+    </div>
+  </div>
 </div>
 
-  <!-- Surname -->
- <div style="
-  display:flex;
-  align-items:center;
-  border:2px solid #ccc;
-  border-radius:1px;
-  margin:-5px 0;
-  padding:12px;
-  width:115%;
-  max-width:600px;
-">
-  <i class="fas fa-user" style="margin-right:12px;"></i>
-  <input type="text"
-    style="
-      border:none;
-      width:100%;
-      outline:none;
-      font-size:16px;
-      padding:8px;
-    "
-    placeholder="Bosco">
-</div>
-<div style="
-  display:flex;
-  align-items:center;
-  border:2px solid #ccc;
-  border-radius:1px;
-  margin:-5px 0;
-  padding:12px;
- width:115%;
-  max-width:600px;
-">
-  <i class="fas fa-phone" style="margin-right:12px;"></i>
-  <input type="text"
-    style="
-      border:none;
-      width:100%;
-      outline:none;
-      font-size:16px;
-      padding:8px;
-    "
-    placeholder="Contact +265">
+<div id="adminModal" class="modal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h3>All Bookings</h3>
+      <button type="button" class="close-btn" onclick="closeAdminBookings()">Close</button>
+    </div>
+    <p id="adminStatus" class="status-message">Checking admin access...</p>
+    <div id="adminBookingsList" class="admin-table-wrap"></div>
+  </div>
 </div>
 
-  <!-- Guardian Number -->
-<div style="
-  display:flex;
-  align-items:center;
-  border:2px solid #ccc;
-  border-radius:1px;
-  margin:-5px 0;
-  padding:12px;
-  width:115%;
-  max-width:600px;
-">
- <i class="fas fa-phone-volume" style="margin-right:12px;"></i>
-  <input type="text"
-    style="
-      border:none;
-      width:100%;
-      outline:none;
-      font-size:16px;
-      padding:8px;
-    "
-    placeholder="Guadian +265">
-</div>
-
-  <!-- Location -->
-<div style="
-  display:flex;
-  align-items:center;
-  border:2px solid #ccc;
-  border-radius:1px;
-  margin:-5px 0;
-  padding:12px;
-  width:115%;
-  max-width:600px;
-">
-  <i class="fas fa-map-marker-alt" style="margin-right:12px;"></i>
-  <input type="text" id="location" readonly
-    style="
-      border:none;
-      width:100%;
-      outline:none;
-      font-size:16px;
-      padding:8px;
-    "
-    placeholder="Location">
-</div>
-<!-- Date (MATCH OTHER BOX STYLE) -->
-<div style="
-  display:flex;
-  align-items:center;
-  border:2px solid #ccc;
-  border-radius:1px;
-  margin:-5px 0;
-  padding:12px;
-  width:115%;
-  max-width:600px;
-">
-  <i class="fas fa-calendar-alt" style="margin-right:12px;"></i>
-
-  <input type="date" id="travelDate"
-    style="
-      border:none;
-      width:100%;
-      outline:none;
-      font-size:16px;
-      padding:8px;
-      background:transparent;
-    ">
-</div>
-<!-- SEAT SELECTION (ADD HERE) -->
-<div style="
-  display:flex;
-  align-items:center;
-  border:2px solid #ccc;
-  border-radius:1px;
-  margin:-5px 0;
-  padding:12px;
-  width:115%;
-  max-width:600px;
-">
-  <i class="fas fa-chair" style="margin-right:12px;"></i>
-
-  <select id="seatNumber"
-    style="
-      border:none;
-      width:100%;
-      outline:none;
-      font-size:16px;
-      padding:8px;
-      background:transparent;
-    ">
-    <option value="">Select Seat Number</option>
-  </select>
-</div>
-<!-- ACTION BUTTONS -->
-<div style="
-  display:flex;
-  gap:15px;
-  width:115%;
-  max-width:600px;
-  margin-top:10px;
-">
-
-  <!-- CANCEL -->
-  <button type="button" onclick="closeForm()" style="
-    flex:1;
-    padding:12px;
-    border:none;
-    border-radius:6px;
-    background:#ccc;
-    color:#000;
-    font-size:16px;
-    cursor:pointer;
-    font-weight:bold;
-  ">
-    Cancel
-  </button>
-
-  <!-- CONTINUE -->
-  <button type="button" onclick="submitBooking()" style="
-    flex:1;
-    padding:12px;
-    border:none;
-    border-radius:6px;
-    background:#1e90ff;
-    color:#fff;
-    font-size:16px;
-    cursor:pointer;
-    font-weight:bold;
-  ">
-    Continue
-  </button>
-</div>
-</div>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, serverTimestamp, doc, getDoc } 
-from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  getDoc,
+  getDocs,
+  getCountFromServer,
+  query,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBby_IF_uDrXS8IKrERZ4T_27gaMyBstSQ",
@@ -998,12 +1408,99 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-window.submitBooking = async function () {
+let registeredStudentCount = 159;
 
-  const firstName = document.querySelector('input[placeholder="Joe"]').value;
-  const lastName = document.querySelector('input[placeholder="Bosco"]').value;
-  const phone = document.querySelector('input[placeholder="Contact +265"]').value;
-  const guardian = document.querySelector('input[placeholder="Guadian +265"]').value;
+function isAdminUser(userData) {
+  return userData?.adminEnabled === true ||
+    userData?.isAdmin === true ||
+    userData?.admin === true ||
+    userData?.role === "admin";
+}
+
+function formatCreatedAt(createdAt) {
+  if (!createdAt?.toDate) return "N/A";
+  return createdAt.toDate().toLocaleString();
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function getEmailName(email) {
+  if (!email) return "Student";
+  return email.split("@")[0];
+}
+
+function getInitials(name, email) {
+  const nameParts = String(name || "").trim().split(/\s+/).filter(Boolean);
+
+  if (nameParts.length >= 2) {
+    return `${nameParts[0][0]}${nameParts[nameParts.length - 1][0]}`.toUpperCase();
+  }
+
+  if (nameParts.length === 1) {
+    return nameParts[0].slice(0, 2).toUpperCase();
+  }
+
+  return getEmailName(email).slice(0, 2).toUpperCase();
+}
+
+function updateProfile(user, name) {
+  const profileName = document.getElementById("profileName");
+  const profileAvatar = document.getElementById("profileAvatar");
+  const dashboardUserName = document.getElementById("dashboardUserName");
+  const mobileAccountAvatar = document.getElementById("mobileAccountAvatar");
+  const mobileAccountName = document.getElementById("mobileAccountName");
+  const mobileAccountFullName = document.getElementById("mobileAccountFullName");
+  const displayName = name || "Student";
+  const initials = getInitials(displayName, user?.email);
+
+  profileName.textContent = displayName;
+  profileAvatar.textContent = initials;
+  profileAvatar.setAttribute("aria-label", `${displayName} profile`);
+
+  if (dashboardUserName) dashboardUserName.textContent = displayName;
+  if (mobileAccountAvatar) mobileAccountAvatar.textContent = initials;
+  if (mobileAccountName) mobileAccountName.textContent = displayName;
+  if (mobileAccountFullName) mobileAccountFullName.textContent = displayName;
+}
+
+function updateStudentCountBadge(count) {
+  const studentCountBadge = document.getElementById("studentCountBadge");
+  registeredStudentCount = Number(count) || 0;
+
+  if (studentCountBadge) {
+    studentCountBadge.textContent = String(registeredStudentCount);
+    studentCountBadge.setAttribute("title", `${registeredStudentCount} registered students`);
+  }
+}
+
+async function loadRegisteredStudentCount() {
+  updateStudentCountBadge(registeredStudentCount);
+
+  try {
+    const countSnapshot = await getCountFromServer(collection(db, "users"));
+    updateStudentCountBadge(countSnapshot.data().count);
+  } catch (error) {
+    console.error("Student count error:", error);
+    updateStudentCountBadge(registeredStudentCount);
+  }
+}
+
+window.showNotificationCount = function () {
+  alert(`Total registered students: ${registeredStudentCount}`);
+};
+
+window.submitBooking = async function () {
+  const firstName = document.getElementById("firstName").value.trim();
+  const lastName = document.getElementById("lastName").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const guardian = document.getElementById("guardian").value.trim();
   const location = document.getElementById("location").value;
   const date = document.getElementById("travelDate").value;
   const seat = document.getElementById("seatNumber").value;
@@ -1036,49 +1533,122 @@ window.submitBooking = async function () {
 
   try {
     await addDoc(collection(db, "bookings"), bookingData);
-
-    closeForm(); // works because it's global
-
+    closeForm();
     window.location.href = "https://pay.paychangu.com/SC-v3GwKu";
-
   } catch (error) {
     console.error("Booking error:", error);
     alert("Booking failed. Try again.");
   }
 };
 
-// ✅ CHECK USER STATE PROPERLY
+window.openAdminBookings = async function () {
+  const adminModal = document.getElementById("adminModal");
+  const adminStatus = document.getElementById("adminStatus");
+  const adminBookingsList = document.getElementById("adminBookingsList");
+
+  adminModal.style.display = "flex";
+  adminStatus.textContent = "Checking admin access...";
+  adminBookingsList.innerHTML = "";
+
+  const user = auth.currentUser;
+
+  if (!user) {
+    adminStatus.textContent = "Please log in first.";
+    window.location.href = "index.html";
+    return;
+  }
+
+  try {
+    const userSnap = await getDoc(doc(db, "users", user.uid));
+    const userData = userSnap.exists() ? userSnap.data() : {};
+
+    if (!isAdminUser(userData)) {
+      adminStatus.textContent = "Access denied. Your Firestore account is not admin enabled.";
+      return;
+    }
+
+    adminStatus.textContent = "Loading bookings...";
+    const bookingsQuery = query(collection(db, "bookings"), orderBy("createdAt", "desc"));
+    const bookingSnapshots = await getDocs(bookingsQuery);
+
+    if (bookingSnapshots.empty) {
+      adminStatus.textContent = "No bookings found.";
+      return;
+    }
+
+    const rows = bookingSnapshots.docs.map((bookingDoc) => {
+      const booking = bookingDoc.data();
+      return `
+        <tr>
+          <td>${escapeHtml(booking.firstName)} ${escapeHtml(booking.lastName)}</td>
+          <td>${escapeHtml(booking.phone)}</td>
+          <td>${escapeHtml(booking.guardian)}</td>
+          <td>${escapeHtml(booking.location)}</td>
+          <td>${escapeHtml(booking.date)}</td>
+          <td>${escapeHtml(booking.seat)}</td>
+          <td>${escapeHtml(booking.status)}</td>
+          <td>${escapeHtml(formatCreatedAt(booking.createdAt))}</td>
+        </tr>
+      `;
+    }).join("");
+
+    adminBookingsList.innerHTML = `
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Passenger</th>
+            <th>Phone</th>
+            <th>Guardian</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Seat</th>
+            <th>Status</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    `;
+    adminStatus.textContent = "Admin access granted.";
+  } catch (error) {
+    console.error("Admin bookings error:", error);
+    adminStatus.textContent = "Unable to load bookings. Check Firestore permissions and indexes.";
+  }
+};
+
+window.closeAdminBookings = function () {
+  document.getElementById("adminModal").style.display = "none";
+};
+
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
-    // 🔴 No user → go to login page
     window.location.replace("index.html");
     return;
   }
 
-  // ✅ Get user data
   const docRef = doc(db, "users", user.uid);
   const docSnap = await getDoc(docRef);
-
   let name = "";
 
   if (docSnap.exists()) {
     const data = docSnap.data();
-    name = data.firstName + " " + data.lastName;
+    name = `${data.firstName || ""} ${data.lastName || ""}`.trim();
   } else {
-    name = user.displayName || user.email.split("@")[0];
+    name = user.displayName || getEmailName(user.email);
   }
 
-  const heroWelcome = document.getElementById("heroWelcome");
-  if (heroWelcome) {
-    heroWelcome.textContent = "Welcome, " + name;
+  if (!name) {
+    name = user.displayName || getEmailName(user.email);
   }
+
+  updateProfile(user, name);
+  loadRegisteredStudentCount();
 });
 
-// ✅ LOGOUT FUNCTION (WORKING)
 window.logoutUser = function () {
   signOut(auth)
     .then(() => {
-      window.location.replace("index.html"); // 🔁 Redirect to login
+      window.location.replace("index.html");
     })
     .catch((error) => {
       console.error("Logout error:", error);
@@ -1087,41 +1657,159 @@ window.logoutUser = function () {
 </script>
 
 <script>
+let liveModeEnabled = true;
+
+function isLiveModeControl(target) {
+  return Boolean(target.closest && target.closest(".live-mode-toggle"));
+}
+
+function stopActionWhenLiveModeOff(event) {
+  if (liveModeEnabled || isLiveModeControl(event.target)) {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopImmediatePropagation();
+}
+
+document.addEventListener("click", stopActionWhenLiveModeOff, true);
+document.addEventListener("submit", stopActionWhenLiveModeOff, true);
+document.addEventListener("keydown", function (event) {
+  const isActionKey = event.key === "Enter" || event.key === " ";
+
+  if (isActionKey) {
+    stopActionWhenLiveModeOff(event);
+  }
+}, true);
+
+function toggleMobileMenu() {
+  const nav = document.getElementById("mainNav");
+  const button = document.querySelector(".menu-toggle");
+  const isOpen = nav.classList.toggle("menu-open");
+  button.setAttribute("aria-expanded", String(isOpen));
+}
+
+function closeMobileMenu() {
+  const nav = document.getElementById("mainNav");
+  const button = document.querySelector(".menu-toggle");
+  nav.classList.remove("menu-open");
+  button.setAttribute("aria-expanded", "false");
+  closeMobileAccountMenu();
+}
+
+function toggleProfileMenu() {
+  const profileMenu = document.getElementById("profileMenu");
+  const button = document.querySelector(".profile-button");
+  const isOpen = profileMenu.classList.toggle("profile-open");
+  button.setAttribute("aria-expanded", String(isOpen));
+  closeMobileMenu();
+}
+
+function closeProfileMenu() {
+  const profileMenu = document.getElementById("profileMenu");
+  const button = document.querySelector(".profile-button");
+  profileMenu.classList.remove("profile-open");
+  button.setAttribute("aria-expanded", "false");
+}
+
+function toggleMobileAccountMenu() {
+  const mobileAccountMenu = document.getElementById("mobileAccountMenu");
+
+  if (mobileAccountMenu) {
+    mobileAccountMenu.classList.toggle("account-open");
+  }
+}
+
+function closeMobileAccountMenu() {
+  const mobileAccountMenu = document.getElementById("mobileAccountMenu");
+
+  if (mobileAccountMenu) {
+    mobileAccountMenu.classList.remove("account-open");
+  }
+}
+
+function toggleLiveMode(button) {
+  const isActive = button.classList.toggle("live-mode-on");
+  const label = button.querySelector(".live-mode-label");
+
+  liveModeEnabled = isActive;
+  button.setAttribute("aria-pressed", String(isActive));
+
+  if (label) {
+    label.textContent = isActive ? "Live Mode" : "Live Off";
+  }
+
+  document.body.classList.toggle("live-mode-paused", !isActive);
+
+  if (!isActive) {
+    closeMobileMenu();
+    closeProfileMenu();
+  }
+}
+
+function toggleThemeMode(button) {
+  const isDarkMode = document.body.classList.toggle("dark-mode");
+  const icon = button.querySelector("i");
+
+  if (icon) {
+    icon.className = isDarkMode ? "far fa-moon" : "far fa-sun";
+  }
+
+  button.setAttribute("aria-label", isDarkMode ? "Light mode" : "Dark mode");
+  button.setAttribute("title", isDarkMode ? "Light mode" : "Dark mode");
+}
+
+function closeLevyAlert() {
+  const levyAlert = document.getElementById("levyAlert");
+
+  if (levyAlert) {
+    levyAlert.style.display = "none";
+  }
+}
+
+document.addEventListener("click", function (event) {
+  const profileMenu = document.getElementById("profileMenu");
+  const mobileAccountMenu = document.getElementById("mobileAccountMenu");
+
+  if (profileMenu && !profileMenu.contains(event.target)) {
+    closeProfileMenu();
+  }
+
+  if (mobileAccountMenu && !mobileAccountMenu.contains(event.target)) {
+    closeMobileAccountMenu();
+  }
+});
+
 function loadSeats() {
   const seatSelect = document.getElementById("seatNumber");
-
-  // Clear old options
   seatSelect.innerHTML = '<option value="">Select Seat Number</option>';
 
   for (let i = 1; i <= 57; i++) {
-  if (i === 2) continue; // exclude 2 completely
+    if (i === 2) continue;
 
-  const option = document.createElement("option");
+    const option = document.createElement("option");
 
-  if (i % 2 === 0) {
-    // even numbers → A seats
-    option.value = "A" + i;
-    option.textContent = "Seat A" + i;
-  } else {
-    // odd numbers → W seats
-    option.value = "W" + i;
-    option.textContent = "Seat W" + i;
+    if (i % 2 === 0) {
+      option.value = "A" + i;
+      option.textContent = "Seat A" + i;
+    } else {
+      option.value = "W" + i;
+      option.textContent = "Seat W" + i;
+    }
+
+    seatSelect.appendChild(option);
   }
+}
 
-  seatSelect.appendChild(option);
-}
-}
-function openBooking(locationName){
+function openBooking(locationName) {
   document.getElementById("bookingForm").style.display = "flex";
   document.getElementById("location").value = locationName;
-
-  loadSeats(); // ✅ ADD THIS LINE
+  loadSeats();
 }
 
-function closeForm(){
+function closeForm() {
   document.getElementById("bookingForm").style.display = "none";
 }
-
 </script>
 </body>
 </html>
