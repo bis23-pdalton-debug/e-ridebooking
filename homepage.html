@@ -656,6 +656,865 @@ footer li{
   color:#0d2b4c;
 }
 
+body.loan-view-active .hero,
+body.loan-view-active .section,
+body.loan-view-active .why,
+body.loan-view-active footer,
+body.bill-view-active .hero,
+body.bill-view-active .section,
+body.bill-view-active .why,
+body.bill-view-active footer{
+  display:none;
+}
+
+.loan-page{
+  display:none;
+  min-height:100vh;
+  background:#f4f7fb;
+  padding:92px 14px 28px;
+  color:#101828;
+}
+
+body.loan-view-active .loan-page{
+  display:block;
+}
+
+.bill-page{
+  display:none;
+  min-height:100vh;
+  background:#eef3f1;
+  padding:92px 14px 28px;
+  color:#111827;
+}
+
+body.bill-view-active .bill-page{
+  display:block;
+}
+
+.loan-shell{
+  width:100%;
+  max-width:1160px;
+  margin:0 auto;
+}
+
+.loan-screen{
+  display:none;
+}
+
+.loan-screen.active{
+  display:block;
+}
+
+.loan-eyebrow{
+  display:block;
+  color:#00a8ff;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.loan-overview-card,
+.loan-history-card,
+.loan-support-card,
+.loan-summary-card,
+.loan-security-row,
+.loan-terms-card,
+.loan-loading-card,
+.loan-offer-step{
+  background:white;
+  border:1px solid #e1e6ee;
+  border-radius:16px;
+}
+
+.loan-overview-card{
+  min-height:374px;
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 208px;
+  overflow:hidden;
+}
+
+.loan-overview-main{
+  padding:30px;
+}
+
+.loan-overview-main h1{
+  font-size:36px;
+  line-height:1.05;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.loan-overview-main p,
+.loan-muted{
+  color:#7a8ba8;
+  font-size:13px;
+}
+
+.loan-dark-btn,
+.loan-primary-btn,
+.loan-support-button{
+  border:none;
+  background:#28282b;
+  color:white;
+  border-radius:8px;
+  min-height:42px;
+  padding:0 18px;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.loan-dark-btn{
+  margin-top:20px;
+}
+
+.loan-primary-btn{
+  width:100%;
+  margin-top:18px;
+}
+
+.loan-primary-btn:disabled{
+  opacity:0.55;
+  cursor:not-allowed;
+}
+
+.loan-metrics{
+  background:#f3f6fa;
+  border-left:1px solid #e1e6ee;
+  padding:30px 24px 20px;
+}
+
+.loan-metric{
+  padding:0 0 14px;
+  margin-bottom:14px;
+  border-bottom:1px solid #dde4ed;
+}
+
+.loan-metric:last-of-type{
+  border-bottom:none;
+}
+
+.loan-metric-label{
+  color:#8492aa;
+  display:block;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.loan-metric-value{
+  font-size:16px;
+  font-weight:bold;
+  color:#111827;
+}
+
+.loan-paid{
+  color:#00a76f;
+}
+
+.loan-late{
+  color:#df7b00;
+}
+
+.loan-capital-badge{
+  border:1px solid #b6e1ff;
+  background:#eaf8ff;
+  color:#0d1b2a;
+  border-radius:9px;
+  padding:12px 14px;
+  margin-top:8px;
+}
+
+.loan-capital-badge span{
+  display:block;
+  color:#00a8ff;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.loan-capital-badge strong{
+  font-size:16px;
+}
+
+.loan-dashboard-grid{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 268px;
+  gap:16px;
+  margin-top:16px;
+  align-items:start;
+}
+
+.loan-history-card{
+  min-height:220px;
+  overflow:hidden;
+}
+
+.loan-history-card.large{
+  grid-column:1;
+}
+
+.loan-card-header{
+  min-height:56px;
+  border-bottom:1px solid #e5e9f0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 20px;
+  font-size:15px;
+}
+
+.loan-card-header small{
+  color:#8190aa;
+  font-size:12px;
+}
+
+.loan-empty-body{
+  padding:40px 22px;
+}
+
+.loan-empty-body h3{
+  font-size:22px;
+  margin-bottom:26px;
+}
+
+.loan-empty-body p{
+  font-size:20px;
+  line-height:1.35;
+}
+
+.loan-support-card{
+  padding:20px;
+  min-height:138px;
+}
+
+.loan-support-top{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom:18px;
+}
+
+.loan-support-top i{
+  color:#00b8c3;
+  font-size:20px;
+  margin-top:2px;
+}
+
+.loan-support-top strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:4px;
+}
+
+.loan-support-button{
+  width:100%;
+}
+
+.loan-chat-button{
+  position:fixed;
+  right:22px;
+  bottom:24px;
+  width:62px;
+  height:62px;
+  border:none;
+  border-radius:50%;
+  background:#04bdbb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,0.22);
+  z-index:900;
+}
+
+.loan-apply-layout{
+  min-height:calc(100vh - 130px);
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 325px;
+  gap:34px;
+  align-items:start;
+}
+
+.loan-apply-main{
+  background:#f4f7fb;
+  min-height:calc(100vh - 130px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:34px;
+}
+
+.loan-terms-card{
+  width:100%;
+  max-width:496px;
+  padding:36px 30px;
+  text-align:center;
+  box-shadow:0 1px 2px rgba(15,23,42,0.03);
+}
+
+.loan-term-icon,
+.loan-summary-icon{
+  width:66px;
+  height:66px;
+  border-radius:50%;
+  background:#e5f9ff;
+  color:#00a8ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+  font-size:25px;
+}
+
+.loan-step-label{
+  color:#00a8ff;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+
+.loan-terms-card h2{
+  font-size:21px;
+  margin-bottom:14px;
+}
+
+.loan-terms-card p{
+  color:#34425b;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.loan-terms-toggle{
+  width:100%;
+  min-height:51px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid #dfe5ee;
+  border-radius:11px;
+  background:white;
+  padding:0 16px;
+  margin-top:24px;
+  cursor:pointer;
+  color:#101828;
+  font-weight:bold;
+}
+
+.loan-terms-details{
+  display:none;
+  text-align:left;
+  border:1px solid #dfe5ee;
+  border-top:none;
+  border-radius:0 0 11px 11px;
+  padding:14px 16px;
+  color:#536178;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.loan-terms-details.open{
+  display:block;
+}
+
+.loan-terms-check{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  text-align:left;
+  margin-top:20px;
+  color:#34425b;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.loan-terms-check input{
+  width:20px;
+  height:20px;
+  flex:0 0 auto;
+  accent-color:#04bdbb;
+}
+
+.loan-side-column{
+  padding-top:0;
+}
+
+.loan-summary-card{
+  min-height:234px;
+  overflow:hidden;
+}
+
+.loan-summary-title{
+  min-height:56px;
+  border-bottom:1px solid #dfe5ee;
+  display:flex;
+  align-items:center;
+  padding:0 20px;
+}
+
+.loan-summary-title span{
+  color:#00a8ff;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.loan-summary-body{
+  min-height:176px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#7e8da9;
+  padding:20px;
+}
+
+.loan-summary-icon{
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  font-size:19px;
+  margin-bottom:16px;
+}
+
+.loan-summary-body p{
+  max-width:230px;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.loan-security-row{
+  margin-top:20px;
+  min-height:49px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  color:#7e8da9;
+  font-size:12px;
+}
+
+.loan-security-row span{
+  padding:0 14px;
+  border-right:1px solid #e1e6ee;
+}
+
+.loan-security-row span:last-child{
+  border-right:none;
+}
+
+.loan-security-row i{
+  color:#00b8c3;
+  margin-right:6px;
+}
+
+.loan-loading-state{
+  min-height:calc(100vh - 130px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+
+.loan-loading-state.active{
+  display:flex;
+}
+
+.loan-loading-card{
+  width:min(430px, 94vw);
+  padding:42px 28px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(15,23,42,0.08);
+}
+
+.loan-spinner{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  border:6px solid #dff5ff;
+  border-top-color:#04bdbb;
+  margin:0 auto 22px;
+  animation:loan-spin 0.9s linear infinite;
+}
+
+@keyframes loan-spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+.loan-loading-card h2{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.loan-loading-card p{
+  color:#7a8ba8;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.loan-offers-main{
+  min-height:calc(100vh - 130px);
+  background:#f4f7fb;
+  padding:58px 28px 30px;
+}
+
+.loan-offers-main h1{
+  font-size:26px;
+  margin-bottom:12px;
+}
+
+.loan-steps-subtitle{
+  color:#8190aa;
+  margin-bottom:36px;
+}
+
+.loan-offer-step{
+  border:none;
+  background:transparent;
+  display:grid;
+  grid-template-columns:24px minmax(0, 1fr) 28px;
+  gap:10px;
+  align-items:center;
+  margin-bottom:44px;
+}
+
+.loan-step-number{
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  background:#08abd0;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.loan-refresh-btn{
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  color:#222;
+  font-size:18px;
+}
+
+.loan-offer-warning{
+  border:1px solid #ffda5a;
+  background:#fffbea;
+  color:#8a3700;
+  border-radius:11px;
+  padding:16px;
+  max-width:496px;
+  font-size:13px;
+  line-height:1.45;
+  margin-bottom:30px;
+}
+
+.loan-complete-note{
+  color:#8190aa;
+  text-align:center;
+  max-width:496px;
+  font-size:13px;
+}
+
+.bill-shell{
+  width:100%;
+  max-width:1086px;
+  margin:0 auto;
+}
+
+.bill-layout{
+  min-height:calc(100vh - 120px);
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 520px;
+  background:white;
+  overflow:hidden;
+}
+
+.bill-workspace{
+  padding:88px 72px 46px 88px;
+}
+
+.bill-workspace h1{
+  font-size:27px;
+  line-height:1.1;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.bill-subtitle{
+  color:#6b7280;
+  font-size:14px;
+  margin-bottom:28px;
+}
+
+.bill-service-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 99px);
+  gap:10px;
+  margin-bottom:26px;
+}
+
+.bill-service-card{
+  height:66px;
+  border:1px solid #dce4ef;
+  background:white;
+  color:#0b1730;
+  border-radius:7px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.bill-service-card i{
+  font-size:18px;
+}
+
+.bill-service-card.active{
+  border-color:#176cff;
+  color:#0052ff;
+  box-shadow:0 0 0 1px #176cff inset;
+}
+
+.bill-form-area{
+  display:none;
+  max-width:394px;
+}
+
+.bill-form-area.active{
+  display:block;
+}
+
+.bill-form-title,
+.bill-field-label{
+  display:block;
+  font-size:16px;
+  margin:0 0 16px;
+  color:#111827;
+}
+
+.bill-provider-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:28px;
+}
+
+.bill-provider-option{
+  width:100%;
+  min-height:56px;
+  border:1.5px solid #202124;
+  background:white;
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:0 16px;
+  text-align:left;
+  color:#222;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.bill-provider-option::before{
+  content:"";
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  border:5px solid #303236;
+  display:block;
+}
+
+.bill-provider-option.active{
+  border-color:#176cff;
+}
+
+.bill-provider-option.active::before{
+  border-color:#176cff;
+}
+
+.bill-field{
+  margin-bottom:26px;
+}
+
+.bill-input{
+  width:100%;
+  min-height:42px;
+  border:1px solid #dce1e8;
+  border-radius:8px;
+  padding:0 13px;
+  background:white;
+  color:#111827;
+  font-size:14px;
+  outline:none;
+}
+
+.bill-input:focus{
+  border-color:#202124;
+  box-shadow:0 0 0 1px #202124 inset;
+}
+
+.bill-amount-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+
+.bill-amount-chip{
+  border:none;
+  background:#f1f1f2;
+  color:#111;
+  min-height:34px;
+  border-radius:6px;
+  padding:0 14px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.bill-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  max-width:394px;
+  margin-top:24px;
+}
+
+.bill-action-btn{
+  border:none;
+  min-height:42px;
+  border-radius:7px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.bill-cancel-btn{
+  background:#f0f0f1;
+  color:#111;
+}
+
+.bill-validate-btn{
+  background:white;
+  color:#111;
+  border:1px solid #dce1e8;
+  font-weight:bold;
+}
+
+.bill-validate-btn:disabled{
+  background:#dedede;
+  color:#a0a0a0;
+  border-color:#dedede;
+  cursor:not-allowed;
+  font-weight:normal;
+}
+
+.bill-side{
+  background:#f1f0f8;
+  padding:86px 62px 40px;
+  position:relative;
+}
+
+.bill-summary-card,
+.bill-recent-card{
+  background:white;
+  border-radius:16px;
+  padding:24px 22px;
+}
+
+.bill-summary-card{
+  min-height:236px;
+  margin-bottom:16px;
+}
+
+.bill-summary-card h2,
+.bill-recent-card h2{
+  font-size:16px;
+  margin-bottom:20px;
+}
+
+.bill-summary-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:16px;
+  color:#6b7280;
+  font-size:13px;
+  margin-bottom:14px;
+}
+
+.bill-summary-row strong{
+  color:#5f6572;
+  text-align:right;
+  font-size:12px;
+}
+
+.bill-summary-divider{
+  border:none;
+  border-top:1px solid #222;
+  margin:8px 0 14px;
+}
+
+.bill-summary-amount strong{
+  color:#00a33d;
+  font-size:16px;
+}
+
+.bill-recent-card{
+  min-height:290px;
+}
+
+.bill-recent-empty{
+  padding-top:42px;
+}
+
+.bill-recent-empty h3{
+  font-size:38px;
+  line-height:1.05;
+  margin-bottom:28px;
+}
+
+.bill-recent-empty p{
+  font-size:20px;
+  line-height:1.5;
+}
+
+.bill-chat-button{
+  position:fixed;
+  right:22px;
+  bottom:24px;
+  width:62px;
+  height:62px;
+  border:none;
+  border-radius:50%;
+  background:#04bdbb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,0.22);
+  z-index:900;
+}
+
 .modal{
   display:none;
   position:fixed;
@@ -785,9 +1644,38 @@ body.dark-mode .why{
 
 body.dark-mode .mobile-tool-link,
 body.dark-mode .nav-icon-btn,
+body.dark-mode .menu-toggle,
 body.dark-mode nav ul a,
 body.dark-mode .dashboard-greeting,
 body.dark-mode .dashboard-subtitle{
+  color:#f5f7fa;
+}
+
+body.dark-mode nav ul{
+  background:#121820;
+  border-color:#303946;
+}
+
+body.dark-mode nav ul a i:first-child,
+body.dark-mode .menu-item i,
+body.dark-mode .menu-chevron{
+  color:#aab4c0;
+}
+
+body.dark-mode .mobile-account-button{
+  color:#f5f7fa;
+}
+
+body.dark-mode .mobile-account-full-name{
+  color:#f5f7fa;
+}
+
+body.dark-mode .menu-item-active a,
+body.dark-mode nav ul a:hover,
+body.dark-mode .menu-item:hover,
+body.dark-mode .mobile-account-dropdown{
+  background:#171d24;
+  border-color:#303946;
   color:#f5f7fa;
 }
 
@@ -875,6 +1763,124 @@ body.dark-mode .admin-table th{
 
 body.dark-mode .admin-table td{
   border-color:#333d49;
+}
+
+body.dark-mode .bill-page,
+body.dark-mode .loan-page,
+body.dark-mode .loan-apply-main,
+body.dark-mode .loan-offers-main{
+  background:#101418;
+  color:#f5f7fa;
+}
+
+body.dark-mode .bill-layout,
+body.dark-mode .bill-workspace,
+body.dark-mode .bill-service-card,
+body.dark-mode .bill-provider-option,
+body.dark-mode .bill-input,
+body.dark-mode .bill-summary-card,
+body.dark-mode .bill-recent-card{
+  background:#171d24;
+  border-color:#303946;
+  color:#f5f7fa;
+}
+
+body.dark-mode .bill-side{
+  background:#121820;
+}
+
+body.dark-mode .bill-subtitle,
+body.dark-mode .bill-summary-row,
+body.dark-mode .bill-recent-empty p{
+  color:#aab4c0;
+}
+
+body.dark-mode .bill-form-title,
+body.dark-mode .bill-field-label,
+body.dark-mode .bill-summary-row strong,
+body.dark-mode .bill-cancel-btn,
+body.dark-mode .bill-validate-btn{
+  color:#f5f7fa;
+}
+
+body.dark-mode .bill-service-card.active{
+  border-color:#00a8ff;
+  color:#7fd9ff;
+}
+
+body.dark-mode .bill-amount-chip,
+body.dark-mode .bill-cancel-btn{
+  background:#101418;
+  color:#f5f7fa;
+}
+
+body.dark-mode .bill-validate-btn{
+  background:#101418;
+  border-color:#303946;
+}
+
+body.dark-mode .bill-validate-btn:disabled{
+  background:#2a3038;
+  color:#7b8491;
+  border-color:#2a3038;
+}
+
+body.dark-mode .bill-summary-divider{
+  border-top-color:#46515f;
+}
+
+body.dark-mode .loan-overview-card,
+body.dark-mode .loan-history-card,
+body.dark-mode .loan-support-card,
+body.dark-mode .loan-summary-card,
+body.dark-mode .loan-security-row,
+body.dark-mode .loan-terms-card,
+body.dark-mode .loan-loading-card{
+  background:#171d24;
+  border-color:#303946;
+  color:#f5f7fa;
+}
+
+body.dark-mode .loan-metrics{
+  background:#121820;
+  border-color:#303946;
+}
+
+body.dark-mode .loan-metric{
+  border-color:#303946;
+}
+
+body.dark-mode .loan-metric-value,
+body.dark-mode .loan-terms-toggle{
+  color:#f5f7fa;
+}
+
+body.dark-mode .loan-terms-toggle,
+body.dark-mode .loan-terms-details{
+  background:#101418;
+  border-color:#303946;
+}
+
+body.dark-mode .loan-terms-card p,
+body.dark-mode .loan-terms-check,
+body.dark-mode .loan-muted,
+body.dark-mode .loan-summary-body,
+body.dark-mode .loan-loading-card p,
+body.dark-mode .loan-steps-subtitle,
+body.dark-mode .loan-complete-note{
+  color:#aab4c0;
+}
+
+body.dark-mode .loan-capital-badge{
+  background:#082233;
+  border-color:#16506f;
+  color:#f5f7fa;
+}
+
+body.dark-mode .loan-offer-warning{
+  background:#2d2409;
+  border-color:#8d6b00;
+  color:#ffd984;
 }
 
 @media (min-width:901px){
@@ -969,6 +1975,12 @@ body.dark-mode .admin-table td{
     min-height:103px;
   }
 
+  .loan-page,
+  .bill-page{
+    margin-left:262px;
+    padding:68px 12px 28px;
+  }
+
   body.dark-mode .sidebar-brand,
   body.dark-mode nav ul{
     background:#121820;
@@ -985,6 +1997,43 @@ body.dark-mode .admin-table td{
   body.dark-mode .mobile-account-dropdown{
     background:#171d24;
     border-color:#303946;
+  }
+}
+
+@media (max-width:900px){
+  .loan-overview-card,
+  .loan-dashboard-grid,
+  .loan-apply-layout{
+    grid-template-columns:1fr;
+  }
+
+  .bill-layout{
+    grid-template-columns:1fr;
+  }
+
+  .bill-workspace,
+  .bill-side{
+    padding:34px 24px;
+  }
+
+  .loan-metrics{
+    border-left:none;
+    border-top:1px solid #e1e6ee;
+  }
+
+  .loan-apply-main,
+  .loan-offers-main{
+    min-height:auto;
+    padding:28px 0;
+  }
+
+  .loan-side-column{
+    padding-top:0;
+  }
+
+  .loan-chat-button{
+    width:56px;
+    height:56px;
   }
 }
 
@@ -1049,6 +2098,59 @@ body.dark-mode .admin-table td{
   .form-actions{
     flex-direction:column;
   }
+
+  .loan-page{
+    padding:82px 12px 24px;
+  }
+
+  .bill-page{
+    padding:82px 12px 24px;
+  }
+
+  .bill-workspace,
+  .bill-side{
+    padding:28px 16px;
+  }
+
+  .bill-service-grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+  }
+
+  .bill-service-card{
+    width:100%;
+  }
+
+  .bill-actions{
+    grid-template-columns:1fr;
+  }
+
+  .bill-recent-empty h3{
+    font-size:30px;
+  }
+
+  .loan-overview-main,
+  .loan-metrics,
+  .loan-terms-card{
+    padding:24px 18px;
+  }
+
+  .loan-overview-main h1{
+    font-size:30px;
+  }
+
+  .loan-empty-body p{
+    font-size:17px;
+  }
+
+  .loan-security-row{
+    flex-wrap:wrap;
+    padding:10px;
+    gap:8px;
+  }
+
+  .loan-security-row span{
+    border-right:none;
+  }
 }
 </style>
 </head>
@@ -1092,10 +2194,10 @@ body.dark-mode .admin-table td{
   </div>
 
   <ul id="navLinks">
-    <li class="menu-item-active"><a href="#" onclick="closeMobileMenu()"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-home"></i><span>Home</span></a></li>
-    <li><a href="#pickup" onclick="closeMobileMenu()"><i class="fas fa-credit-card"></i><span>Booking</span></a></li>
-    <li><a href="register.html" onclick="closeMobileMenu()"><i class="fas fa-user-plus"></i><span>Register</span></a></li>
+    <li class="menu-item-active"><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+    <li><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-home"></i><span>Home</span></a></li>
+    <li><a href="#pickup" onclick="showHomePageFromMenu()"><i class="fas fa-credit-card"></i><span>Booking</span></a></li>
+    <li><a href="registration.html" onclick="closeMobileMenu()"><i class="fas fa-user-plus"></i><span>Registration</span></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i><span>Transactions</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-users"></i><span>Customers</span></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-briefcase"></i><span>Balances</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
@@ -1103,9 +2205,9 @@ body.dark-mode .admin-table td{
     <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-clipboard"></i><span>Projects</span></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-exchange-alt"></i><span>Transfers</span></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-credit-card"></i><span>Virtual Card</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-money-bill-alt"></i><span>Pay Bill</span></a></li>
+    <li><a href="#" onclick="openBillDashboard()"><i class="far fa-money-bill-alt"></i><span>Pay Bill</span></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-file-alt"></i><span>Invoice</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-university"></i><span>Loan</span></a></li>
+    <li><a href="#" onclick="openLoanDashboard()"><i class="fas fa-university"></i><span>Loan</span></a></li>
     <li class="mobile-menu-spacer" aria-hidden="true"></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-cog"></i><span>Settings</span></a></li>
     <li class="mobile-account-item" id="mobileAccountMenu">
@@ -1126,14 +2228,14 @@ body.dark-mode .admin-table td{
   <div class="dashboard-wrap">
     <div class="dashboard-layout">
       <div class="dashboard-main">
-        <h1 class="dashboard-greeting">Hi, <span id="dashboardUserName">Student</span></h1>
+        <h1 class="dashboard-greeting">Hello, <span id="dashboardUserName">Student</span></h1>
         <p class="dashboard-subtitle">What would you like to do today?</p>
 
         <div class="levy-alert" id="levyAlert">
           <i class="fas fa-bell"></i>
           <div>
-            <h3>Levy fee</h3>
-            <p>Please be informed that, with immediate effect, a 0.05% MRA levy will be applied to all Payment made via bank transactions exceeding K100,000.</p>
+            <h3>Booking fee!</h3>
+            <p>Please be informed that, a non-refundable booking fee of 10% of the transport cost is mandatory for all passengers..</p>
           </div>
           <button class="alert-close" type="button" onclick="closeLevyAlert()" aria-label="Close levy notice">&times;</button>
         </div>
@@ -1338,6 +2440,287 @@ body.dark-mode .admin-table td{
   </div>
 </footer>
 
+<main id="billPage" class="bill-page" aria-live="polite">
+  <div class="bill-shell">
+    <div class="bill-layout">
+      <section class="bill-workspace" aria-label="Pay your bills">
+        <h1>Pay Your Bills</h1>
+        <p class="bill-subtitle">Quick and secure bill payments</p>
+
+        <div class="bill-service-grid" aria-label="Bill service types">
+          <button class="bill-service-card" type="button" data-bill-service="electricity" onclick="selectBillService('electricity')">
+            <i class="fas fa-bolt"></i>
+            <span>Electricity</span>
+          </button>
+          <button class="bill-service-card" type="button" data-bill-service="water" onclick="selectBillService('water')">
+            <i class="fas fa-droplet"></i>
+            <span>Water</span>
+          </button>
+          <button class="bill-service-card" type="button" data-bill-service="insurance" onclick="selectBillService('insurance')">
+            <i class="fas fa-shield-alt"></i>
+            <span>Insurance</span>
+          </button>
+          <button class="bill-service-card" type="button" data-bill-service="tax" onclick="selectBillService('tax')">
+            <i class="fas fa-dollar-sign"></i>
+            <span>Tax</span>
+          </button>
+          <button class="bill-service-card" type="button" data-bill-service="airtime" onclick="selectBillService('airtime')">
+            <i class="fas fa-phone"></i>
+            <span>Airtime</span>
+          </button>
+          <button class="bill-service-card" type="button" data-bill-service="momo" onclick="selectBillService('momo')">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Momo</span>
+          </button>
+        </div>
+
+        <div id="billFormArea" class="bill-form-area">
+          <h2 class="bill-form-title">Select Provider</h2>
+          <div class="bill-provider-list" id="billProviderList"></div>
+
+          <div class="bill-field">
+            <label class="bill-field-label" for="billAccountInput" id="billAccountLabel">Account</label>
+            <input class="bill-input" id="billAccountInput" type="text" value="0" oninput="updateBillAccount(this.value)">
+          </div>
+
+          <div class="bill-field">
+            <label class="bill-field-label" for="billAmountInput">Amount (MWK)</label>
+            <input class="bill-input" id="billAmountInput" type="number" min="0" step="1" placeholder="Enter payment amount" oninput="updateBillAmount(this.value)">
+            <div class="bill-amount-chips" aria-label="Quick amounts">
+              <button class="bill-amount-chip" type="button" onclick="setBillAmount(500)">MWK 500</button>
+              <button class="bill-amount-chip" type="button" onclick="setBillAmount(1000)">MWK 1,000</button>
+              <button class="bill-amount-chip" type="button" onclick="setBillAmount(5000)">MWK 5,000</button>
+              <button class="bill-amount-chip" type="button" onclick="setBillAmount(10000)">MWK 10,000</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bill-actions">
+          <button class="bill-action-btn bill-cancel-btn" type="button" onclick="resetBillPayment()">Cancel</button>
+          <button class="bill-action-btn bill-validate-btn" id="billValidateBtn" type="button" onclick="validateBillAccount()" disabled>Validate Account</button>
+        </div>
+      </section>
+
+      <aside class="bill-side" aria-label="Payment summary">
+        <div class="bill-summary-card">
+          <h2>Payment Summary</h2>
+          <div class="bill-summary-row">
+            <span>Service Type:</span>
+            <strong id="billSummaryService">N/A</strong>
+          </div>
+          <div class="bill-summary-row">
+            <span>Provider:</span>
+            <strong id="billSummaryProvider">N/A</strong>
+          </div>
+          <div class="bill-summary-row">
+            <span id="billSummaryAccountLabel">Account:</span>
+            <strong id="billSummaryAccount">N/A</strong>
+          </div>
+          <div class="bill-summary-row">
+            <span>Customer Name:</span>
+            <strong id="billSummaryCustomer">Peter Dalton</strong>
+          </div>
+          <hr class="bill-summary-divider">
+          <div class="bill-summary-row bill-summary-amount">
+            <span>Amount:</span>
+            <strong id="billSummaryAmount">N/A</strong>
+          </div>
+        </div>
+
+        <div class="bill-recent-card">
+          <h2>Recent Payments</h2>
+          <div class="bill-recent-empty">
+            <h3>No Transactions</h3>
+            <p>There are no bill transactions to display at the moment.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <button class="bill-chat-button" type="button" aria-label="Open bill chat">
+    <i class="fas fa-comment-alt"></i>
+  </button>
+</main>
+
+<main id="loanPage" class="loan-page" aria-live="polite">
+  <div class="loan-shell">
+    <section id="loanOverviewScreen" class="loan-screen active" aria-label="Loan overview">
+      <div class="loan-overview-card">
+        <div class="loan-overview-main">
+          <span class="loan-eyebrow">Loan Overview</span>
+          <h1>No active loan</h1>
+          <p>No active loan</p>
+          <button class="loan-dark-btn" type="button" onclick="startLoanApplication()">Apply for a loan</button>
+        </div>
+
+        <aside class="loan-metrics" aria-label="Loan metrics">
+          <div class="loan-metric">
+            <span class="loan-metric-label">Repayment Rate</span>
+            <strong class="loan-metric-value">-</strong>
+          </div>
+          <div class="loan-metric">
+            <span class="loan-metric-label">Total Borrowed</span>
+            <strong class="loan-metric-value">0.00</strong>
+          </div>
+          <div class="loan-metric">
+            <span class="loan-metric-label">Total Paid</span>
+            <strong class="loan-metric-value loan-paid">0.00</strong>
+          </div>
+          <div class="loan-metric">
+            <span class="loan-metric-label">Late Payments</span>
+            <strong class="loan-metric-value loan-late">0</strong>
+          </div>
+          <div class="loan-capital-badge">
+            <span>Get Capital Up To:</span>
+            <strong>MK 1,000,000</strong>
+          </div>
+        </aside>
+      </div>
+
+      <div class="loan-dashboard-grid">
+        <section class="loan-history-card large">
+          <div class="loan-card-header">
+            <strong>Loans</strong>
+            <small>All loan records</small>
+          </div>
+          <div class="loan-empty-body">
+            <h3>No loans found</h3>
+            <p>Apply for a new loan to get started.</p>
+          </div>
+        </section>
+
+        <aside class="loan-support-card">
+          <div class="loan-support-top">
+            <i class="fas fa-headset"></i>
+            <div>
+              <strong>Need help?</strong>
+              <p class="loan-muted">Our team is here for you</p>
+            </div>
+          </div>
+          <button class="loan-support-button" type="button">Contact Support</button>
+        </aside>
+
+        <section class="loan-history-card large">
+          <div class="loan-card-header">
+            <strong>Repayments</strong>
+            <small>Payment history</small>
+          </div>
+          <div class="loan-empty-body">
+            <h3>No repayments found</h3>
+            <p>Repayments will appear here when you make payments on your loans.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="loanLoadingScreen" class="loan-screen loan-loading-state" aria-label="Loading loan">
+      <div class="loan-loading-card">
+        <div class="loan-spinner" aria-hidden="true"></div>
+        <h2 id="loanLoadingTitle">Loading offer available</h2>
+        <p id="loanLoadingText">Please wait while we check your loan eligibility.</p>
+      </div>
+    </section>
+
+    <section id="loanTermsScreen" class="loan-screen" aria-label="Loan terms">
+      <div class="loan-apply-layout">
+        <div class="loan-apply-main">
+          <div class="loan-terms-card">
+            <div class="loan-term-icon">
+              <i class="far fa-file-alt"></i>
+            </div>
+            <div class="loan-step-label">Step 1 of 1</div>
+            <h2>Accept Loan Terms</h2>
+            <p>Review and accept the Mpoto Ride terms and conditions to continue.</p>
+
+            <button class="loan-terms-toggle" type="button" onclick="toggleLoanTermsDetails()" aria-expanded="false" id="loanTermsToggle">
+              <span>Loan Terms & Conditions</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="loan-terms-details" id="loanTermsDetails">
+              By applying for a loan, you agree to provide accurate information, repay on the agreed dates, accept any approved repayment schedule, and follow all rules and regulations for Mpoto Ride loan services.
+            </div>
+
+            <label class="loan-terms-check">
+              <input type="checkbox" id="loanTermsAccept" onchange="updateLoanTermsButton()">
+              <span>I have read and agree to the Mpoto Ride Capital terms and conditions.</span>
+            </label>
+
+            <button class="loan-primary-btn" id="loanTermsContinue" type="button" onclick="acceptLoanTerms()" disabled>Accept & Continue</button>
+          </div>
+        </div>
+
+        <aside class="loan-side-column">
+          <div class="loan-summary-card">
+            <div class="loan-summary-title">
+              <span>Loan Summary</span>
+            </div>
+            <div class="loan-summary-body">
+              <div class="loan-summary-icon">
+                <i class="far fa-chart-bar"></i>
+              </div>
+              <p>Your loan summary will appear here once you select an offer and amount.</p>
+            </div>
+          </div>
+
+          <div class="loan-security-row">
+            <span><i class="fas fa-shield-alt"></i>Secure</span>
+            <span><i class="fas fa-lock"></i>Encrypted</span>
+            <span><i class="fas fa-bolt"></i>Instant</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="loanOffersScreen" class="loan-screen" aria-label="Loan offers">
+      <div class="loan-apply-layout">
+        <div class="loan-offers-main">
+          <h1>Apply for a loan</h1>
+          <p class="loan-steps-subtitle">Choose your offer, amount, and duration.</p>
+
+          <div class="loan-offer-step">
+            <span class="loan-step-number">1</span>
+            <strong>Select a loan offer</strong>
+            <button class="loan-refresh-btn" type="button" onclick="refreshLoanOffers()" aria-label="Refresh loan offers">
+              <i class="fas fa-sync-alt"></i>
+            </button>
+          </div>
+
+          <div class="loan-offer-warning">
+            No loan offers available at this time. Please continue booking us to improve your eligibility.
+          </div>
+
+          <p class="loan-complete-note">Complete all steps above to apply</p>
+        </div>
+
+        <aside class="loan-side-column">
+          <div class="loan-summary-card">
+            <div class="loan-summary-title">
+              <span>Loan Summary</span>
+            </div>
+            <div class="loan-summary-body">
+              <div class="loan-summary-icon">
+                <i class="far fa-chart-bar"></i>
+              </div>
+              <p>Your loan summary will appear here once you select an offer and amount.</p>
+            </div>
+          </div>
+
+          <div class="loan-security-row">
+            <span><i class="fas fa-shield-alt"></i>Secure</span>
+            <span><i class="fas fa-lock"></i>Encrypted</span>
+            <span><i class="fas fa-bolt"></i>Instant</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <button class="loan-chat-button" type="button" aria-label="Open loan chat">
+    <i class="fas fa-comment-alt"></i>
+  </button>
+</main>
+
 <div id="bookingForm" class="modal">
   <div class="modal-panel" style="align-items:center;">
     <div class="modal-header" style="width:100%;">
@@ -1477,6 +2860,7 @@ function updateProfile(user, name) {
   const mobileAccountAvatar = document.getElementById("mobileAccountAvatar");
   const mobileAccountName = document.getElementById("mobileAccountName");
   const mobileAccountFullName = document.getElementById("mobileAccountFullName");
+  const billSummaryCustomer = document.getElementById("billSummaryCustomer");
   const displayName = name || "Student";
   const initials = getInitials(displayName, user?.email);
 
@@ -1488,6 +2872,7 @@ function updateProfile(user, name) {
   if (mobileAccountAvatar) mobileAccountAvatar.textContent = initials;
   if (mobileAccountName) mobileAccountName.textContent = displayName;
   if (mobileAccountFullName) mobileAccountFullName.textContent = displayName;
+  if (billSummaryCustomer) billSummaryCustomer.textContent = displayName;
 }
 
 function updateStudentCountBadge(count) {
@@ -1678,6 +3063,57 @@ window.logoutUser = function () {
 
 <script>
 let liveModeEnabled = true;
+let loanLoadingTimer = null;
+const billServiceConfig = {
+  electricity: {
+    label: "Electricity",
+    providers: ["ESCOM"],
+    accountLabel: "Meter",
+    placeholder: "Enter meter number",
+    defaultAccount: "0"
+  },
+  water: {
+    label: "Water",
+    providers: ["Blantyre Water Board", "Lilongwe Water Board"],
+    accountLabel: "Water Account",
+    placeholder: "Enter water account number",
+    defaultAccount: ""
+  },
+  insurance: {
+    label: "Insurance",
+    providers: ["NICO Insurance", "Old Mutual"],
+    accountLabel: "Policy Number",
+    placeholder: "Enter policy number",
+    defaultAccount: ""
+  },
+  tax: {
+    label: "Tax",
+    providers: ["MRA"],
+    accountLabel: "TPIN / PRN",
+    placeholder: "Enter TPIN or PRN",
+    defaultAccount: ""
+  },
+  airtime: {
+    label: "Airtime",
+    providers: ["Airtel", "TNM"],
+    accountLabel: "Phone Number",
+    placeholder: "Enter phone number",
+    defaultAccount: ""
+  },
+  momo: {
+    label: "Momo",
+    providers: ["Airtel Money", "TNM Mpamba"],
+    accountLabel: "Wallet Number",
+    placeholder: "Enter wallet number",
+    defaultAccount: ""
+  }
+};
+let billState = {
+  serviceKey: "",
+  provider: "",
+  account: "",
+  amount: ""
+};
 
 function isLiveModeControl(target) {
   return Boolean(target.closest && target.closest(".live-mode-toggle"));
@@ -1715,6 +3151,16 @@ function closeMobileMenu() {
   nav.classList.remove("menu-open");
   button.setAttribute("aria-expanded", "false");
   closeMobileAccountMenu();
+}
+
+function closeAppViews() {
+  document.body.classList.remove("loan-view-active", "bill-view-active");
+}
+
+function showHomePageFromMenu() {
+  closeAppViews();
+  closeMobileMenu();
+  showLoanScreen("loanOverviewScreen");
 }
 
 function toggleProfileMenu() {
@@ -1800,6 +3246,252 @@ document.addEventListener("click", function (event) {
   }
 });
 
+function formatBillAmount(value) {
+  const numberValue = Number(value);
+
+  if (!numberValue) {
+    return "N/A";
+  }
+
+  return `MWK ${numberValue.toLocaleString()}`;
+}
+
+function updateBillValidateState() {
+  const validateButton = document.getElementById("billValidateBtn");
+  const hasAccount = String(billState.account || "").trim() !== "";
+  const hasAmount = Number(billState.amount) > 0;
+
+  if (validateButton) {
+    validateButton.disabled = !(billState.serviceKey && billState.provider && hasAccount && hasAmount);
+  }
+}
+
+function updateBillSummary() {
+  const config = billServiceConfig[billState.serviceKey];
+  const summaryService = document.getElementById("billSummaryService");
+  const summaryProvider = document.getElementById("billSummaryProvider");
+  const summaryAccountLabel = document.getElementById("billSummaryAccountLabel");
+  const summaryAccount = document.getElementById("billSummaryAccount");
+  const summaryAmount = document.getElementById("billSummaryAmount");
+
+  if (summaryService) summaryService.textContent = config ? config.label : "N/A";
+  if (summaryProvider) summaryProvider.textContent = billState.provider || "N/A";
+  if (summaryAccountLabel) summaryAccountLabel.textContent = `${config ? config.accountLabel : "Account"}:`;
+  if (summaryAccount) summaryAccount.textContent = String(billState.account || "").trim() || "N/A";
+  if (summaryAmount) summaryAmount.textContent = formatBillAmount(billState.amount);
+
+  updateBillValidateState();
+}
+
+function renderBillProviders() {
+  const providerList = document.getElementById("billProviderList");
+  const config = billServiceConfig[billState.serviceKey];
+
+  if (!providerList || !config) {
+    return;
+  }
+
+  providerList.innerHTML = "";
+
+  config.providers.forEach((provider) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `bill-provider-option${provider === billState.provider ? " active" : ""}`;
+    button.textContent = provider;
+    button.onclick = function () {
+      selectBillProvider(provider);
+    };
+    providerList.appendChild(button);
+  });
+}
+
+function selectBillProvider(provider) {
+  billState.provider = provider;
+  renderBillProviders();
+  updateBillSummary();
+}
+
+function selectBillService(serviceKey) {
+  const config = billServiceConfig[serviceKey];
+  const formArea = document.getElementById("billFormArea");
+  const accountLabel = document.getElementById("billAccountLabel");
+  const accountInput = document.getElementById("billAccountInput");
+  const amountInput = document.getElementById("billAmountInput");
+
+  if (!config) {
+    return;
+  }
+
+  billState = {
+    serviceKey,
+    provider: config.providers[0],
+    account: config.defaultAccount,
+    amount: ""
+  };
+
+  document.querySelectorAll(".bill-service-card").forEach((button) => {
+    button.classList.toggle("active", button.dataset.billService === serviceKey);
+  });
+
+  if (formArea) formArea.classList.add("active");
+  if (accountLabel) accountLabel.textContent = config.accountLabel;
+  if (accountInput) {
+    accountInput.value = config.defaultAccount;
+    accountInput.placeholder = config.placeholder;
+  }
+  if (amountInput) amountInput.value = "";
+
+  renderBillProviders();
+  updateBillSummary();
+}
+
+function updateBillAccount(value) {
+  billState.account = value;
+  updateBillSummary();
+}
+
+function updateBillAmount(value) {
+  billState.amount = value;
+  updateBillSummary();
+}
+
+function setBillAmount(amount) {
+  const amountInput = document.getElementById("billAmountInput");
+  billState.amount = String(amount);
+
+  if (amountInput) {
+    amountInput.value = String(amount);
+  }
+
+  updateBillSummary();
+}
+
+function resetBillPayment() {
+  const formArea = document.getElementById("billFormArea");
+  const providerList = document.getElementById("billProviderList");
+  const accountInput = document.getElementById("billAccountInput");
+  const amountInput = document.getElementById("billAmountInput");
+
+  billState = {
+    serviceKey: "",
+    provider: "",
+    account: "",
+    amount: ""
+  };
+
+  document.querySelectorAll(".bill-service-card").forEach((button) => {
+    button.classList.remove("active");
+  });
+
+  if (formArea) formArea.classList.remove("active");
+  if (providerList) providerList.innerHTML = "";
+  if (accountInput) accountInput.value = "0";
+  if (amountInput) amountInput.value = "";
+
+  updateBillSummary();
+}
+
+function validateBillAccount() {
+  if (!billState.serviceKey || !billState.provider || !billState.account || Number(billState.amount) <= 0) {
+    alert("Please select a service, provider, account, and amount first.");
+    return;
+  }
+
+  alert(`${billState.provider} account validated for ${formatBillAmount(billState.amount)}.`);
+}
+
+function openBillDashboard() {
+  document.body.classList.remove("loan-view-active");
+  document.body.classList.add("bill-view-active");
+  closeMobileMenu();
+  closeProfileMenu();
+  resetBillPayment();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showLoanScreen(screenId) {
+  const screens = document.querySelectorAll(".loan-screen");
+
+  screens.forEach((screen) => {
+    screen.classList.toggle("active", screen.id === screenId);
+  });
+
+  clearTimeout(loanLoadingTimer);
+}
+
+function showLoanLoading(title, text, nextScreenId, delay) {
+  const loadingTitle = document.getElementById("loanLoadingTitle");
+  const loadingText = document.getElementById("loanLoadingText");
+
+  if (loadingTitle) loadingTitle.textContent = title;
+  if (loadingText) loadingText.textContent = text;
+
+  showLoanScreen("loanLoadingScreen");
+  loanLoadingTimer = setTimeout(() => {
+    showLoanScreen(nextScreenId);
+  }, delay || 1300);
+}
+
+function openLoanDashboard() {
+  document.body.classList.remove("bill-view-active");
+  document.body.classList.add("loan-view-active");
+  closeMobileMenu();
+  closeProfileMenu();
+  showLoanScreen("loanOverviewScreen");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function startLoanApplication() {
+  showLoanLoading(
+    "Loading offer available",
+    "Please wait while we check your available loan offer.",
+    "loanTermsScreen",
+    1300
+  );
+}
+
+function toggleLoanTermsDetails() {
+  const details = document.getElementById("loanTermsDetails");
+  const toggle = document.getElementById("loanTermsToggle");
+  const isOpen = details.classList.toggle("open");
+
+  toggle.setAttribute("aria-expanded", String(isOpen));
+}
+
+function updateLoanTermsButton() {
+  const checkbox = document.getElementById("loanTermsAccept");
+  const button = document.getElementById("loanTermsContinue");
+
+  if (checkbox && button) {
+    button.disabled = !checkbox.checked;
+  }
+}
+
+function acceptLoanTerms() {
+  const checkbox = document.getElementById("loanTermsAccept");
+
+  if (!checkbox || !checkbox.checked) {
+    alert("Please accept the rules and regulations before continuing.");
+    return;
+  }
+
+  showLoanLoading(
+    "Loading available offers",
+    "Please wait while we prepare your loan offer selection.",
+    "loanOffersScreen",
+    1300
+  );
+}
+
+function refreshLoanOffers() {
+  showLoanLoading(
+    "Loading available offers",
+    "Checking again for loan offers available on your account.",
+    "loanOffersScreen",
+    1000
+  );
+}
+
 function loadSeats() {
   const seatSelect = document.getElementById("seatNumber");
   seatSelect.innerHTML = '<option value="">Select Seat Number</option>';
@@ -1822,6 +3514,7 @@ function loadSeats() {
 }
 
 function openBooking(locationName) {
+  closeAppViews();
   document.getElementById("bookingForm").style.display = "flex";
   document.getElementById("location").value = locationName;
   loadSeats();
