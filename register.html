@@ -10,7 +10,7 @@ body{
     margin:0;
     padding:20px;
     background:#dcdcdc;
-    font-family: "Times New Roman", serif;
+    font-family:"Times New Roman", serif;
 }
 
 .form-container{
@@ -75,6 +75,92 @@ button{
     cursor:pointer;
 }
 
+button:disabled{
+    cursor:not-allowed;
+    opacity:0.7;
+}
+
+.success-screen{
+    display:none;
+    min-height:100vh;
+    background:#fff;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:26px;
+    font-family:Arial, sans-serif;
+}
+
+body.success-mode{
+    background:#fff;
+    padding:0;
+}
+
+body.success-mode .form-container{
+    display:none;
+}
+
+body.success-mode .success-screen{
+    display:flex;
+}
+
+.success-content{
+    width:100%;
+    max-width:430px;
+    margin-top:42px;
+}
+
+.success-check-wrap{
+    width:126px;
+    height:126px;
+    border-radius:50%;
+    background:rgba(194,255,225,0.42);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:120px auto 30px;
+}
+
+.success-check-circle{
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    background:#c8f7db;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.success-check{
+    width:29px;
+    height:16px;
+    border-left:5px solid #00a651;
+    border-bottom:5px solid #00a651;
+    transform:rotate(-45deg);
+    margin-top:-5px;
+}
+
+.success-title{
+    font-size:30px;
+    line-height:1.15;
+    color:#121728;
+    font-weight:800;
+    margin:0 0 20px;
+}
+
+.success-message{
+    font-size:24px;
+    line-height:1.45;
+    color:#4f5565;
+    margin:0 auto;
+    max-width:390px;
+}
+
+.success-message strong{
+    color:#111827;
+    font-weight:800;
+}
+
 @media(max-width:768px){
     .form-row{
         flex-direction:column;
@@ -96,6 +182,25 @@ button{
         flex-wrap:wrap;
     }
 }
+
+@media(max-width:520px){
+    .success-content{
+        margin-top:10px;
+    }
+
+    .success-check-wrap{
+        width:124px;
+        height:124px;
+    }
+
+    .success-title{
+        font-size:29px;
+    }
+
+    .success-message{
+        font-size:24px;
+    }
+}
 </style>
 </head>
 
@@ -104,16 +209,12 @@ button{
 <div class="form-container">
 
 <h2>Seat | Reservation</h2>
+
 <form id="registerForm">
 
     <div class="form-row">
-        <label>Name :</label>
+        <label>Student Name :</label>
         <input type="text" name="name" required>
-    </div>
-
-    <div class="form-row">
-        <label>Address :</label>
-        <textarea name="address" required></textarea>
     </div>
 
     <div class="form-row">
@@ -156,16 +257,6 @@ button{
     </div>
 
     <div class="form-row">
-        <label>Number Of Passengers :</label>
-        <input type="number" name="number_of_passengers" min="1" required>
-    </div>
-
-    <div class="form-row">
-        <label>Passenger Name :</label>
-        <input type="text" name="passenger_name" required>
-    </div>
-
-    <div class="form-row">
         <label>Gender :</label>
 
         <div class="gender-box">
@@ -182,7 +273,7 @@ button{
     </div>
 
     <div class="buttons">
-        <button type="submit">Submit</button>
+        <button type="submit" id="submitBtn">Submit</button>
         <button type="reset">Reset</button>
     </div>
 
@@ -190,10 +281,35 @@ button{
 
 </div>
 
+<section class="success-screen" id="successScreen" aria-live="polite">
+    <div class="success-content">
+
+        <div class="success-check-wrap" aria-hidden="true">
+            <div class="success-check-circle">
+                <span class="success-check"></span>
+            </div>
+        </div>
+
+        <h1 class="success-title">
+            Successfully Registered!
+        </h1>
+
+        <p class="success-message">
+            for <strong>MPOTO RIDE</strong>, proceed for booking.
+        </p>
+
+    </div>
+</section>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } 
-from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBby_IF_uDrXS8IKrERZ4T_27gaMyBstSQ",
@@ -207,34 +323,61 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-document.getElementById("registerForm").addEventListener("submit", async (e) => {
+const registerForm = document.getElementById("registerForm");
+const submitBtn = document.getElementById("submitBtn");
+
+function showSuccessMessage() {
+
+  document.body.classList.add("success-mode");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  // AUTO REDIRECT TO HOMEPAGE
+  setTimeout(() => {
+    window.location.href = "homepage.html";
+  }, 3000);
+}
+
+registerForm.addEventListener("submit", async (e) => {
+
   e.preventDefault();
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting...";
 
   const data = {
     name: document.querySelector('input[name="name"]').value,
-    address: document.querySelector('textarea[name="address"]').value,
     contact_number: document.querySelector('input[name="contact_number"]').value,
     source_station: document.querySelector('select[name="source_station"]').value,
     destination: document.querySelector('input[name="destination"]').value,
     date_of_booking: document.querySelector('input[name="date_of_booking"]').value,
     date_of_journey: document.querySelector('input[name="date_of_journey"]').value,
-    number_of_passengers: document.querySelector('input[name="number_of_passengers"]').value,
-    passenger_name: document.querySelector('input[name="passenger_name"]').value,
     gender: document.querySelector('input[name="gender"]:checked')?.value || "",
+    registration_status: "successful",
     createdAt: serverTimestamp()
   };
 
   try {
+
     await addDoc(collection(db, "registrations"), data);
 
-    alert("Registration successful!");
+    registerForm.reset();
 
-    window.location.href = "Homepage.html";
+    showSuccessMessage();
 
   } catch (error) {
+
     console.error(error);
+
     alert("Registration failed. Try again.");
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit";
   }
+
 });
 </script>
 
