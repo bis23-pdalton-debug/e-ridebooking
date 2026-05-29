@@ -4,7 +4,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#fff;
+    background:#f8f7f7;
 }
 
 .container{
@@ -27,13 +27,13 @@ body{
     font-weight:bold;
     text-align:left;
     margin:0;
-    color:#a5a1b5;
+    color:#63616c;
 }
 
 .welcome-text{
     text-align:left;
     font-size:1.6rem;
-    color:#918a8a;
+    color:#959292;
     margin:6px 0 14px;
 }
 
@@ -42,7 +42,7 @@ body{
     align-items:center;
     text-align:center;
     color:#1a151577;
-    font-size:1rem;
+    font-size:1.2rem;
     margin:10px 0 18px;
 }
 
@@ -81,8 +81,8 @@ input{
 .input-group label{
     display:block;
     margin-bottom:5px;
-    font-size:20px;
-    color:#2d14e9;
+    font-size:18px;
+    color:#96959d;
     position:static;
 }
 
@@ -90,8 +90,8 @@ input{
     display:flex;
     align-items:center;
     border:1px solid #ccc;
-    border-radius:0px;
-    padding:10px;
+    border-radius:1px;
+    padding:12px;
     background:#fff;
 }
 
@@ -99,12 +99,12 @@ input{
     border:none;
     outline:none;
     width:100%;
-    font-size:18px;
+    font-size:16px;
 }
 
 .input-box i{
     margin-right:10px;
-    color:#555;
+    color:#7c7787;
 }
 
 label{
@@ -210,7 +210,7 @@ button:hover{
 
 #signUpButton:hover, #signInButton:hover {
     text-decoration:underline;
-    color:blue;
+    color:rgb(14, 14, 15);
     background:transparent;
 }
 
