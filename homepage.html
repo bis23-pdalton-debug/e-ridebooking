@@ -246,6 +246,37 @@ nav ul a i:first-child,
   font-size:13px;
 }
 
+.submenu-toggle{
+  cursor:pointer;
+}
+
+.registration-submenu{
+  display:none;
+  padding:4px 0 8px 34px;
+}
+
+.registration-item.submenu-open .registration-submenu{
+  display:block;
+}
+
+.registration-submenu button{
+  width:100%;
+  min-height:36px;
+  border:none;
+  background:transparent;
+  color:#5f6470;
+  text-align:left;
+  padding:8px 12px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.registration-submenu button:hover{
+  background:white;
+  color:#111;
+}
+
 .menu-chevron{
   margin-left:auto;
   font-size:12px;
@@ -353,11 +384,14 @@ nav ul a:hover,
   position:absolute;
   top:calc(100% + 12px);
   right:0;
-  min-width:190px;
+  width:390px;
+  max-width:calc(100vw - 18px);
   background:white;
-  border-radius:8px;
-  box-shadow:0 12px 24px rgba(0,0,0,0.25);
-  padding:12px;
+  border:1px solid #eef0f3;
+  border-radius:18px;
+  box-shadow:0 12px 34px rgba(15,23,42,0.12);
+  overflow:hidden;
+  padding:0;
 }
 
 .profile-area.profile-open .profile-dropdown{
@@ -365,25 +399,108 @@ nav ul a:hover,
 }
 
 .profile-name{
-  color:#0d2b4c;
+  color:#111;
   font-size:14px;
-  font-weight:bold;
-  max-width:190px;
+  font-weight:700;
+  max-width:220px;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
-  margin-bottom:10px;
 }
 
 .profile-logout-btn{
-  width:100%;
+  width:auto;
   border:none;
-  background:#0d2b4c;
-  color:white;
-  padding:10px 14px;
-  border-radius:6px;
+  background:transparent;
+  color:#ff1f1f;
+  padding:0;
   cursor:pointer;
+  font-weight:700;
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.profile-dropdown-top{
+  min-height:78px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 26px 14px 28px;
+}
+
+.profile-dropdown-avatar{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:#fb8500;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-weight:bold;
+  font-size:13px;
+  flex:0 0 auto;
+}
+
+.profile-meta{
+  flex:1;
+  min-width:0;
+}
+
+.profile-id{
+  color:#6b7280;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.profile-settings-btn{
+  border:none;
+  background:transparent;
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#3f4650;
+  font-size:18px;
+  cursor:pointer;
+}
+
+.profile-dropdown-row{
+  min-height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 26px;
+  border-top:1px solid #edf0f2;
+}
+
+.profile-live-switch{
+  width:32px;
+  height:19px;
+  border:none;
+  border-radius:999px;
+  background:#111;
+  padding:2px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  cursor:pointer;
+}
+
+.profile-live-switch::after{
+  content:"";
+  width:15px;
+  height:15px;
+  background:white;
+  border-radius:50%;
+}
+
+.profile-live-switch:not(.is-on){
+  background:#cbd5e1;
+  justify-content:flex-start;
 }
 
 .hero{
@@ -593,6 +710,323 @@ nav ul a:hover,
   cursor:pointer;
 }
 
+.booking-chart-section{
+  padding:42px 28px 48px;
+  background:#f2f2f2;
+}
+
+.booking-chart-wrap{
+  width:100%;
+  max-width:1160px;
+  margin:0 auto;
+}
+
+.booking-chart-card{
+  background:#f4f4f4;
+  border-top:4px solid #0070c0;
+  padding:10px 18px 18px;
+  overflow-x:auto;
+}
+
+.booking-chart-title{
+  text-align:center;
+  font-size:18px;
+  margin-bottom:20px;
+  color:#222;
+}
+
+.booking-chart-area{
+  min-width:900px;
+}
+
+.booking-bars{
+  height:240px;
+  display:grid;
+  grid-template-columns:42px repeat(10, minmax(68px, 1fr));
+  align-items:end;
+  gap:14px;
+  padding:0 0 0 0;
+  position:relative;
+  border-bottom:1px solid #cfcfcf;
+  background:repeating-linear-gradient(
+    to top,
+    transparent 0,
+    transparent 45px,
+    #dedede 46px
+  );
+}
+
+.booking-axis-title{
+  align-self:center;
+  justify-self:center;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-size:12px;
+  color:#333;
+}
+
+.booking-bar-group{
+  height:100%;
+  display:flex;
+  align-items:end;
+  justify-content:center;
+  gap:4px;
+}
+
+.booking-bar-item{
+  width:14px;
+  min-height:2px;
+  position:relative;
+}
+
+.booking-bar-boys{
+  background:#4fc3cf;
+  border:1px solid #259ca7;
+}
+
+.booking-bar-girls{
+  background:#ef4136;
+  border:1px solid #c42018;
+}
+
+.booking-bar-value{
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  transform:translateX(-50%);
+  font-size:12px;
+  color:#111;
+  margin-bottom:7px;
+}
+
+.booking-chart-table{
+  width:100%;
+  min-width:900px;
+  border-collapse:collapse;
+  table-layout:fixed;
+  background:#f4f4f4;
+}
+
+.booking-chart-table th,
+.booking-chart-table td{
+  border:1px solid #d7d7d7;
+  height:27px;
+  text-align:center;
+  font-size:12px;
+  font-weight:normal;
+  color:#333;
+}
+
+.booking-chart-table th:first-child,
+.booking-chart-table td:first-child{
+  width:42px;
+  text-align:left;
+  padding-left:4px;
+}
+
+.legend-swatch{
+  width:9px;
+  height:9px;
+  display:inline-block;
+  margin-right:3px;
+  border:1px solid currentColor;
+}
+
+.boys-swatch{
+  background:#4fc3cf;
+  color:#259ca7;
+}
+
+.girls-swatch{
+  background:#ef4136;
+  color:#c42018;
+}
+
+.booking-chart-legend{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  margin-top:32px;
+  color:#333;
+  font-size:12px;
+}
+
+.booking-chart-status{
+  margin-top:12px;
+  text-align:center;
+  color:#5f6470;
+  font-size:13px;
+}
+
+.customers-page{
+  display:none;
+  min-height:100vh;
+  background:white;
+  padding:96px 28px 40px;
+  color:#111;
+}
+
+body.customers-view-active .customers-page{
+  display:block;
+}
+
+.customers-shell{
+  width:100%;
+  max-width:1040px;
+  margin:0 auto;
+}
+
+.customers-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:24px;
+}
+
+.customers-header h1{
+  font-size:38px;
+  line-height:1;
+  font-weight:900;
+}
+
+.customers-create{
+  display:flex;
+  border:1px solid #dcdfe4;
+  border-radius:8px;
+  overflow:hidden;
+  background:white;
+  box-shadow:0 1px 2px rgba(15,23,42,0.06);
+}
+
+.customers-create button{
+  border:none;
+  background:white;
+  min-height:42px;
+  padding:0 16px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.customers-create button:first-child{
+  border-right:1px solid #dcdfe4;
+  font-size:22px;
+}
+
+.customers-total-card{
+  width:236px;
+  min-height:76px;
+  border-radius:8px;
+  background:#edf2f1;
+  padding:12px 20px;
+  margin-bottom:22px;
+}
+
+.customers-total-card strong{
+  display:block;
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.customers-total-card span{
+  color:#4b5563;
+  font-size:14px;
+}
+
+.customers-search-wrap{
+  position:relative;
+  margin-bottom:26px;
+}
+
+.customers-search{
+  width:100%;
+  min-height:41px;
+  border:none;
+  background:#f2f2f4;
+  border-radius:8px;
+  padding:0 48px 0 12px;
+  color:#111827;
+  font-size:14px;
+  outline:none;
+}
+
+.customers-search-wrap i{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#6b7280;
+  font-size:18px;
+}
+
+.customers-table-wrap{
+  overflow-x:auto;
+}
+
+.customers-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:760px;
+}
+
+.customers-table th,
+.customers-table td{
+  text-align:left;
+  border-bottom:1px solid #e5e7eb;
+  padding:12px 0;
+  font-size:14px;
+}
+
+.customers-table th{
+  color:#111;
+  font-weight:700;
+}
+
+.customer-email-cell{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.customer-mini-avatar{
+  width:26px;
+  height:26px;
+  border:1px solid #cfd4dc;
+  border-radius:5px;
+  background:#e5e7eb;
+  color:#111827;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  flex:0 0 auto;
+}
+
+.customers-transactions{
+  font-weight:700;
+}
+
+.customers-more{
+  text-align:right;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.customers-status{
+  color:#6b7280;
+  padding:16px 0;
+  font-size:14px;
+}
+
+#pickup{
+  display:none;
+}
+
+body.booking-view-active #pickup{
+  display:block;
+}
+
 .why{
   padding:50px;
   text-align:center;
@@ -658,12 +1092,23 @@ footer li{
 
 body.loan-view-active .hero,
 body.loan-view-active .section,
+body.loan-view-active .booking-chart-section,
 body.loan-view-active .why,
 body.loan-view-active footer,
 body.bill-view-active .hero,
 body.bill-view-active .section,
+body.bill-view-active .booking-chart-section,
 body.bill-view-active .why,
-body.bill-view-active footer{
+body.bill-view-active footer,
+body.customers-view-active .hero,
+body.customers-view-active .section,
+body.customers-view-active .booking-chart-section,
+body.customers-view-active .why,
+body.customers-view-active footer,
+body.booking-view-active .hero,
+body.booking-view-active .booking-chart-section,
+body.booking-view-active .why,
+body.booking-view-active footer{
   display:none;
 }
 
@@ -1673,7 +2118,8 @@ body.dark-mode .mobile-account-full-name{
 body.dark-mode .menu-item-active a,
 body.dark-mode nav ul a:hover,
 body.dark-mode .menu-item:hover,
-body.dark-mode .mobile-account-dropdown{
+body.dark-mode .mobile-account-dropdown,
+body.dark-mode .registration-submenu button:hover{
   background:#171d24;
   border-color:#303946;
   color:#f5f7fa;
@@ -1685,6 +2131,24 @@ body.dark-mode .modal-panel,
 body.dark-mode .card{
   background:#171d24;
   color:#f5f7fa;
+}
+
+body.dark-mode .profile-dropdown{
+  border-color:#303946;
+}
+
+body.dark-mode .profile-name,
+body.dark-mode .profile-settings-btn{
+  color:#f5f7fa;
+}
+
+body.dark-mode .profile-id,
+body.dark-mode .registration-submenu button{
+  color:#aab4c0;
+}
+
+body.dark-mode .profile-dropdown-row{
+  border-color:#303946;
 }
 
 body.dark-mode .live-mode-toggle{
@@ -1735,11 +2199,79 @@ body.dark-mode .section{
   background:#121820;
 }
 
+body.dark-mode .booking-chart-section,
+body.dark-mode .booking-chart-card,
+body.dark-mode .booking-chart-table{
+  background:#121820;
+}
+
 body.dark-mode .section h2,
 body.dark-mode .feature i,
 body.dark-mode .profile-name,
 body.dark-mode .status-message{
   color:#9fd0ff;
+}
+
+body.dark-mode .booking-chart-title,
+body.dark-mode .booking-axis-title,
+body.dark-mode .booking-bar-value,
+body.dark-mode .booking-chart-table th,
+body.dark-mode .booking-chart-table td,
+body.dark-mode .booking-chart-legend{
+  color:#f5f7fa;
+}
+
+body.dark-mode .booking-bars{
+  border-bottom-color:#46515f;
+  background:repeating-linear-gradient(
+    to top,
+    transparent 0,
+    transparent 45px,
+    #303946 46px
+  );
+}
+
+body.dark-mode .booking-chart-table th,
+body.dark-mode .booking-chart-table td{
+  border-color:#303946;
+}
+
+body.dark-mode .booking-chart-status{
+  color:#aab4c0;
+}
+
+body.dark-mode .customers-page{
+  background:#101418;
+  color:#f5f7fa;
+}
+
+body.dark-mode .customers-create,
+body.dark-mode .customers-create button,
+body.dark-mode .customers-search{
+  background:#171d24;
+  color:#f5f7fa;
+  border-color:#303946;
+}
+
+body.dark-mode .customers-total-card{
+  background:#171d24;
+}
+
+body.dark-mode .customers-total-card span,
+body.dark-mode .customers-status{
+  color:#aab4c0;
+}
+
+body.dark-mode .customers-table th,
+body.dark-mode .customers-table td{
+  color:#f5f7fa;
+  border-color:#303946;
+}
+
+body.dark-mode .customer-mini-avatar{
+  background:#101418;
+  border-color:#303946;
+  color:#f5f7fa;
 }
 
 body.dark-mode .form-field{
@@ -1915,6 +2447,7 @@ body.dark-mode .loan-offer-warning{
   .mobile-toolbar{
     grid-column:1;
     grid-row:1;
+    justify-content:flex-end;
   }
 
   .profile-area{
@@ -1938,6 +2471,7 @@ body.dark-mode .loan-offer-warning{
 
   .hero,
   .section,
+  .booking-chart-section,
   .why,
   footer{
     margin-left:262px;
@@ -1976,7 +2510,8 @@ body.dark-mode .loan-offer-warning{
   }
 
   .loan-page,
-  .bill-page{
+  .bill-page,
+  .customers-page{
     margin-left:262px;
     padding:68px 12px 28px;
   }
@@ -2014,6 +2549,10 @@ body.dark-mode .loan-offer-warning{
   .bill-workspace,
   .bill-side{
     padding:34px 24px;
+  }
+
+  .customers-header{
+    align-items:flex-start;
   }
 
   .loan-metrics{
@@ -2084,6 +2623,14 @@ body.dark-mode .loan-offer-warning{
     padding:30px 15px;
   }
 
+  .booking-chart-section{
+    padding:28px 8px 34px;
+  }
+
+  .booking-chart-card{
+    padding:10px 8px 16px;
+  }
+
   .card{
     width:100%;
     max-width:320px;
@@ -2105,6 +2652,22 @@ body.dark-mode .loan-offer-warning{
 
   .bill-page{
     padding:82px 12px 24px;
+  }
+
+  .customers-page{
+    padding:82px 14px 28px;
+  }
+
+  .customers-header{
+    flex-direction:column;
+  }
+
+  .customers-header h1{
+    font-size:34px;
+  }
+
+  .customers-total-card{
+    width:100%;
   }
 
   .bill-workspace,
@@ -2188,18 +2751,47 @@ body.dark-mode .loan-offer-warning{
       <div class="profile-avatar" id="profileAvatar">ST</div>
     </button>
     <div class="profile-dropdown">
-      <div class="profile-name" id="profileName">Student</div>
-      <button class="profile-logout-btn" type="button" onclick="logoutUser()">SIGN OUT</button>
+      <div class="profile-dropdown-top">
+        <div class="profile-dropdown-avatar" id="profileDropdownAvatar">ST</div>
+        <div class="profile-meta">
+          <div class="profile-name" id="profileName">Student</div>
+          <div class="profile-id" id="profileId">ID: Loading</div>
+        </div>
+        <button class="profile-settings-btn" type="button" onclick="closeProfileMenu()" aria-label="Profile settings">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+      <div class="profile-dropdown-row">
+        <span>Live Mode</span>
+        <button class="profile-live-switch is-on" id="profileLiveSwitch" type="button" onclick="toggleLiveModeFromProfile()" aria-label="Toggle live mode"></button>
+      </div>
+      <div class="profile-dropdown-row">
+        <button class="profile-logout-btn" type="button" onclick="logoutUser()">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Sign out</span>
+        </button>
+      </div>
     </div>
   </div>
 
   <ul id="navLinks">
     <li class="menu-item-active"><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
     <li><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-home"></i><span>Home</span></a></li>
-    <li><a href="#pickup" onclick="showHomePageFromMenu()"><i class="fas fa-credit-card"></i><span>Booking</span></a></li>
-    <li><a href="register.html" onclick="closeMobileMenu()"><i class="fas fa-user-plus"></i><span>Registration</span></a></li>
+    <li><a href="#pickup" onclick="showBookingPageFromMenu()"><i class="fas fa-credit-card"></i><span>Booking</span></a></li>
+    <li class="registration-item" id="registrationMenu">
+      <a href="#" class="submenu-toggle" onclick="toggleRegistrationMenu(event)">
+        <i class="fas fa-user-plus"></i>
+        <span>Registration</span>
+        <i class="fas fa-chevron-down menu-chevron"></i>
+      </a>
+      <div class="registration-submenu">
+        <button type="button" onclick="openRegistrationPage('Odel')">Odel</button>
+        <button type="button" onclick="openRegistrationPage('Preyearo')">Preyearo</button>
+        <button type="button" onclick="openRegistrationPage('Conti')">Conti</button>
+      </div>
+    </li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i><span>Transactions</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-users"></i><span>Customers</span></a></li>
+    <li><a href="#" onclick="openCustomersPage()"><i class="fas fa-users"></i><span>Customers</span></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-briefcase"></i><span>Balances</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-link"></i><span>Payment links</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-clipboard"></i><span>Projects</span></a></li>
@@ -2234,8 +2826,8 @@ body.dark-mode .loan-offer-warning{
         <div class="levy-alert" id="levyAlert">
           <i class="fas fa-bell"></i>
           <div>
-            <h3>Booking fee!</h3>
-            <p>Please be informed that, a non-refundable booking fee of 10% of the transport cost is mandatory for all passengers..</p>
+            <h3>Levy fee</h3>
+            <p>Please be informed that, a 10.05% is part of the transport and MRA levy will be applied to all Payment made via bank transactions exceeding K100,000.</p>
           </div>
           <button class="alert-close" type="button" onclick="closeLevyAlert()" aria-label="Close levy notice">&times;</button>
         </div>
@@ -2246,7 +2838,7 @@ body.dark-mode .loan-offer-warning{
               <span>Bookings</span>
               <i class="far fa-file-alt"></i>
             </div>
-            <div class="stat-number">84</div>
+            <div class="stat-number" id="dashboardBookingsCount">84</div>
           </div>
 
           <div class="stat-card">
@@ -2299,10 +2891,40 @@ body.dark-mode .loan-offer-warning{
   </div>
 </section>
 
-<section class="section" id="pickup">
-  <h2>PICK-UP AREA | LOCATION</h2>
-  <p>Check your location and book your seat today</p>
+<section class="booking-chart-section" aria-label="Bookings chart">
+  <div class="booking-chart-wrap">
+    <div class="booking-chart-card">
+      <h2 class="booking-chart-title">Booking Data</h2>
+      <div class="booking-chart-area">
+        <div class="booking-bars" id="bookingBars">
+          <span class="booking-axis-title">Axis Title</span>
+        </div>
+        <table class="booking-chart-table" aria-label="Booking totals by location and gender">
+          <thead>
+            <tr id="bookingChartHead">
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="bookingBoysRow">
+              <td><span class="legend-swatch boys-swatch"></span>BOYS</td>
+            </tr>
+            <tr id="bookingGirlsRow">
+              <td><span class="legend-swatch girls-swatch"></span>GIRLS</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="booking-chart-legend">
+        <span><span class="legend-swatch boys-swatch"></span>BOYS</span>
+        <span><span class="legend-swatch girls-swatch"></span>GIRLS</span>
+      </div>
+      <p class="booking-chart-status" id="bookingChartStatus">Loading booking data...</p>
+    </div>
+  </div>
+</section>
 
+<section class="section" id="pickup">
   <div class="cards">
     <div class="card">
       <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/53/fc/f4/karonga-malawi-its-malawi.jpg" alt="Karonga">
@@ -2337,7 +2959,7 @@ body.dark-mode .loan-offer-warning{
       </div>
     </div>
     <div class="card">
-      <img src="https://www.yonecofm.com/wp-content/uploads/2019/07/Mzuzu-city_edited.jpg" alt="Mzuzu">
+      <img src="https://malawi24.com/wp-content/uploads/2024/09/Mzimba-Police-Station.jpg" alt="Mzimba">
       <div class="card-body">
         <h3>Mzimba</h3>
         <div class="bottom">
@@ -2380,7 +3002,7 @@ body.dark-mode .loan-offer-warning{
       </div>
     </div>
     <div class="card">
-      <img src="https://www.malawitourism.com/wp-content/uploads/2020/03/KK-Arial-Johan-DJI_0139-cropped-1220x800.jpg" alt="Dwangwa">
+      <img src="https://www.malawitourism.com/wp-content/uploads/2018/12/IMG_1672-1920x720.jpg" alt="Nkhotakota">
       <div class="card-body">
         <h3>Nkhotakota</h3>
         <div class="bottom">
@@ -2439,6 +3061,47 @@ body.dark-mode .loan-offer-warning{
     </ul>
   </div>
 </footer>
+
+<main id="customersPage" class="customers-page" aria-live="polite">
+  <div class="customers-shell">
+    <div class="customers-header">
+      <h1>Customers</h1>
+      <div class="customers-create">
+        <button type="button" onclick="openRegistrationPage('Odel')" aria-label="Create customer">+</button>
+        <button type="button" onclick="openRegistrationPage('Odel')">Create</button>
+      </div>
+    </div>
+
+    <div class="customers-total-card">
+      <strong id="customersTotal">0</strong>
+      <span>Total Customers</span>
+    </div>
+
+    <div class="customers-search-wrap">
+      <input class="customers-search" id="customersSearch" type="search" placeholder="Search by name or email" oninput="filterCustomers(this.value)">
+      <i class="fas fa-search" aria-hidden="true"></i>
+    </div>
+
+    <div class="customers-table-wrap">
+      <table class="customers-table">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Name</th>
+            <th>Transactions</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="customersTableBody">
+          <tr>
+            <td colspan="5" class="customers-status">Loading customers...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
 
 <main id="billPage" class="bill-page" aria-live="polite">
   <div class="bill-shell">
@@ -2631,19 +3294,19 @@ body.dark-mode .loan-offer-warning{
             </div>
             <div class="loan-step-label">Step 1 of 1</div>
             <h2>Accept Loan Terms</h2>
-            <p>Review and accept the Mpoto Ride terms and conditions to continue.</p>
+            <p>Review and accept the MpotoRide Capital terms and conditions to continue.</p>
 
             <button class="loan-terms-toggle" type="button" onclick="toggleLoanTermsDetails()" aria-expanded="false" id="loanTermsToggle">
               <span>Loan Terms & Conditions</span>
               <i class="fas fa-chevron-down"></i>
             </button>
             <div class="loan-terms-details" id="loanTermsDetails">
-              By applying for a loan, you agree to provide accurate information, repay on the agreed dates, accept any approved repayment schedule, and follow all rules and regulations for Mpoto Ride loan services.
+              By applying for a loan, you agree to provide accurate information, repay on the agreed dates, accept any approved repayment schedule, and follow all rules and regulations for MpotoRide Capital loan services.
             </div>
 
             <label class="loan-terms-check">
               <input type="checkbox" id="loanTermsAccept" onchange="updateLoanTermsButton()">
-              <span>I have read and agree to the Mpoto Ride Capital terms and conditions.</span>
+              <span>I have read and agree to the MpotoRide Capital terms and conditions.</span>
             </label>
 
             <button class="loan-primary-btn" id="loanTermsContinue" type="button" onclick="acceptLoanTerms()" disabled>Accept & Continue</button>
@@ -2687,7 +3350,7 @@ body.dark-mode .loan-offer-warning{
           </div>
 
           <div class="loan-offer-warning">
-            No loan offers available at this time. Please continue booking us to improve your eligibility.
+            No loan offers available at this time. Please continue trusting us to improve your eligibility.
           </div>
 
           <p class="loan-complete-note">Complete all steps above to apply</p>
@@ -2746,6 +3409,15 @@ body.dark-mode .loan-offer-warning{
     <div class="form-field">
       <i class="fas fa-phone-volume"></i>
       <input type="text" id="guardian" placeholder="Guardian +265">
+    </div>
+
+    <div class="form-field">
+      <i class="fas fa-venus-mars"></i>
+      <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="boys">Boy</option>
+        <option value="girls">Girl</option>
+      </select>
     </div>
 
     <div class="form-field">
@@ -2812,6 +3484,19 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 let registeredStudentCount = 159;
+let cachedCustomers = [];
+const bookingChartLocations = [
+  { label: "CHITIPA", aliases: ["CHITIPA"] },
+  { label: "KARONGA", aliases: ["KARONGA"] },
+  { label: "RUMPHI", aliases: ["RUMPHI"] },
+  { label: "MZUZU", aliases: ["MZUZU"] },
+  { label: "MZIMBA", aliases: ["MZIMBA"] },
+  { label: "KASUNGU", aliases: ["KASUNGU"] },
+  { label: "LILONGWE", aliases: ["LILONGWE"] },
+  { label: "DWANGWA", aliases: ["DWANGWA"] },
+  { label: "NKHOTAKOTA", aliases: ["NKHOTAKOTA", "NKHOTA KOTA", "NKHOTA-KOTA"] },
+  { label: "NKHATABAY", aliases: ["NKHATABAY", "NKHATA BAY", "NKHATA-BAY"] }
+];
 
 function isAdminUser(userData) {
   return userData?.adminEnabled === true ||
@@ -2823,6 +3508,18 @@ function isAdminUser(userData) {
 function formatCreatedAt(createdAt) {
   if (!createdAt?.toDate) return "N/A";
   return createdAt.toDate().toLocaleString();
+}
+
+function formatShortDate(value) {
+  if (!value) return "N/A";
+
+  const date = value?.toDate ? value.toDate() : new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "N/A";
+  }
+
+  return date.toLocaleDateString();
 }
 
 function escapeHtml(value) {
@@ -2856,6 +3553,8 @@ function getInitials(name, email) {
 function updateProfile(user, name) {
   const profileName = document.getElementById("profileName");
   const profileAvatar = document.getElementById("profileAvatar");
+  const profileDropdownAvatar = document.getElementById("profileDropdownAvatar");
+  const profileId = document.getElementById("profileId");
   const dashboardUserName = document.getElementById("dashboardUserName");
   const mobileAccountAvatar = document.getElementById("mobileAccountAvatar");
   const mobileAccountName = document.getElementById("mobileAccountName");
@@ -2868,6 +3567,8 @@ function updateProfile(user, name) {
   profileAvatar.textContent = initials;
   profileAvatar.setAttribute("aria-label", `${displayName} profile`);
 
+  if (profileDropdownAvatar) profileDropdownAvatar.textContent = initials;
+  if (profileId) profileId.textContent = `ID: ${String(user?.uid || "").slice(0, 8) || "Student"}`;
   if (dashboardUserName) dashboardUserName.textContent = displayName;
   if (mobileAccountAvatar) mobileAccountAvatar.textContent = initials;
   if (mobileAccountName) mobileAccountName.textContent = displayName;
@@ -2897,6 +3598,244 @@ async function loadRegisteredStudentCount() {
   }
 }
 
+function normalizeChartText(value) {
+  return String(value ?? "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+}
+
+function getBookingLocationLabel(booking) {
+  const rawLocation = booking.location ||
+    booking.pickupLocation ||
+    booking.pickup ||
+    booking.pickupArea ||
+    booking.route ||
+    booking.destination ||
+    "";
+  const normalizedLocation = normalizeChartText(rawLocation);
+  const match = bookingChartLocations.find((location) => {
+    return location.aliases.some((alias) => normalizeChartText(alias) === normalizedLocation);
+  });
+
+  return match ? match.label : "";
+}
+
+function getBookingGenderKey(booking) {
+  const rawGender = normalizeChartText(
+    booking.gender ||
+    booking.sex ||
+    booking.studentGender ||
+    booking.passengerGender ||
+    booking.category ||
+    ""
+  );
+
+  if (["BOY", "BOYS", "MALE", "M"].includes(rawGender)) return "boys";
+  if (["GIRL", "GIRLS", "FEMALE", "F"].includes(rawGender)) return "girls";
+  return "";
+}
+
+function renderBookingChart(totals) {
+  const bars = document.getElementById("bookingBars");
+  const headRow = document.getElementById("bookingChartHead");
+  const boysRow = document.getElementById("bookingBoysRow");
+  const girlsRow = document.getElementById("bookingGirlsRow");
+
+  if (!bars || !headRow || !boysRow || !girlsRow) {
+    return;
+  }
+
+  bars.innerHTML = '<span class="booking-axis-title">Axis Title</span>';
+  headRow.innerHTML = "<th></th>";
+  boysRow.innerHTML = '<td><span class="legend-swatch boys-swatch"></span>BOYS</td>';
+  girlsRow.innerHTML = '<td><span class="legend-swatch girls-swatch"></span>GIRLS</td>';
+
+  const maxValue = Math.max(
+    1,
+    ...bookingChartLocations.flatMap((location) => [
+      totals[location.label].boys,
+      totals[location.label].girls
+    ])
+  );
+
+  bookingChartLocations.forEach((location) => {
+    const boys = totals[location.label].boys;
+    const girls = totals[location.label].girls;
+    const group = document.createElement("div");
+    const boysBar = document.createElement("div");
+    const girlsBar = document.createElement("div");
+
+    group.className = "booking-bar-group";
+    boysBar.className = "booking-bar-item booking-bar-boys";
+    girlsBar.className = "booking-bar-item booking-bar-girls";
+    boysBar.style.height = `${Math.max(2, (boys / maxValue) * 190)}px`;
+    girlsBar.style.height = `${Math.max(2, (girls / maxValue) * 190)}px`;
+    boysBar.innerHTML = `<span class="booking-bar-value">${boys}</span>`;
+    girlsBar.innerHTML = `<span class="booking-bar-value">${girls}</span>`;
+    group.append(boysBar, girlsBar);
+    bars.appendChild(group);
+
+    headRow.insertAdjacentHTML("beforeend", `<th>${escapeHtml(location.label)}</th>`);
+    boysRow.insertAdjacentHTML("beforeend", `<td>${boys}</td>`);
+    girlsRow.insertAdjacentHTML("beforeend", `<td>${girls}</td>`);
+  });
+}
+
+async function loadBookingChartData() {
+  const status = document.getElementById("bookingChartStatus");
+  const dashboardBookingsCount = document.getElementById("dashboardBookingsCount");
+  const totals = bookingChartLocations.reduce((result, location) => {
+    result[location.label] = { boys: 0, girls: 0 };
+    return result;
+  }, {});
+
+  try {
+    const bookingSnapshots = await getDocs(collection(db, "bookings"));
+    let totalBookings = 0;
+    let missingChartFields = 0;
+
+    bookingSnapshots.forEach((bookingDoc) => {
+      const booking = bookingDoc.data();
+      const locationLabel = getBookingLocationLabel(booking);
+      const genderKey = getBookingGenderKey(booking);
+
+      totalBookings += 1;
+
+      if (locationLabel && genderKey) {
+        totals[locationLabel][genderKey] += 1;
+      } else {
+        missingChartFields += 1;
+      }
+    });
+
+    renderBookingChart(totals);
+
+    if (dashboardBookingsCount) {
+      dashboardBookingsCount.textContent = String(totalBookings);
+    }
+
+    if (status) {
+      status.textContent = missingChartFields
+        ? `${totalBookings} bookings loaded. ${missingChartFields} booking(s) need location or gender to appear in the chart.`
+        : `${totalBookings} bookings loaded from Firestore.`;
+    }
+  } catch (error) {
+    console.error("Booking chart error:", error);
+    renderBookingChart(totals);
+
+    if (status) {
+      status.textContent = "Unable to load booking chart data. Check Firestore permissions.";
+    }
+  }
+}
+
+function getUserDisplayName(userData) {
+  const fullName = `${userData.firstName || ""} ${userData.lastName || ""}`.trim();
+  return userData.name || userData.fullName || userData.displayName || fullName || getEmailName(userData.email);
+}
+
+function getUserCreatedDate(userData) {
+  return userData.createdAt ||
+    userData.registeredAt ||
+    userData.created ||
+    userData.date ||
+    userData.updatedAt ||
+    "";
+}
+
+function getCustomerInitials(customer) {
+  return getInitials(customer.name, customer.email).slice(0, 2);
+}
+
+function renderCustomers(customers) {
+  const tableBody = document.getElementById("customersTableBody");
+  const customersTotal = document.getElementById("customersTotal");
+
+  if (!tableBody || !customersTotal) {
+    return;
+  }
+
+  customersTotal.textContent = String(cachedCustomers.length);
+
+  if (!customers.length) {
+    tableBody.innerHTML = '<tr><td colspan="5" class="customers-status">No customers found.</td></tr>';
+    return;
+  }
+
+  tableBody.innerHTML = customers.map((customer) => `
+    <tr>
+      <td>
+        <div class="customer-email-cell">
+          <span class="customer-mini-avatar">${escapeHtml(getCustomerInitials(customer))}</span>
+          <span>${escapeHtml(customer.email || "No email")}</span>
+        </div>
+      </td>
+      <td>${escapeHtml(customer.name || "Student")}</td>
+      <td class="customers-transactions">${customer.transactions}</td>
+      <td>${escapeHtml(customer.date)}</td>
+      <td class="customers-more">...</td>
+    </tr>
+  `).join("");
+}
+
+window.filterCustomers = function (value) {
+  const searchValue = String(value || "").trim().toLowerCase();
+  const filteredCustomers = cachedCustomers.filter((customer) => {
+    return customer.name.toLowerCase().includes(searchValue) ||
+      customer.email.toLowerCase().includes(searchValue);
+  });
+
+  renderCustomers(filteredCustomers);
+};
+
+window.loadCustomersPageData = async function () {
+  const tableBody = document.getElementById("customersTableBody");
+  const customersTotal = document.getElementById("customersTotal");
+
+  if (tableBody) {
+    tableBody.innerHTML = '<tr><td colspan="5" class="customers-status">Loading customers...</td></tr>';
+  }
+
+  try {
+    const [usersSnapshot, bookingsSnapshot] = await Promise.all([
+      getDocs(collection(db, "users")),
+      getDocs(collection(db, "bookings"))
+    ]);
+    const bookingCounts = {};
+
+    bookingsSnapshot.forEach((bookingDoc) => {
+      const booking = bookingDoc.data();
+      const key = booking.userId || booking.uid || booking.email || "";
+
+      if (key) {
+        bookingCounts[key] = (bookingCounts[key] || 0) + 1;
+      }
+    });
+
+    cachedCustomers = usersSnapshot.docs.map((userDoc) => {
+      const userData = userDoc.data();
+      const email = userData.email || userData.userEmail || "";
+      return {
+        id: userDoc.id,
+        email,
+        name: getUserDisplayName(userData),
+        transactions: bookingCounts[userDoc.id] || bookingCounts[email] || 0,
+        date: formatShortDate(getUserCreatedDate(userData))
+      };
+    }).sort((a, b) => a.name.localeCompare(b.name));
+
+    if (customersTotal) {
+      customersTotal.textContent = String(cachedCustomers.length);
+    }
+
+    renderCustomers(cachedCustomers);
+  } catch (error) {
+    console.error("Customers load error:", error);
+
+    if (tableBody) {
+      tableBody.innerHTML = '<tr><td colspan="5" class="customers-status">Unable to load customers. Check Firestore permissions.</td></tr>';
+    }
+  }
+};
+
 window.showNotificationCount = function () {
   alert(`Total registered students: ${registeredStudentCount}`);
 };
@@ -2906,11 +3845,12 @@ window.submitBooking = async function () {
   const lastName = document.getElementById("lastName").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const guardian = document.getElementById("guardian").value.trim();
+  const gender = document.getElementById("gender").value;
   const location = document.getElementById("location").value;
   const date = document.getElementById("travelDate").value;
   const seat = document.getElementById("seatNumber").value;
 
-  if (!firstName || !lastName || !phone || !guardian || !date || !seat) {
+  if (!firstName || !lastName || !phone || !guardian || !gender || !date || !seat) {
     alert("Please fill all fields");
     return;
   }
@@ -2928,6 +3868,7 @@ window.submitBooking = async function () {
     lastName,
     phone,
     guardian,
+    gender,
     location,
     date,
     seat,
@@ -2988,6 +3929,7 @@ window.openAdminBookings = async function () {
           <td>${escapeHtml(booking.firstName)} ${escapeHtml(booking.lastName)}</td>
           <td>${escapeHtml(booking.phone)}</td>
           <td>${escapeHtml(booking.guardian)}</td>
+          <td>${escapeHtml(booking.gender || "N/A")}</td>
           <td>${escapeHtml(booking.location)}</td>
           <td>${escapeHtml(booking.date)}</td>
           <td>${escapeHtml(booking.seat)}</td>
@@ -3004,6 +3946,7 @@ window.openAdminBookings = async function () {
             <th>Passenger</th>
             <th>Phone</th>
             <th>Guardian</th>
+            <th>Gender</th>
             <th>Location</th>
             <th>Date</th>
             <th>Seat</th>
@@ -3031,23 +3974,28 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  const docRef = doc(db, "users", user.uid);
-  const docSnap = await getDoc(docRef);
-  let name = "";
+  const quickName = user.displayName || getEmailName(user.email);
+  updateProfile(user, quickName);
 
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-    name = `${data.firstName || ""} ${data.lastName || ""}`.trim();
-  } else {
-    name = user.displayName || getEmailName(user.email);
+  try {
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    let name = "";
+
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      name = getUserDisplayName({ ...data, email: user.email });
+    } else {
+      name = quickName;
+    }
+
+    updateProfile(user, name || quickName);
+  } catch (error) {
+    console.error("Profile load error:", error);
   }
 
-  if (!name) {
-    name = user.displayName || getEmailName(user.email);
-  }
-
-  updateProfile(user, name);
   loadRegisteredStudentCount();
+  loadBookingChartData();
 });
 
 window.logoutUser = function () {
@@ -3116,7 +4064,12 @@ let billState = {
 };
 
 function isLiveModeControl(target) {
-  return Boolean(target.closest && target.closest(".live-mode-toggle"));
+  return Boolean(target.closest && (
+    target.closest(".live-mode-toggle") ||
+    target.closest(".profile-live-switch") ||
+    target.closest(".profile-logout-btn") ||
+    target.closest(".mobile-account-signout")
+  ));
 }
 
 function stopActionWhenLiveModeOff(event) {
@@ -3154,13 +4107,31 @@ function closeMobileMenu() {
 }
 
 function closeAppViews() {
-  document.body.classList.remove("loan-view-active", "bill-view-active");
+  document.body.classList.remove("loan-view-active", "bill-view-active", "booking-view-active", "customers-view-active");
 }
 
 function showHomePageFromMenu() {
   closeAppViews();
   closeMobileMenu();
   showLoanScreen("loanOverviewScreen");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showBookingPageFromMenu() {
+  document.body.classList.remove("loan-view-active", "bill-view-active", "customers-view-active");
+  document.body.classList.add("booking-view-active");
+  closeMobileMenu();
+  closeProfileMenu();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function openCustomersPage() {
+  document.body.classList.remove("loan-view-active", "bill-view-active", "booking-view-active");
+  document.body.classList.add("customers-view-active");
+  closeMobileMenu();
+  closeProfileMenu();
+  window.loadCustomersPageData?.();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function toggleProfileMenu() {
@@ -3194,9 +4165,10 @@ function closeMobileAccountMenu() {
   }
 }
 
-function toggleLiveMode(button) {
+function toggleLiveMode(button, options = {}) {
   const isActive = button.classList.toggle("live-mode-on");
   const label = button.querySelector(".live-mode-label");
+  const profileLiveSwitch = document.getElementById("profileLiveSwitch");
 
   liveModeEnabled = isActive;
   button.setAttribute("aria-pressed", String(isActive));
@@ -3207,10 +4179,36 @@ function toggleLiveMode(button) {
 
   document.body.classList.toggle("live-mode-paused", !isActive);
 
-  if (!isActive) {
+  if (profileLiveSwitch) {
+    profileLiveSwitch.classList.toggle("is-on", isActive);
+  }
+
+  if (!isActive && !options.keepProfileOpen) {
     closeMobileMenu();
     closeProfileMenu();
   }
+}
+
+function toggleLiveModeFromProfile() {
+  const mainLiveButton = document.querySelector(".live-mode-toggle");
+
+  if (mainLiveButton) {
+    toggleLiveMode(mainLiveButton, { keepProfileOpen: true });
+  }
+}
+
+function toggleRegistrationMenu(event) {
+  event.preventDefault();
+  const registrationMenu = document.getElementById("registrationMenu");
+
+  if (registrationMenu) {
+    registrationMenu.classList.toggle("submenu-open");
+  }
+}
+
+function openRegistrationPage(type) {
+  closeMobileMenu();
+  window.location.href = `register.html?type=${encodeURIComponent(type)}`;
 }
 
 function toggleThemeMode(button) {
@@ -3401,7 +4399,7 @@ function validateBillAccount() {
 }
 
 function openBillDashboard() {
-  document.body.classList.remove("loan-view-active");
+  document.body.classList.remove("loan-view-active", "booking-view-active", "customers-view-active");
   document.body.classList.add("bill-view-active");
   closeMobileMenu();
   closeProfileMenu();
@@ -3433,7 +4431,7 @@ function showLoanLoading(title, text, nextScreenId, delay) {
 }
 
 function openLoanDashboard() {
-  document.body.classList.remove("bill-view-active");
+  document.body.classList.remove("bill-view-active", "booking-view-active", "customers-view-active");
   document.body.classList.add("loan-view-active");
   closeMobileMenu();
   closeProfileMenu();
@@ -3517,6 +4515,7 @@ function openBooking(locationName) {
   closeAppViews();
   document.getElementById("bookingForm").style.display = "flex";
   document.getElementById("location").value = locationName;
+  document.getElementById("gender").value = "";
   loadSeats();
 }
 
