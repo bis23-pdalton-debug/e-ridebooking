@@ -1,19 +1,22 @@
 body{
     margin:0;
     min-height:100vh;
+    width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
     background:#f8f7f7;
+    overflow-x:hidden;
 }
 
 .container{
     background:transparent;
     width:100%;
-    max-width:none;
+    max-width:420px;
     padding:0;
     border-radius:0;
     box-shadow:none;
+    box-sizing:border-box;
 }
 
 .auth-logo{
@@ -34,7 +37,7 @@ body{
     text-align:left;
     font-size:1.6rem;
     color:#959292;
-    margin:6px 0 14px;
+    margin:6px 0 12px;
 }
 
 .divider{
@@ -50,7 +53,7 @@ body{
 .divider::after{
     content:"";
     flex:1;
-    border-bottom:1px solid #ccc;
+    border-bottom:1.5px solid #ccc;
 }
 
 .divider span{
@@ -72,6 +75,7 @@ input{
     text-align:left;
     padding:0;
     margin-bottom:0.8rem;
+    color:#96959d;
 }
 
 .input-group{
@@ -90,7 +94,7 @@ input{
     display:flex;
     align-items:center;
     border:1px solid #ccc;
-    border-radius:1px;
+    border-radius:10px;
     padding:12px;
     background:#fff;
 }
@@ -130,7 +134,7 @@ input:focus~label,input:not(:placeholder-shown)~label{
 
 .recover a{
     text-decoration:none;
-    color:rgb(247, 88, 20);
+    color:#96959d;
 }
 
 .recover a:hover{
@@ -196,6 +200,13 @@ button:hover{
 
 .links p{
     margin:0;
+    color:#96959d;
+}
+
+.g-recaptcha,
+#recaptcha-container,
+.recaptcha{
+    margin-bottom:18px;
 }
 
 #signUpButton, #signInButton{
@@ -233,7 +244,7 @@ button:hover{
 .auth-container{
   max-width:400px;
   margin:80px auto;
-  padding:30px;
+  padding:9px;
   background:#fff;
   border-radius:10px;
   box-shadow:0 5px 20px rgba(0,0,0,0.1);
@@ -285,36 +296,42 @@ button:hover{
 .auth-wrapper{
   display:flex;
   min-height:100vh;
+  height:100vh;
   width:100%;
-  gap:40px;
-  padding:0 40px;
+  gap:0;
+  padding:0;
   box-sizing:border-box;
+  overflow:hidden;
 }
 
 .auth-left{
-  flex:1;
+  flex:0 0 50%;
   display:flex;
-  justify-content:flex-start;
+  justify-content:center;
   align-items:center;
   background:#fff;
-  padding:30px 0;
+  padding:30px clamp(28px, 6vw, 86px);
   box-sizing:border-box;
 }
 
 .auth-right{
-  flex:1;
+  flex:0 0 50%;
   display:flex;
   justify-content:center;
   align-items:center;
   background:#0b1f3a;
   overflow:hidden;
   min-height:100vh;
+  height:100vh;
 }
 
 .auth-right img{
   width:100%;
-  height:110vh;
+  height:100vh;
+  min-width:100%;
+  min-height:100%;
   object-fit:cover;
+  object-position:center;
   display:block;
 }
 
@@ -323,6 +340,8 @@ button:hover{
     flex-direction:column;
     gap:0;
     padding:0;
+    height:auto;
+    min-height:100vh;
   }
 
   .auth-right{
@@ -331,6 +350,7 @@ button:hover{
 
   .auth-left{
     width:100%;
+    flex:0 0 auto;
     padding:15px;
     box-sizing:border-box;
   }
@@ -339,6 +359,35 @@ button:hover{
     max-width:100%;
     width:100%;
     box-sizing:border-box;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape){
+  .auth-wrapper{
+    flex-direction:row;
+    height:100vh;
+    min-height:100vh;
+    overflow:hidden;
+  }
+
+  .auth-left,
+  .auth-right{
+    flex:0 0 50%;
+    height:100vh;
+    min-height:100vh;
+  }
+
+  .auth-right{
+    display:flex;
+  }
+
+  .auth-right img{
+    width:100%;
+    height:100vh;
+    min-width:100%;
+    min-height:100%;
+    object-fit:cover;
+    object-position:center;
   }
 }
 
