@@ -3576,33 +3576,33 @@ body.dark-mode .loan-offer-warning{
   </div>
 
   <ul id="navLinks">
-    <li class="menu-item-active"><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-    <li><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-home"></i><span>Home</span></a></li>
-    <li><a href="#pickup" onclick="showBookingPageFromMenu()"><i class="fas fa-credit-card"></i><span>Booking</span></a></li>
+    <li class="menu-item-active"><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-tachometer-alt"></i><span>DASHBOARD</span></a></li>
+    <li><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-home"></i><span>HOME</span></a></li>
+    <li><a href="#pickup" onclick="showBookingPageFromMenu()"><i class="fas fa-credit-card"></i><span>BOOKING</span></a></li>
     <li class="registration-item" id="registrationMenu">
       <a href="#" class="submenu-toggle" onclick="toggleRegistrationMenu(event)">
         <i class="fas fa-user-plus"></i>
-        <span>Registration</span>
+        <span>REGISTRATION</span>
         <i class="fas fa-chevron-down menu-chevron"></i>
       </a>
       <div class="registration-submenu">
-        <button type="button" onclick="openRegistrationPage('Odel')">Odel</button>
-        <button type="button" onclick="openRegistrationPage('Preyearo')">Preyearo</button>
-        <button type="button" onclick="openRegistrationPage('Conti')">Conti</button>
+        <button type="button" onclick="openRegistrationPage('Odel')">ODEL</button>
+        <button type="button" onclick="openRegistrationPage('Preyearo')">FIRST YEAR</button>
+        <button type="button" onclick="openRegistrationPage('Conti')">CONTINUING</button>
       </div>
     </li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i><span>Transactions</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
-    <li><a href="#" onclick="openCustomersPage()"><i class="fas fa-users"></i><span>Customers</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-briefcase"></i><span>Balances</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-link"></i><span>Payment links</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-clipboard"></i><span>Projects</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-exchange-alt"></i><span>Transfers</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-credit-card"></i><span>Virtual Card</span></a></li>
-    <li><a href="#" onclick="openBillDashboard()"><i class="far fa-money-bill-alt"></i><span>Pay Bill</span></a></li>
-    <li><a href="#" onclick="openInvoicePage()"><i class="far fa-file-alt"></i><span>Invoice</span></a></li>
-    <li><a href="#" onclick="openLoanDashboard()"><i class="fas fa-university"></i><span>Loan</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i><span>TRANSACTION</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="openCustomersPage()"><i class="fas fa-users"></i><span>CUSTOMERS</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-briefcase"></i><span>BALANCES</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-link"></i><span>PAYMENT LINK</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-clipboard"></i><span>PROJECT</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-exchange-alt"></i><span>TRANSFER</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-credit-card"></i><span>VIRTUAL CARD</span></a></li>
+    <li><a href="#" onclick="openBillDashboard()"><i class="far fa-money-bill-alt"></i><span>PAY BILL</span></a></li>
+    <li><a href="#" onclick="openInvoicePage()"><i class="far fa-file-alt"></i><span>INVOICE</span></a></li>
+    <li><a href="#" onclick="openLoanDashboard()"><i class="fas fa-university"></i><span>LOAN</span></a></li>
     <li class="mobile-menu-spacer" aria-hidden="true"></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-cog"></i><span>SETTINGS</span></a></li>
     <li class="mobile-account-item" id="mobileAccountMenu">
       <button class="mobile-account-button" type="button" onclick="toggleMobileAccountMenu()">
         <span class="mobile-account-avatar" id="mobileAccountAvatar">ST</span>
@@ -3611,7 +3611,10 @@ body.dark-mode .loan-offer-warning{
       </button>
       <div class="mobile-account-dropdown">
         <div class="mobile-account-full-name" id="mobileAccountFullName">Student</div>
-        <button class="mobile-account-signout" type="button" onclick="logoutUser()">SIGN OUT</button>
+        <button class="profile-logout-btn" type="button" onclick="logoutUser()">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Sign out</span>
+        </button>
       </div>
     </li>
   </ul>
@@ -3621,14 +3624,14 @@ body.dark-mode .loan-offer-warning{
   <div class="dashboard-wrap">
     <div class="dashboard-layout">
       <div class="dashboard-main">
-        <h1 class="dashboard-greeting">Hi, <span id="dashboardUserName">Student</span></h1>
+        <h1 class="dashboard-greeting">Hello, <span id="dashboardUserName">Student</span></h1>
         <p class="dashboard-subtitle">What would you like to do today?</p>
 
         <div class="levy-alert" id="levyAlert">
           <i class="fas fa-bell"></i>
           <div>
             <h3>Levy fee</h3>
-            <p>Please be informed that, a 10.05% of your deposit will be inclusive to your full trasport & MRA levy will be applied to all Payment made via bank transactions exceeding K100,000.</p>
+            <p>Please be informed that, a 10.05% of your deposit is inclusive to your full trasport & MRA levy will be applied to all Payment made via bank transactions exceeding K100,000.</p>
           </div>
           <button class="alert-close" type="button" onclick="closeLevyAlert()" aria-label="Close levy notice">&times;</button>
         </div>
@@ -3724,6 +3727,9 @@ body.dark-mode .loan-offer-warning{
     </div>
   </div>
 </section>
+
+<section class="section" id="pickup">
+ 
   <div class="cards">
     <div class="card">
       <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/53/fc/f4/karonga-malawi-its-malawi.jpg" alt="Karonga">
