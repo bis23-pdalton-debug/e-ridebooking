@@ -1019,6 +1019,706 @@ body.customers-view-active .customers-page{
   font-size:14px;
 }
 
+.invoice-page{
+  display:none;
+  min-height:100vh;
+  background:white;
+  padding:96px 28px 40px;
+  color:#111;
+}
+
+body.invoice-view-active .invoice-page{
+  display:block;
+}
+
+.invoice-shell{
+  width:100%;
+  max-width:1060px;
+  margin:0 auto;
+}
+
+.invoice-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  margin-bottom:28px;
+}
+
+.invoice-header h1{
+  font-size:38px;
+  line-height:1;
+  font-weight:900;
+}
+
+.invoice-create{
+  display:flex;
+  border:1px solid #dcdfe4;
+  border-radius:8px;
+  overflow:hidden;
+  background:white;
+  box-shadow:0 1px 2px rgba(15,23,42,0.06);
+}
+
+.invoice-create button{
+  border:none;
+  background:white;
+  min-height:42px;
+  padding:0 16px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.invoice-create button:first-child{
+  border-right:1px solid #dcdfe4;
+  font-size:22px;
+}
+
+.invoice-layout{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 360px;
+  gap:24px;
+  align-items:start;
+}
+
+.invoice-summary{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:16px;
+  margin-bottom:24px;
+}
+
+.invoice-summary-card,
+.invoice-analytics-card,
+.invoice-card{
+  background:#e9ecf3;
+  border-radius:8px;
+}
+
+.invoice-summary-card{
+  min-height:102px;
+  padding:18px 26px;
+}
+
+.invoice-summary-card span{
+  display:flex;
+  justify-content:space-between;
+  color:#5f6470;
+  font-size:14px;
+  margin-bottom:14px;
+}
+
+.invoice-summary-card strong{
+  font-size:28px;
+  font-weight:500;
+}
+
+.invoice-list{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.invoice-card{
+  position:relative;
+  border:1px solid #d0d5dd;
+  background:#f5f6f9;
+  overflow:visible;
+}
+
+.invoice-card-main{
+  padding:18px;
+}
+
+.invoice-status-pill{
+  display:inline-flex;
+  align-items:center;
+  min-height:24px;
+  border-radius:6px;
+  background:#ffe0e4;
+  color:#ff1f1f;
+  padding:0 10px;
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+.invoice-card-top{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.invoice-amount{
+  font-size:30px;
+  font-weight:900;
+  margin-bottom:4px;
+}
+
+.invoice-route{
+  font-size:16px;
+  line-height:1.4;
+}
+
+.invoice-due{
+  text-align:right;
+  min-width:150px;
+  font-weight:700;
+}
+
+.invoice-email{
+  display:block;
+  font-weight:400;
+  color:#334155;
+  margin-top:18px;
+}
+
+.invoice-actions{
+  position:absolute;
+  top:18px;
+  right:18px;
+  display:flex;
+  gap:8px;
+}
+
+.invoice-icon-btn{
+  border:none;
+  width:40px;
+  height:34px;
+  border-radius:6px;
+  background:white;
+  color:#111;
+  cursor:pointer;
+}
+
+.invoice-timeline{
+  min-height:51px;
+  border-top:1px solid #d7dbe2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#555;
+  letter-spacing:1px;
+}
+
+.invoice-action-menu{
+  display:none;
+  position:absolute;
+  top:52px;
+  right:28px;
+  width:232px;
+  background:white;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(15,23,42,0.18);
+  border:1px solid #e5e7eb;
+  z-index:20;
+  overflow:hidden;
+}
+
+.invoice-card.menu-open .invoice-action-menu{
+  display:block;
+}
+
+.invoice-action-date{
+  color:#7b8190;
+  padding:13px 24px;
+  border-bottom:1px solid #edf0f2;
+  font-size:14px;
+}
+
+.invoice-action-menu button{
+  width:100%;
+  min-height:39px;
+  border:none;
+  background:white;
+  color:#111;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:0 22px;
+  text-align:left;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.invoice-action-menu button:hover{
+  background:#f6f7f9;
+}
+
+.invoice-action-menu .danger{
+  color:#ff1f1f;
+  border-top:1px solid #edf0f2;
+}
+
+.invoice-analytics-card{
+  min-height:455px;
+  padding:28px 12px 28px;
+  box-shadow:0 12px 26px rgba(15,23,42,0.08);
+}
+
+.invoice-chart-icon{
+  width:39px;
+  height:39px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 0 54px 12px;
+}
+
+.invoice-chart-lines{
+  height:200px;
+  margin:0 0 48px;
+  border-bottom:2px solid #8dbff3;
+  background:repeating-linear-gradient(to bottom, transparent 0, transparent 31px, #dfe3eb 32px);
+  position:relative;
+  overflow:hidden;
+}
+
+.invoice-chart-lines::before{
+  content:"";
+  position:absolute;
+  left:64px;
+  bottom:0;
+  width:118px;
+  height:172px;
+  background:rgba(123,211,230,0.27);
+  clip-path:polygon(0 100%, 16% 100%, 38% 10%, 55% 38%, 63% 52%, 71% 56%, 100% 100%);
+  border-left:4px solid #89d7e9;
+  border-top:4px solid #89d7e9;
+}
+
+.invoice-chart-lines::after{
+  content:"";
+  position:absolute;
+  left:88px;
+  bottom:0;
+  width:82px;
+  height:11px;
+  border-top:4px solid #8178e7;
+  border-radius:50%;
+}
+
+.invoice-analytics-card h2{
+  font-size:30px;
+  margin:0 14px 6px;
+}
+
+.invoice-analytics-card p{
+  margin:0 14px;
+  font-size:13px;
+}
+
+.invoice-empty{
+  color:#6b7280;
+  padding:18px;
+}
+
+.invoice-view-panel{
+  width:min(620px, 96vw);
+  background:#101010;
+  padding:10px;
+  max-height:92vh;
+  overflow:auto;
+}
+
+.invoice-document{
+  background:white;
+  color:#111;
+  min-height:760px;
+  padding:38px 52px;
+  border-left:8px solid #ef63e9;
+  border-right:8px solid #8af5bf;
+  border-top:8px solid #e9f7bb;
+}
+
+.invoice-doc-top{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-bottom:28px;
+}
+
+.invoice-logo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:8px;
+}
+
+.invoice-doc-title{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+.invoice-doc-muted{
+  font-size:12px;
+  line-height:1.7;
+}
+
+.invoice-doc-amount{
+  align-self:center;
+}
+
+.invoice-doc-amount span{
+  display:block;
+  font-size:12px;
+}
+
+.invoice-doc-amount strong{
+  display:block;
+  font-size:27px;
+}
+
+.invoice-doc-parties{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  margin-bottom:30px;
+}
+
+.invoice-doc-table{
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:10px;
+  margin-bottom:14px;
+}
+
+.invoice-doc-table th,
+.invoice-doc-table td{
+  padding:12px 16px;
+  text-align:left;
+  border-bottom:1px solid #d1d5db;
+  font-size:12px;
+}
+
+.invoice-doc-table th{
+  background:#d1d5db;
+}
+
+.invoice-doc-totals{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  max-width:220px;
+  margin-left:auto;
+  font-size:12px;
+}
+
+.invoice-memo{
+  margin-top:28px;
+  font-size:12px;
+  line-height:1.35;
+  max-width:430px;
+}
+
+.invoice-powered{
+  text-align:right;
+  margin-top:70px;
+  font-size:10px;
+  font-weight:bold;
+}
+
+.invoice-view-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  padding:12px 0 0;
+}
+
+.invoice-view-actions button{
+  border:none;
+  background:#04bdbb;
+  color:white;
+  border-radius:8px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.chatbot-launch{
+  position:fixed;
+  right:22px;
+  bottom:24px;
+  width:62px;
+  height:62px;
+  border:none;
+  border-radius:50%;
+  background:#04bdbb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,0.22);
+  z-index:1600;
+}
+
+.chatbot-launch.is-open i{
+  transform:rotate(45deg);
+}
+
+.chatbot-panel{
+  display:none;
+  position:fixed;
+  right:82px;
+  bottom:82px;
+  width:410px;
+  max-width:calc(100vw - 18px);
+  height:500px;
+  max-height:calc(100vh - 100px);
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  box-shadow:0 14px 34px rgba(15,23,42,0.18);
+  z-index:1590;
+  overflow:hidden;
+}
+
+.chatbot-panel.open{
+  display:flex;
+  flex-direction:column;
+}
+
+.chatbot-home,
+.chatbot-conversation{
+  display:none;
+  flex:1;
+  min-height:0;
+  flex-direction:column;
+}
+
+.chatbot-panel.home-mode .chatbot-home,
+.chatbot-panel.chat-mode .chatbot-conversation{
+  display:flex;
+}
+
+.chatbot-home{
+  background:#f8fbfa;
+}
+
+.chatbot-home-inner{
+  padding:38px 20px 0;
+  overflow:auto;
+  flex:1;
+}
+
+.chatbot-brand{
+  width:36px;
+  height:36px;
+  border-radius:6px;
+  background:#04bdbb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  margin:0 0 80px 20px;
+}
+
+.chatbot-greeting{
+  text-align:center;
+  font-size:34px;
+  line-height:1.15;
+  margin-bottom:30px;
+}
+
+.chatbot-prompt-card{
+  background:white;
+  border:1px solid #dde2e8;
+  border-radius:10px;
+  min-height:76px;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  box-shadow:0 2px 8px rgba(15,23,42,0.08);
+  cursor:pointer;
+}
+
+.chatbot-search{
+  margin-top:16px;
+  min-height:52px;
+  border-radius:26px;
+  background:#eef1f4;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  font-weight:bold;
+}
+
+.chatbot-tabs{
+  min-height:92px;
+  border-top:1px solid #dfe4ec;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:white;
+}
+
+.chatbot-tab{
+  border:none;
+  background:transparent;
+  color:#5f6470;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.chatbot-tab.active{
+  color:#04bdbb;
+}
+
+.chatbot-header{
+  min-height:69px;
+  display:grid;
+  grid-template-columns:48px 36px 1fr 48px;
+  align-items:center;
+  border-bottom:1px solid #e5e7eb;
+  padding:0 14px;
+  gap:8px;
+}
+
+.chatbot-back,
+.chatbot-menu,
+.chatbot-send{
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  color:#111;
+  font-size:18px;
+}
+
+.chatbot-header-logo{
+  width:32px;
+  height:32px;
+  border-radius:6px;
+  background:#04bdbb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+.chatbot-title{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.chatbot-messages{
+  flex:1;
+  min-height:0;
+  overflow:auto;
+  padding:20px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.chatbot-message-row{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.chatbot-message-row.user{
+  justify-content:flex-end;
+}
+
+.chatbot-mini-logo{
+  width:24px;
+  height:24px;
+  border-radius:5px;
+  background:#04bdbb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
+  flex:0 0 auto;
+}
+
+.chatbot-bubble{
+  max-width:78%;
+  border-radius:10px;
+  background:#eef1f4;
+  padding:13px 14px;
+  font-size:14px;
+  line-height:1.35;
+}
+
+.chatbot-message-row.user .chatbot-bubble{
+  background:#cbf5f3;
+}
+
+.chatbot-meta{
+  color:#5f6470;
+  font-size:11px;
+  margin-top:6px;
+}
+
+.chatbot-composer{
+  min-height:68px;
+  padding:10px 16px;
+}
+
+.chatbot-input-shell{
+  min-height:50px;
+  border:3px solid #cce3ff;
+  border-radius:28px;
+  display:grid;
+  grid-template-columns:1fr 32px 32px 32px;
+  align-items:center;
+  gap:4px;
+  padding:0 10px 0 14px;
+}
+
+.chatbot-input-shell input{
+  border:none;
+  outline:none;
+  background:transparent;
+  min-width:0;
+  font-size:13px;
+}
+
+@media print{
+  body.printing-invoice *{
+    visibility:hidden !important;
+  }
+
+  body.printing-invoice #invoiceDocument,
+  body.printing-invoice #invoiceDocument *{
+    visibility:visible !important;
+  }
+
+  body.printing-invoice #invoiceDocument{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    min-height:100vh;
+    border-left:8px solid #ef63e9;
+    border-right:8px solid #8af5bf;
+    border-top:8px solid #e9f7bb;
+    box-shadow:none;
+  }
+
+  body.printing-invoice .invoice-view-actions,
+  body.printing-invoice .chatbot-launch,
+  body.printing-invoice .chatbot-panel{
+    display:none !important;
+  }
+}
+
 #pickup{
   display:none;
 }
@@ -1105,6 +1805,11 @@ body.customers-view-active .section,
 body.customers-view-active .booking-chart-section,
 body.customers-view-active .why,
 body.customers-view-active footer,
+body.invoice-view-active .hero,
+body.invoice-view-active .section,
+body.invoice-view-active .booking-chart-section,
+body.invoice-view-active .why,
+body.invoice-view-active footer,
 body.booking-view-active .hero,
 body.booking-view-active .booking-chart-section,
 body.booking-view-active .why,
@@ -2274,6 +2979,54 @@ body.dark-mode .customer-mini-avatar{
   color:#f5f7fa;
 }
 
+body.dark-mode .invoice-page,
+body.dark-mode .chatbot-panel,
+body.dark-mode .chatbot-tabs,
+body.dark-mode .invoice-action-menu,
+body.dark-mode .invoice-action-menu button,
+body.dark-mode .invoice-create,
+body.dark-mode .invoice-create button{
+  background:#101418;
+  color:#f5f7fa;
+}
+
+body.dark-mode .invoice-summary-card,
+body.dark-mode .invoice-card,
+body.dark-mode .invoice-analytics-card,
+body.dark-mode .chatbot-home,
+body.dark-mode .chatbot-prompt-card,
+body.dark-mode .chatbot-search,
+body.dark-mode .chatbot-bubble{
+  background:#171d24;
+  color:#f5f7fa;
+}
+
+body.dark-mode .invoice-email,
+body.dark-mode .invoice-summary-card span,
+body.dark-mode .invoice-empty,
+body.dark-mode .chatbot-meta,
+body.dark-mode .chatbot-tab{
+  color:#aab4c0;
+}
+
+body.dark-mode .invoice-card,
+body.dark-mode .invoice-action-menu,
+body.dark-mode .chatbot-panel,
+body.dark-mode .chatbot-header,
+body.dark-mode .chatbot-tabs,
+body.dark-mode .chatbot-prompt-card{
+  border-color:#303946;
+}
+
+body.dark-mode .invoice-icon-btn,
+body.dark-mode .invoice-chart-icon,
+body.dark-mode .chatbot-back,
+body.dark-mode .chatbot-menu,
+body.dark-mode .chatbot-send{
+  background:#101418;
+  color:#f5f7fa;
+}
+
 body.dark-mode .form-field{
   border-color:#384353;
 }
@@ -2511,7 +3264,8 @@ body.dark-mode .loan-offer-warning{
 
   .loan-page,
   .bill-page,
-  .customers-page{
+  .customers-page,
+  .invoice-page{
     margin-left:262px;
     padding:68px 12px 28px;
   }
@@ -2553,6 +3307,10 @@ body.dark-mode .loan-offer-warning{
 
   .customers-header{
     align-items:flex-start;
+  }
+
+  .invoice-layout{
+    grid-template-columns:1fr;
   }
 
   .loan-metrics{
@@ -2658,6 +3416,10 @@ body.dark-mode .loan-offer-warning{
     padding:82px 14px 28px;
   }
 
+  .invoice-page{
+    padding:82px 14px 28px;
+  }
+
   .customers-header{
     flex-direction:column;
   }
@@ -2668,6 +3430,45 @@ body.dark-mode .loan-offer-warning{
 
   .customers-total-card{
     width:100%;
+  }
+
+  .invoice-header{
+    flex-direction:column;
+  }
+
+  .invoice-summary,
+  .invoice-card-top,
+  .invoice-doc-top,
+  .invoice-doc-parties{
+    grid-template-columns:1fr;
+  }
+
+  .invoice-card-top{
+    display:block;
+  }
+
+  .invoice-due{
+    text-align:left;
+    margin-top:16px;
+  }
+
+  .invoice-actions{
+    position:static;
+    margin-top:16px;
+  }
+
+  .invoice-action-menu{
+    right:12px;
+  }
+
+  .invoice-document{
+    padding:26px 20px;
+  }
+
+  .chatbot-panel{
+    right:8px;
+    bottom:84px;
+    width:calc(100vw - 16px);
   }
 
   .bill-workspace,
@@ -2798,7 +3599,7 @@ body.dark-mode .loan-offer-warning{
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-exchange-alt"></i><span>Transfers</span></a></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-credit-card"></i><span>Virtual Card</span></a></li>
     <li><a href="#" onclick="openBillDashboard()"><i class="far fa-money-bill-alt"></i><span>Pay Bill</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-file-alt"></i><span>Invoice</span></a></li>
+    <li><a href="#" onclick="openInvoicePage()"><i class="far fa-file-alt"></i><span>Invoice</span></a></li>
     <li><a href="#" onclick="openLoanDashboard()"><i class="fas fa-university"></i><span>Loan</span></a></li>
     <li class="mobile-menu-spacer" aria-hidden="true"></li>
     <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-cog"></i><span>Settings</span></a></li>
@@ -2820,14 +3621,14 @@ body.dark-mode .loan-offer-warning{
   <div class="dashboard-wrap">
     <div class="dashboard-layout">
       <div class="dashboard-main">
-        <h1 class="dashboard-greeting">Hello, <span id="dashboardUserName">Student</span></h1>
+        <h1 class="dashboard-greeting">Hi, <span id="dashboardUserName">Student</span></h1>
         <p class="dashboard-subtitle">What would you like to do today?</p>
 
         <div class="levy-alert" id="levyAlert">
           <i class="fas fa-bell"></i>
           <div>
             <h3>Levy fee</h3>
-            <p>Please be informed that, a 10.05% is part of the transport and MRA levy will be applied to all Payment made via bank transactions exceeding K100,000.</p>
+            <p>Please be informed that, with immediate effect, a 0.05% MRA levy will be applied to all Payment made via bank transactions exceeding K100,000.</p>
           </div>
           <button class="alert-close" type="button" onclick="closeLevyAlert()" aria-label="Close levy notice">&times;</button>
         </div>
@@ -2925,6 +3726,9 @@ body.dark-mode .loan-offer-warning{
 </section>
 
 <section class="section" id="pickup">
+  <h2>PICK-UP AREA | LOCATION</h2>
+  <p>Check your location and book your seat today</p>
+
   <div class="cards">
     <div class="card">
       <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/53/fc/f4/karonga-malawi-its-malawi.jpg" alt="Karonga">
@@ -2959,12 +3763,12 @@ body.dark-mode .loan-offer-warning{
       </div>
     </div>
     <div class="card">
-      <img src="https://malawi24.com/wp-content/uploads/2024/09/Mzimba-Police-Station.jpg" alt="Mzimba">
+      <img src="https://www.yonecofm.com/wp-content/uploads/2019/07/Mzuzu-city_edited.jpg" alt="Mzuzu">
       <div class="card-body">
         <h3>Mzimba</h3>
         <div class="bottom">
           <p>K110,000</p>
-          <button onclick="openBooking('Mzimba')">Pay-Deposit</button>
+          <button onclick="openBooking('Mzuzu')">Pay-Deposit</button>
         </div>
       </div>
     </div>
@@ -3002,12 +3806,12 @@ body.dark-mode .loan-offer-warning{
       </div>
     </div>
     <div class="card">
-      <img src="https://www.malawitourism.com/wp-content/uploads/2018/12/IMG_1672-1920x720.jpg" alt="Nkhotakota">
+      <img src="https://www.malawitourism.com/wp-content/uploads/2020/03/KK-Arial-Johan-DJI_0139-cropped-1220x800.jpg" alt="Dwangwa">
       <div class="card-body">
         <h3>Nkhotakota</h3>
         <div class="bottom">
           <p>K100,000</p>
-          <button onclick="openBooking('Nkhotakota')">Pay-Deposit</button>
+          <button onclick="openBooking('Dwangwa')">Pay-Deposit</button>
         </div>
       </div>
     </div>
@@ -3099,6 +3903,46 @@ body.dark-mode .loan-offer-warning{
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</main>
+
+<main id="invoicePage" class="invoice-page" aria-live="polite">
+  <div class="invoice-shell">
+    <div class="invoice-header">
+      <h1>Invoice</h1>
+      <div class="invoice-create">
+        <button type="button" onclick="openBooking('Invoice')">+</button>
+        <button type="button" onclick="openBooking('Invoice')">Create Invoice</button>
+      </div>
+    </div>
+
+    <div class="invoice-layout">
+      <section>
+        <div class="invoice-summary">
+          <div class="invoice-summary-card">
+            <span>Total Paid <i class="far fa-money-bill-alt"></i></span>
+            <strong id="invoicePaidCount">0</strong>
+          </div>
+          <div class="invoice-summary-card">
+            <span>Total Unpaid <i class="fas fa-coins"></i></span>
+            <strong id="invoiceUnpaidCount">0</strong>
+          </div>
+        </div>
+
+        <div class="invoice-list" id="invoiceList">
+          <div class="invoice-empty">Loading invoices...</div>
+        </div>
+      </section>
+
+      <aside class="invoice-analytics-card">
+        <div class="invoice-chart-icon">
+          <i class="far fa-chart-bar"></i>
+        </div>
+        <div class="invoice-chart-lines" aria-hidden="true"></div>
+        <h2>Analytics</h2>
+        <p>Track your paid and unpaid invoices</p>
+      </aside>
     </div>
   </div>
 </main>
@@ -3200,10 +4044,6 @@ body.dark-mode .loan-offer-warning{
       </aside>
     </div>
   </div>
-
-  <button class="bill-chat-button" type="button" aria-label="Open bill chat">
-    <i class="fas fa-comment-alt"></i>
-  </button>
 </main>
 
 <main id="loanPage" class="loan-page" aria-live="polite">
@@ -3236,7 +4076,7 @@ body.dark-mode .loan-offer-warning{
           </div>
           <div class="loan-capital-badge">
             <span>Get Capital Up To:</span>
-            <strong>MK 1,000,000</strong>
+            <strong>MK 20,000,000</strong>
           </div>
         </aside>
       </div>
@@ -3294,19 +4134,19 @@ body.dark-mode .loan-offer-warning{
             </div>
             <div class="loan-step-label">Step 1 of 1</div>
             <h2>Accept Loan Terms</h2>
-            <p>Review and accept the MpotoRide Capital terms and conditions to continue.</p>
+            <p>Review and accept the PayChangu Capital terms and conditions to continue.</p>
 
             <button class="loan-terms-toggle" type="button" onclick="toggleLoanTermsDetails()" aria-expanded="false" id="loanTermsToggle">
               <span>Loan Terms & Conditions</span>
               <i class="fas fa-chevron-down"></i>
             </button>
             <div class="loan-terms-details" id="loanTermsDetails">
-              By applying for a loan, you agree to provide accurate information, repay on the agreed dates, accept any approved repayment schedule, and follow all rules and regulations for MpotoRide Capital loan services.
+              By applying for a loan, you agree to provide accurate information, repay on the agreed dates, accept any approved repayment schedule, and follow all rules and regulations for PayChangu Capital loan services.
             </div>
 
             <label class="loan-terms-check">
               <input type="checkbox" id="loanTermsAccept" onchange="updateLoanTermsButton()">
-              <span>I have read and agree to the MpotoRide Capital terms and conditions.</span>
+              <span>I have read and agree to the PayChangu Capital terms and conditions.</span>
             </label>
 
             <button class="loan-primary-btn" id="loanTermsContinue" type="button" onclick="acceptLoanTerms()" disabled>Accept & Continue</button>
@@ -3350,7 +4190,7 @@ body.dark-mode .loan-offer-warning{
           </div>
 
           <div class="loan-offer-warning">
-            No loan offers available at this time. Please continue trusting us to improve your eligibility.
+            No loan offers available at this time. Please continue transacting to improve your eligibility.
           </div>
 
           <p class="loan-complete-note">Complete all steps above to apply</p>
@@ -3378,10 +4218,6 @@ body.dark-mode .loan-offer-warning{
       </div>
     </section>
   </div>
-
-  <button class="loan-chat-button" type="button" aria-label="Open loan chat">
-    <i class="fas fa-comment-alt"></i>
-  </button>
 </main>
 
 <div id="bookingForm" class="modal">
@@ -3444,6 +4280,84 @@ body.dark-mode .loan-offer-warning{
   </div>
 </div>
 
+<div id="invoiceViewModal" class="modal">
+  <div class="invoice-view-panel">
+    <div class="invoice-document" id="invoiceDocument">
+      <div class="invoice-doc-top">
+        <div>
+          <img class="invoice-logo" id="invoiceDocLogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6nE2K3o2qmswqL2M2Axg4O7BCytAAMiSU2w&s" alt="Mpoto Ride">
+          <div class="invoice-doc-title">Invoice</div>
+          <div class="invoice-doc-muted">
+            <div>No. <span id="invoiceDocNumber">0000</span></div>
+            <div>Invoice Date: <span id="invoiceDocDate">N/A</span></div>
+          </div>
+        </div>
+        <div class="invoice-doc-amount">
+          <span>Amount Due:</span>
+          <strong id="invoiceDocAmount">MK0</strong>
+          <span>Payment Due Date:</span>
+          <b id="invoiceDocDue">N/A</b>
+        </div>
+      </div>
+
+      <div class="invoice-doc-parties">
+        <div>
+          <div class="invoice-doc-muted">
+            <b>From:</b><br>
+            MPOTO RIDE<br>
+            peleradahan09@gmail.com
+          </div>
+        </div>
+        <div>
+          <div class="invoice-doc-muted">
+            <b>Billed To:</b><br>
+            <span id="invoiceDocPassenger">Passenger</span><br>
+            <span id="invoiceDocEmail">No email</span><br>
+            Seat: <span id="invoiceDocSeat">N/A</span>
+          </div>
+        </div>
+      </div>
+
+      <table class="invoice-doc-table">
+        <thead>
+          <tr>
+            <th>Item(s)</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="invoiceDocItem">Booking</td>
+            <td>1</td>
+            <td id="invoiceDocPrice">MK0</td>
+            <td id="invoiceDocLineAmount">MK0</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="invoice-doc-totals">
+        <span>Sub total:</span>
+        <strong id="invoiceDocSubtotal">MK0</strong>
+        <span>Total:</span>
+        <strong id="invoiceDocTotal">MK0</strong>
+      </div>
+
+      <div class="invoice-memo">
+        <b>Memo:</b><br>
+        <span id="invoiceDocMemo">Your booking has been successfully confirmed.</span>
+      </div>
+
+      <div class="invoice-powered">Invoice powered by MpotoRide</div>
+    </div>
+    <div class="invoice-view-actions">
+      <button type="button" onclick="downloadCurrentInvoicePdf()">Download PDF</button>
+      <button type="button" onclick="closeInvoiceView()">Close</button>
+    </div>
+  </div>
+</div>
+
 <div id="adminModal" class="modal">
   <div class="modal-panel">
     <div class="modal-header">
@@ -3454,6 +4368,65 @@ body.dark-mode .loan-offer-warning{
     <div id="adminBookingsList" class="admin-table-wrap"></div>
   </div>
 </div>
+
+<section class="chatbot-panel home-mode" id="chatbotPanel" aria-label="MpotoRide Bot">
+  <div class="chatbot-home">
+    <div class="chatbot-home-inner">
+      <div class="chatbot-brand">M</div>
+      <h2 class="chatbot-greeting">Hi <span id="chatbotHomeName">Student</span> 👋</h2>
+      <button class="chatbot-prompt-card" type="button" onclick="openChatConversation()">
+        <span><b>MpotoRide Bot</b> here<br>How can I help you today?</span>
+        <i class="fas fa-paper-plane"></i>
+      </button>
+      <div class="chatbot-search">
+        <span>Search for help</span>
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+    <div class="chatbot-tabs">
+      <button class="chatbot-tab active" type="button" onclick="showChatHome()">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </button>
+      <button class="chatbot-tab" type="button" onclick="openChatConversation()">
+        <i class="far fa-question-circle"></i>
+        <span>Help</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="chatbot-conversation">
+    <div class="chatbot-header">
+      <button class="chatbot-back" type="button" onclick="showChatHome()" aria-label="Back">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="chatbot-header-logo">M</div>
+      <div class="chatbot-title">MpotoRide Bot</div>
+      <button class="chatbot-menu" type="button" aria-label="Chat menu">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages"></div>
+    <form class="chatbot-composer" onsubmit="sendChatbotMessage(event)">
+      <div class="chatbot-input-shell">
+        <input id="chatbotInput" type="text" placeholder="Enter your message here..." autocomplete="off">
+        <button class="chatbot-send" type="button" aria-label="Emoji">
+          <i class="far fa-smile"></i>
+        </button>
+        <button class="chatbot-send" type="button" aria-label="Attach">
+          <i class="fas fa-paperclip"></i>
+        </button>
+        <button class="chatbot-send" type="submit" aria-label="Send">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<button class="chatbot-launch" id="chatbotLaunch" type="button" onclick="toggleChatbot()" aria-label="Open MpotoRide Bot">
+  <i class="fas fa-comment-alt"></i>
+</button>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
@@ -3466,6 +4439,8 @@ import {
   doc,
   getDoc,
   getDocs,
+  updateDoc,
+  deleteDoc,
   getCountFromServer,
   query,
   orderBy
@@ -3483,8 +4458,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-let registeredStudentCount = 159;
+let registeredStudentCount = 0;
 let cachedCustomers = [];
+let cachedInvoices = [];
+let currentInvoice = null;
 const bookingChartLocations = [
   { label: "CHITIPA", aliases: ["CHITIPA"] },
   { label: "KARONGA", aliases: ["KARONGA"] },
@@ -3560,6 +4537,7 @@ function updateProfile(user, name) {
   const mobileAccountName = document.getElementById("mobileAccountName");
   const mobileAccountFullName = document.getElementById("mobileAccountFullName");
   const billSummaryCustomer = document.getElementById("billSummaryCustomer");
+  const chatbotHomeName = document.getElementById("chatbotHomeName");
   const displayName = name || "Student";
   const initials = getInitials(displayName, user?.email);
 
@@ -3574,6 +4552,8 @@ function updateProfile(user, name) {
   if (mobileAccountName) mobileAccountName.textContent = displayName;
   if (mobileAccountFullName) mobileAccountFullName.textContent = displayName;
   if (billSummaryCustomer) billSummaryCustomer.textContent = displayName;
+  if (chatbotHomeName) chatbotHomeName.textContent = displayName;
+  window.currentDashboardUserName = displayName;
 }
 
 function updateStudentCountBadge(count) {
@@ -3722,7 +4702,7 @@ async function loadBookingChartData() {
     renderBookingChart(totals);
 
     if (status) {
-      status.textContent = "Unable to load booking chart data. Check Firestore permissions.";
+      status.textContent = "Unable to load booking chart data. Check MpotoRide permissions.";
     }
   }
 }
@@ -3831,8 +4811,320 @@ window.loadCustomersPageData = async function () {
     console.error("Customers load error:", error);
 
     if (tableBody) {
-      tableBody.innerHTML = '<tr><td colspan="5" class="customers-status">Unable to load customers. Check Firestore permissions.</td></tr>';
+      tableBody.innerHTML = '<tr><td colspan="5" class="customers-status">Unable to load customers. Check MpotoRide permissions.</td></tr>';
     }
+  }
+};
+
+function normalizeInvoiceAmount(value) {
+  const numberValue = Number(String(value ?? "").replace(/[^0-9.]/g, ""));
+  return numberValue > 0 ? numberValue : 10000;
+}
+
+function formatMoney(value) {
+  return `MK${Number(value || 0).toLocaleString()}`;
+}
+
+function getInvoiceStatus(booking) {
+  const status = String(booking.invoiceStatus || booking.paymentStatus || booking.status || "").toLowerCase();
+  return status === "paid" ? "paid" : "outstanding";
+}
+
+function getInvoiceDueDate(booking) {
+  if (booking.dueDate) return booking.dueDate;
+  if (booking.date) return booking.date;
+
+  const dueDate = new Date();
+  dueDate.setDate(dueDate.getDate() + 30);
+  return dueDate.toISOString().slice(0, 10);
+}
+
+function getPassengerName(booking) {
+  const fullName = `${booking.firstName || ""} ${booking.lastName || ""}`.trim();
+  return booking.passengerName || booking.name || fullName || "Passenger";
+}
+
+function getInvoiceEmail(booking, user) {
+  return booking.email || booking.userEmail || booking.passengerEmail || user?.email || "";
+}
+
+function bookingBelongsToUser(booking, user) {
+  if (!user) return false;
+  const bookingEmail = String(booking.email || booking.userEmail || booking.passengerEmail || "").toLowerCase();
+
+  return booking.userId === user.uid ||
+    booking.uid === user.uid ||
+    (bookingEmail && bookingEmail === String(user.email || "").toLowerCase());
+}
+
+function getInvoiceCreatedDate(invoice) {
+  return invoice.createdAtRaw?.toDate ? invoice.createdAtRaw.toDate().toLocaleDateString() : "N/A";
+}
+
+function getInvoiceSortTime(invoice) {
+  if (invoice.createdAtRaw?.toDate) {
+    return invoice.createdAtRaw.toDate().getTime();
+  }
+
+  const dueDate = new Date(invoice.dueDate).getTime();
+  return Number.isNaN(dueDate) ? 0 : dueDate;
+}
+
+function buildInvoiceFromBooking(bookingDoc, user) {
+  const booking = bookingDoc.data();
+  const amount = normalizeInvoiceAmount(booking.invoiceAmount || booking.amount || booking.price || booking.deposit);
+  const passenger = getPassengerName(booking);
+  const dueDate = getInvoiceDueDate(booking);
+  const item = booking.registrationType || booking.type || booking.location || "Booking";
+
+  return {
+    id: bookingDoc.id,
+    number: booking.invoiceNumber || bookingDoc.id.slice(0, 4).toUpperCase(),
+    amount,
+    status: getInvoiceStatus(booking),
+    passenger,
+    email: getInvoiceEmail(booking, user),
+    location: booking.location || "MUBAS",
+    seat: booking.seat || booking.seatNumber || "N/A",
+    travelDate: booking.date || "N/A",
+    dueDate,
+    item,
+    createdAtRaw: booking.createdAt,
+    createdAt: formatCreatedAt(booking.createdAt),
+    memo: `Dear ${passenger}, your booking has been successfully confirmed for the transport service from ${booking.location || "your pickup area"} to MUBAS dated ${booking.date || "your selected date"}. You have booked seat ${booking.seat || booking.seatNumber || "N/A"}. Kindly present this message upon boarding as proof of your reservation. Please ensure you arrive at the departure point on time to avoid any inconvenience.`
+  };
+}
+
+function renderInvoiceCard(invoice) {
+  return `
+    <article class="invoice-card" data-invoice-id="${escapeHtml(invoice.id)}">
+      <div class="invoice-card-main">
+        <span class="invoice-status-pill">${invoice.status === "paid" ? "Paid" : "Outstanding"}</span>
+        <div class="invoice-card-top">
+          <div>
+            <div class="invoice-amount">${formatMoney(invoice.amount)}.00</div>
+            <div class="invoice-route">MPOTO RIDE to ${escapeHtml(invoice.passenger.toUpperCase())}</div>
+          </div>
+          <div class="invoice-due">
+            <div>${escapeHtml(formatShortDate(invoice.dueDate))}</div>
+            <span class="invoice-email">${escapeHtml(invoice.email || "No email")}</span>
+          </div>
+        </div>
+        <div class="invoice-actions">
+          <button class="invoice-icon-btn" type="button" onclick="editInvoice('${escapeHtml(invoice.id)}')" aria-label="Edit invoice">
+            <i class="far fa-edit"></i>
+          </button>
+          <button class="invoice-icon-btn" type="button" onclick="toggleInvoiceMenu('${escapeHtml(invoice.id)}')" aria-label="Invoice menu">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+        </div>
+      </div>
+      <button class="invoice-timeline" type="button" onclick="viewInvoice('${escapeHtml(invoice.id)}')">Show timeline</button>
+      <div class="invoice-action-menu">
+        <div class="invoice-action-date">Created ${escapeHtml(getInvoiceCreatedDate(invoice))}</div>
+        <button type="button" onclick="editInvoice('${escapeHtml(invoice.id)}')"><i class="far fa-compass"></i>Edit invoice</button>
+        <button type="button" onclick="markInvoiceAsPaid('${escapeHtml(invoice.id)}')"><i class="far fa-check-circle"></i>Mark as paid</button>
+        <button type="button" onclick="viewInvoice('${escapeHtml(invoice.id)}')"><i class="far fa-eye"></i>View invoice</button>
+        <button type="button" onclick="emailInvoice('${escapeHtml(invoice.id)}')"><i class="far fa-envelope"></i>Email invoice</button>
+        <button type="button" onclick="downloadInvoicePdf('${escapeHtml(invoice.id)}')"><i class="far fa-file-pdf"></i>Download PDF</button>
+        <button type="button" onclick="copyInvoiceUrl('${escapeHtml(invoice.id)}')"><i class="far fa-share-square"></i>Copy URL</button>
+        <button type="button" onclick="turnOffInvoiceReminders('${escapeHtml(invoice.id)}')"><i class="far fa-bell-slash"></i>Turn off reminders</button>
+        <button class="danger" type="button" onclick="deleteInvoice('${escapeHtml(invoice.id)}')"><i class="far fa-times-circle"></i>Permanently delete</button>
+      </div>
+    </article>
+  `;
+}
+
+function renderInvoices() {
+  const invoiceList = document.getElementById("invoiceList");
+  const paidCount = document.getElementById("invoicePaidCount");
+  const unpaidCount = document.getElementById("invoiceUnpaidCount");
+
+  if (!invoiceList) return;
+
+  const paidInvoices = cachedInvoices.filter((invoice) => invoice.status === "paid");
+  const unpaidInvoices = cachedInvoices.filter((invoice) => invoice.status !== "paid");
+
+  if (paidCount) paidCount.textContent = String(paidInvoices.length);
+  if (unpaidCount) unpaidCount.textContent = String(unpaidInvoices.length);
+
+  invoiceList.innerHTML = cachedInvoices.length
+    ? cachedInvoices.map(renderInvoiceCard).join("")
+    : '<div class="invoice-empty">No invoices found for this account yet.</div>';
+}
+
+window.loadInvoicePageData = async function () {
+  const invoiceList = document.getElementById("invoiceList");
+  const user = auth.currentUser;
+
+  if (invoiceList) {
+    invoiceList.innerHTML = '<div class="invoice-empty">Loading invoices...</div>';
+  }
+
+  if (!user) {
+    if (invoiceList) invoiceList.innerHTML = '<div class="invoice-empty">Please log in to view invoices.</div>';
+    return;
+  }
+
+  try {
+    const bookingSnapshots = await getDocs(collection(db, "bookings"));
+    const matchingInvoices = bookingSnapshots.docs
+      .filter((bookingDoc) => bookingBelongsToUser(bookingDoc.data(), user))
+      .map((bookingDoc) => buildInvoiceFromBooking(bookingDoc, user))
+      .sort((a, b) => getInvoiceSortTime(b) - getInvoiceSortTime(a));
+
+    cachedInvoices = matchingInvoices.slice(0, 1);
+    renderInvoices();
+  } catch (error) {
+    console.error("Invoice load error:", error);
+    if (invoiceList) invoiceList.innerHTML = '<div class="invoice-empty">Unable to load invoices. Check MpotoRide permissions.</div>';
+  }
+};
+
+function findInvoice(invoiceId) {
+  return cachedInvoices.find((invoice) => invoice.id === invoiceId);
+}
+
+function setInvoiceDocument(invoice) {
+  currentInvoice = invoice;
+  document.getElementById("invoiceDocNumber").textContent = invoice.number;
+  document.getElementById("invoiceDocDate").textContent = new Date().toLocaleDateString();
+  document.getElementById("invoiceDocAmount").textContent = formatMoney(invoice.amount);
+  document.getElementById("invoiceDocDue").textContent = formatShortDate(invoice.dueDate);
+  document.getElementById("invoiceDocPassenger").textContent = invoice.passenger.toUpperCase();
+  document.getElementById("invoiceDocEmail").textContent = invoice.email || "No email";
+  document.getElementById("invoiceDocSeat").textContent = invoice.seat || "N/A";
+  document.getElementById("invoiceDocItem").textContent = invoice.item.toUpperCase();
+  document.getElementById("invoiceDocPrice").textContent = formatMoney(invoice.amount);
+  document.getElementById("invoiceDocLineAmount").textContent = formatMoney(invoice.amount);
+  document.getElementById("invoiceDocSubtotal").textContent = formatMoney(invoice.amount);
+  document.getElementById("invoiceDocTotal").textContent = formatMoney(invoice.amount);
+  document.getElementById("invoiceDocMemo").textContent = invoice.memo;
+}
+
+window.toggleInvoiceMenu = function (invoiceId) {
+  document.querySelectorAll(".invoice-card").forEach((card) => {
+    card.classList.toggle("menu-open", card.dataset.invoiceId === invoiceId && !card.classList.contains("menu-open"));
+  });
+};
+
+window.viewInvoice = function (invoiceId) {
+  const invoice = findInvoice(invoiceId);
+
+  if (!invoice) return;
+
+  setInvoiceDocument(invoice);
+  document.getElementById("invoiceViewModal").style.display = "flex";
+};
+
+window.closeInvoiceView = function () {
+  document.getElementById("invoiceViewModal").style.display = "none";
+};
+
+window.downloadInvoicePdf = function (invoiceId) {
+  const invoice = findInvoice(invoiceId);
+
+  if (!invoice) return;
+
+  setInvoiceDocument(invoice);
+  downloadCurrentInvoicePdf();
+}
+
+window.downloadCurrentInvoicePdf = function () {
+  const invoiceModal = document.getElementById("invoiceViewModal");
+
+  if (!currentInvoice && cachedInvoices.length) {
+    setInvoiceDocument(cachedInvoices[0]);
+  }
+
+  if (!currentInvoice) {
+    alert("Open an invoice first.");
+    return;
+  }
+
+  invoiceModal.style.display = "flex";
+  document.body.classList.add("printing-invoice");
+
+  setTimeout(() => {
+    window.print();
+    document.body.classList.remove("printing-invoice");
+  }, 100);
+};
+
+window.editInvoice = async function (invoiceId) {
+  const invoice = findInvoice(invoiceId);
+
+  if (!invoice) return;
+
+  const amount = prompt("Enter new invoice amount", String(invoice.amount));
+  const numericAmount = normalizeInvoiceAmount(amount);
+
+  if (!amount) return;
+
+  try {
+    await updateDoc(doc(db, "bookings", invoiceId), {
+      invoiceAmount: numericAmount
+    });
+    await window.loadInvoicePageData();
+  } catch (error) {
+    console.error("Edit invoice error:", error);
+    alert("Unable to edit invoice. Check MpotoRide permissions.");
+  }
+};
+
+window.markInvoiceAsPaid = async function (invoiceId) {
+  try {
+    await updateDoc(doc(db, "bookings", invoiceId), {
+      invoiceStatus: "paid",
+      paymentStatus: "paid"
+    });
+    await window.loadInvoicePageData();
+  } catch (error) {
+    console.error("Mark invoice paid error:", error);
+    alert("Unable to mark invoice as paid. Check MpotoRide permissions.");
+  }
+};
+
+window.emailInvoice = function (invoiceId) {
+  const invoice = findInvoice(invoiceId);
+
+  if (!invoice) return;
+
+  window.location.href = `mailto:${invoice.email}?subject=Invoice ${invoice.number}&body=Hello ${invoice.passenger}, your invoice amount is ${formatMoney(invoice.amount)}.`;
+};
+
+window.copyInvoiceUrl = async function (invoiceId) {
+  const invoiceUrl = `${window.location.origin}${window.location.pathname}?invoice=${encodeURIComponent(invoiceId)}`;
+
+  try {
+    await navigator.clipboard.writeText(invoiceUrl);
+    alert("Invoice URL copied.");
+  } catch {
+    prompt("Copy invoice URL", invoiceUrl);
+  }
+};
+
+window.turnOffInvoiceReminders = async function (invoiceId) {
+  try {
+    await updateDoc(doc(db, "bookings", invoiceId), {
+      invoiceReminders: false
+    });
+    alert("Invoice reminders turned off.");
+  } catch (error) {
+    console.error("Invoice reminders error:", error);
+    alert("Unable to turn off reminders. Check MpotoRide permissions.");
+  }
+};
+
+window.deleteInvoice = async function (invoiceId) {
+  if (!confirm("Permanently delete this invoice booking record?")) return;
+
+  try {
+    await deleteDoc(doc(db, "bookings", invoiceId));
+    await window.loadInvoicePageData();
+  } catch (error) {
+    console.error("Delete invoice error:", error);
+    alert("Unable to delete invoice. Check Your MpotoRide permissions.");
   }
 };
 
@@ -3909,7 +5201,7 @@ window.openAdminBookings = async function () {
     const userData = userSnap.exists() ? userSnap.data() : {};
 
     if (!isAdminUser(userData)) {
-      adminStatus.textContent = "Access denied. Your Firestore account is not admin enabled.";
+      adminStatus.textContent = "Access denied. Your not admin.";
       return;
     }
 
@@ -3960,7 +5252,7 @@ window.openAdminBookings = async function () {
     adminStatus.textContent = "Admin access granted.";
   } catch (error) {
     console.error("Admin bookings error:", error);
-    adminStatus.textContent = "Unable to load bookings. Check Firestore permissions and indexes.";
+    adminStatus.textContent = "Unable to load bookings. access rejected.";
   }
 };
 
@@ -4022,7 +5314,7 @@ const billServiceConfig = {
   },
   water: {
     label: "Water",
-    providers: ["Blantyre Water Board", "Lilongwe Water Board"],
+    providers: ["Blantyre Water Board", "Lilongwe Water Board", "Mzuzu Water Board"],
     accountLabel: "Water Account",
     placeholder: "Enter water account number",
     defaultAccount: ""
@@ -4062,13 +5354,17 @@ let billState = {
   account: "",
   amount: ""
 };
+const CHATBOT_API_ENDPOINT = "";
+let chatbotHasGreeting = false;
 
 function isLiveModeControl(target) {
   return Boolean(target.closest && (
     target.closest(".live-mode-toggle") ||
     target.closest(".profile-live-switch") ||
     target.closest(".profile-logout-btn") ||
-    target.closest(".mobile-account-signout")
+    target.closest(".mobile-account-signout") ||
+    target.closest(".chatbot-launch") ||
+    target.closest(".chatbot-panel")
   ));
 }
 
@@ -4106,8 +5402,172 @@ function closeMobileMenu() {
   closeMobileAccountMenu();
 }
 
+function getChatbotUserName() {
+  return window.currentDashboardUserName || document.getElementById("dashboardUserName")?.textContent || "Student";
+}
+
+function getChatbotTime() {
+  return new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+}
+
+function addChatbotMessage(text, sender) {
+  const messages = document.getElementById("chatbotMessages");
+
+  if (!messages) return;
+
+  const row = document.createElement("div");
+  row.className = `chatbot-message-row ${sender === "user" ? "user" : "bot"}`;
+
+  if (sender === "bot") {
+    row.innerHTML = `
+      <div class="chatbot-mini-logo">M</div>
+      <div>
+        <div class="chatbot-bubble">${escapeChatbotHtml(text)}</div>
+        <div class="chatbot-meta">MpotoRide Bot - ${getChatbotTime()}</div>
+      </div>
+    `;
+  } else {
+    row.innerHTML = `
+      <div>
+        <div class="chatbot-bubble">${escapeChatbotHtml(text)}</div>
+        <div class="chatbot-meta">Now</div>
+      </div>
+    `;
+  }
+
+  messages.appendChild(row);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function escapeChatbotHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function seedChatbotGreeting() {
+  const messages = document.getElementById("chatbotMessages");
+
+  if (!messages || chatbotHasGreeting) return;
+
+  chatbotHasGreeting = true;
+  addChatbotMessage("Hello! How can I help you today?", "bot");
+}
+
+function toggleChatbot(forceOpen) {
+  const panel = document.getElementById("chatbotPanel");
+  const launch = document.getElementById("chatbotLaunch");
+
+  if (!panel || !launch) return;
+
+  const shouldOpen = typeof forceOpen === "boolean" ? forceOpen : !panel.classList.contains("open");
+  panel.classList.toggle("open", shouldOpen);
+  launch.classList.toggle("is-open", shouldOpen);
+  launch.setAttribute("aria-label", shouldOpen ? "Close MpotoRide Bot" : "Open MpotoRide Bot");
+
+  if (shouldOpen) {
+    document.getElementById("chatbotHomeName").textContent = getChatbotUserName();
+    seedChatbotGreeting();
+  }
+}
+
+function showChatHome() {
+  const panel = document.getElementById("chatbotPanel");
+
+  if (panel) {
+    panel.classList.add("home-mode");
+    panel.classList.remove("chat-mode");
+  }
+}
+
+function openChatConversation() {
+  const panel = document.getElementById("chatbotPanel");
+
+  if (panel) {
+    panel.classList.remove("home-mode");
+    panel.classList.add("chat-mode");
+    seedChatbotGreeting();
+    document.getElementById("chatbotInput")?.focus();
+  }
+}
+
+function getMpotoRideLocalReply(message) {
+  const text = String(message || "").toLowerCase();
+  const name = getChatbotUserName();
+
+  if (text.includes("register") || text.includes("registration") || text.includes("odel") || text.includes("preyearo") || text.includes("conti")) {
+    return `Hi ${name}, to register go to the dashboard, click Registration, choose Odel, Preyearo, or Conti, then fill in the register.html form and submit it.`;
+  }
+
+  if (text.includes("book") || text.includes("booking") || text.includes("seat")) {
+    return `Hi ${name}, to book a seat click Booking, choose your pick-up location, press Pay-Deposit, fill in your passenger details, select your travel date and seat number, then continue to payment.`;
+  }
+
+  if (text.includes("invoice") || text.includes("paid") || text.includes("unpaid")) {
+    return `Hi ${name}, click Invoice on the dashboard to see your latest invoice. It only shows invoice details for the account currently logged in, including your booking, seat number, amount, and payment status.`;
+  }
+
+  if (text.includes("loan")) {
+    return `Hi ${name}, click Loan on the dashboard, then Apply for a loan. Accept the terms and the system will show any loan offer available for your account.`;
+  }
+
+  if (text.includes("pay") || text.includes("deposit")) {
+    return `Hi ${name}, deposits are paid from the booking form after you choose your location, travel date, and seat. The page will redirect you to the payment checkout.`;
+  }
+
+  if (text.includes("logout") || text.includes("sign out")) {
+    return `Hi ${name}, click your profile circle at the top right, then choose Sign out.`;
+  }
+
+  return `Hi ${name}, I am MpotoRide Bot. I can help with registration, bookings, seats, invoices, payments, loans, and signing out.`;
+}
+
+async function getChatbotReply(message) {
+  if (CHATBOT_API_ENDPOINT) {
+    const response = await fetch(CHATBOT_API_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message,
+        name: getChatbotUserName(),
+        botName: "MpotoRide Bot",
+        instructions: "Answer as MpotoRide Bot for the MUBAS Mpoto Ride dashboard. Help with registration, booking, invoices, loans, payments, seats, and sign out. Keep answers short and practical."
+      })
+    });
+    const data = await response.json();
+    return data.reply || data.message || "I received your message.";
+  }
+
+  return getMpotoRideLocalReply(message);
+}
+
+async function sendChatbotMessage(event) {
+  event.preventDefault();
+
+  const input = document.getElementById("chatbotInput");
+  const message = input.value.trim();
+
+  if (!message) return;
+
+  input.value = "";
+  addChatbotMessage(message, "user");
+
+  try {
+    const reply = await getChatbotReply(message);
+    addChatbotMessage(reply, "bot");
+  } catch (error) {
+    console.error("Chatbot error:", error);
+    addChatbotMessage("Sorry, I could not reach the chatbot service right now. Please try again.", "bot");
+  }
+}
+
 function closeAppViews() {
-  document.body.classList.remove("loan-view-active", "bill-view-active", "booking-view-active", "customers-view-active");
+  document.body.classList.remove("loan-view-active", "bill-view-active", "booking-view-active", "customers-view-active", "invoice-view-active");
 }
 
 function showHomePageFromMenu() {
@@ -4118,7 +5578,7 @@ function showHomePageFromMenu() {
 }
 
 function showBookingPageFromMenu() {
-  document.body.classList.remove("loan-view-active", "bill-view-active", "customers-view-active");
+  document.body.classList.remove("loan-view-active", "bill-view-active", "customers-view-active", "invoice-view-active");
   document.body.classList.add("booking-view-active");
   closeMobileMenu();
   closeProfileMenu();
@@ -4126,11 +5586,20 @@ function showBookingPageFromMenu() {
 }
 
 function openCustomersPage() {
-  document.body.classList.remove("loan-view-active", "bill-view-active", "booking-view-active");
+  document.body.classList.remove("loan-view-active", "bill-view-active", "booking-view-active", "invoice-view-active");
   document.body.classList.add("customers-view-active");
   closeMobileMenu();
   closeProfileMenu();
   window.loadCustomersPageData?.();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function openInvoicePage() {
+  document.body.classList.remove("loan-view-active", "bill-view-active", "booking-view-active", "customers-view-active");
+  document.body.classList.add("invoice-view-active");
+  closeMobileMenu();
+  closeProfileMenu();
+  window.loadInvoicePageData?.();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -4399,7 +5868,7 @@ function validateBillAccount() {
 }
 
 function openBillDashboard() {
-  document.body.classList.remove("loan-view-active", "booking-view-active", "customers-view-active");
+  document.body.classList.remove("loan-view-active", "booking-view-active", "customers-view-active", "invoice-view-active");
   document.body.classList.add("bill-view-active");
   closeMobileMenu();
   closeProfileMenu();
@@ -4431,7 +5900,7 @@ function showLoanLoading(title, text, nextScreenId, delay) {
 }
 
 function openLoanDashboard() {
-  document.body.classList.remove("bill-view-active", "booking-view-active", "customers-view-active");
+  document.body.classList.remove("bill-view-active", "booking-view-active", "customers-view-active", "invoice-view-active");
   document.body.classList.add("loan-view-active");
   closeMobileMenu();
   closeProfileMenu();
