@@ -342,6 +342,7 @@ button:hover{
     padding:0;
     height:auto;
     min-height:100vh;
+    overflow:visible;
   }
 
   .auth-right{
@@ -351,8 +352,11 @@ button:hover{
   .auth-left{
     width:100%;
     flex:0 0 auto;
+    min-height:100vh;
+    align-items:flex-start;
     padding:15px;
     box-sizing:border-box;
+    overflow-y:auto;
   }
 
   .container{
@@ -365,14 +369,24 @@ button:hover{
 @media (max-width: 900px) and (orientation: landscape){
   .auth-wrapper{
     flex-direction:row;
-    height:100vh;
+    height:auto;
     min-height:100vh;
-    overflow:hidden;
+    overflow:visible;
   }
 
-  .auth-left,
+  .auth-left{
+    flex:0 0 50%;
+    min-height:100vh;
+    height:auto;
+    align-items:flex-start;
+    padding:14px 18px;
+    overflow-y:auto;
+  }
+
   .auth-right{
     flex:0 0 50%;
+    position:sticky;
+    top:0;
     height:100vh;
     min-height:100vh;
   }
