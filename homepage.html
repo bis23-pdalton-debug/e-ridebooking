@@ -1660,6 +1660,50 @@ body.invoice-view-active .invoice-page{
   background:#cbf5f3;
 }
 
+.chatbot-typing-row{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.chatbot-typing-row.hidden{
+  display:none;
+}
+
+.typing-dots{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  min-width:42px;
+}
+
+.typing-dots span{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#04bdbb;
+  animation:typing-dot 0.9s ease-in-out infinite;
+}
+
+.typing-dots span:nth-child(2){
+  animation-delay:0.15s;
+}
+
+.typing-dots span:nth-child(3){
+  animation-delay:0.3s;
+}
+
+@keyframes typing-dot{
+  0%, 100%{
+    transform:translateY(0);
+    opacity:0.4;
+  }
+  50%{
+    transform:translateY(-4px);
+    opacity:1;
+  }
+}
+
 .chatbot-meta{
   color:#5f6470;
   font-size:11px;
@@ -1676,7 +1720,7 @@ body.invoice-view-active .invoice-page{
   border:3px solid #cce3ff;
   border-radius:28px;
   display:grid;
-  grid-template-columns:1fr 32px 32px 32px;
+  grid-template-columns:1fr 32px 32px;
   align-items:center;
   gap:4px;
   padding:0 10px 0 14px;
@@ -1728,27 +1772,454 @@ body.booking-view-active #pickup{
 }
 
 .why{
-  padding:50px;
-  text-align:center;
+  padding:34px 18px 44px;
   background:white;
 }
 
-.features{
+.portal-insights-wrap{
+  width:100%;
+  max-width:1080px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(260px, 0.82fr) minmax(320px, 1.35fr);
+  gap:20px;
+  align-items:start;
+}
+
+.holiday-panel{
   display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.holiday-card{
+  background:#e9ecf3;
+  border-radius:16px;
+  overflow:hidden;
+  min-height:210px;
+}
+
+.holiday-card-icon{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
   justify-content:center;
-  gap:50px;
-  margin-top:30px;
+  margin:26px 0 24px 24px;
+  color:#101828;
+}
+
+.holiday-card-divider{
+  height:1px;
+  background:#ccd3dd;
+}
+
+.holiday-card-body{
+  padding:24px;
+}
+
+.holiday-card-body h2{
+  color:#050505;
+  font-size:20px;
+  line-height:1.35;
+  margin:0 0 14px;
+  text-align:left;
+}
+
+.holiday-empty-box{
+  border:1px dashed #c8ced8;
+  border-radius:8px;
+  min-height:54px;
+  display:flex;
+  align-items:center;
+  padding:0 18px;
+  color:#1f2937;
+  font-size:14px;
+}
+
+.holiday-eyebrow{
+  display:block;
+  color:#6b7280;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.holiday-reaction-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
   flex-wrap:wrap;
+  margin-top:12px;
 }
 
-.feature{
-  max-width:250px;
+.reaction-face{
+  border:none;
+  background:#ffd449;
+  color:#111;
+  border-radius:50%;
+  cursor:pointer;
+  width:46px;
+  height:46px;
+  position:relative;
+  box-shadow:inset -5px -6px 0 rgba(199,126,0,0.18), 0 2px 4px rgba(15,23,42,0.12);
+  animation:face-nod 2.4s ease-in-out infinite;
 }
 
-.feature i{
-  font-size:30px;
-  margin-bottom:10px;
-  color:#0d2b4c;
+.reaction-face::before,
+.reaction-face::after{
+  content:"";
+  position:absolute;
+  top:14px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#2d2300;
+}
+
+.reaction-face::before{
+  left:14px;
+}
+
+.reaction-face::after{
+  right:14px;
+}
+
+.face-mouth{
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  width:18px;
+  height:8px;
+  border:3px solid #2d2300;
+  border-top:none;
+  border-radius:0 0 18px 18px;
+  transform:translateX(-50%);
+  animation:mouth-talk 0.75s ease-in-out infinite;
+}
+
+.face-bad .face-mouth{
+  border-top:3px solid #2d2300;
+  border-bottom:none;
+  border-radius:18px 18px 0 0;
+  bottom:9px;
+  animation:mouth-frown 1.4s ease-in-out infinite;
+}
+
+.face-neutral .face-mouth{
+  height:0;
+  border:none;
+  border-top:3px solid #2d2300;
+  border-radius:0;
+  bottom:15px;
+  animation:mouth-talk-flat 1.1s ease-in-out infinite;
+}
+
+.face-nod{
+  animation:face-nod 1.35s ease-in-out infinite;
+}
+
+.face-laugh{
+  animation:face-laugh 0.95s ease-in-out infinite;
+}
+
+.face-laugh .face-mouth{
+  width:21px;
+  height:13px;
+  background:#3a1b00;
+  border:2px solid #3a1b00;
+  border-radius:0 0 22px 22px;
+  animation:mouth-laugh 0.55s ease-in-out infinite;
+}
+
+.face-cry .tear{
+  position:absolute;
+  top:20px;
+  right:8px;
+  width:7px;
+  height:12px;
+  background:#39a5ff;
+  border-radius:50% 50% 60% 60%;
+  animation:tear-drop 1.2s ease-in-out infinite;
+}
+
+@keyframes mouth-talk{
+  0%, 100%{ height:5px; }
+  50%{ height:14px; }
+}
+
+@keyframes mouth-talk-flat{
+  0%, 100%{ width:15px; }
+  50%{ width:21px; }
+}
+
+@keyframes mouth-frown{
+  0%, 100%{ transform:translateX(-50%) translateY(0); }
+  50%{ transform:translateX(-50%) translateY(2px); }
+}
+
+@keyframes mouth-laugh{
+  0%, 100%{ height:9px; }
+  50%{ height:17px; }
+}
+
+@keyframes face-nod{
+  0%, 100%{ transform:translateY(0) rotate(0deg); }
+  50%{ transform:translateY(3px) rotate(2deg); }
+}
+
+@keyframes face-laugh{
+  0%, 100%{ transform:translateY(0) rotate(-4deg); }
+  50%{ transform:translateY(-2px) rotate(4deg); }
+}
+
+@keyframes tear-drop{
+  0%, 100%{ opacity:0.35; transform:translateY(0); }
+  50%{ opacity:1; transform:translateY(7px); }
+}
+
+.registration-trend-card{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 1px 2px rgba(15,23,42,0.05);
+}
+
+.registration-trend-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:22px;
+}
+
+.registration-eyebrow{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#94a3b8;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.registration-eyebrow i{
+  color:#fb8500;
+}
+
+.registration-trend-card h3{
+  font-size:22px;
+  color:#1e293b;
+  margin:0 0 6px;
+}
+
+.registration-trend-card p{
+  color:#64748b;
+  font-size:12px;
+  line-height:1.45;
+  margin:0;
+}
+
+.registration-tabs{
+  display:flex;
+  background:#f1f5f9;
+  padding:4px;
+  border-radius:9px;
+  gap:3px;
+  flex:0 0 auto;
+}
+
+.registration-tab{
+  border:none;
+  background:transparent;
+  color:#64748b;
+  border-radius:7px;
+  min-height:28px;
+  padding:0 10px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.registration-tab.active{
+  background:white;
+  color:#0f172a;
+  box-shadow:0 1px 3px rgba(15,23,42,0.12);
+}
+
+.registration-tab[data-reg-tab="cont"].active{
+  background:#685bd6;
+  color:white;
+}
+
+.registration-tab[data-reg-tab="f1"].active{
+  background:#fb8500;
+  color:white;
+}
+
+.registration-tab[data-reg-tab="odel"].active{
+  background:#0ea5e9;
+  color:white;
+}
+
+.registration-svg-shell{
+  position:relative;
+  background:#f8fafc;
+  border:1px solid #f1f5f9;
+  border-radius:12px;
+  padding:10px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+
+.registration-guides{
+  position:absolute;
+  inset:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  color:#94a3b8;
+  font-size:10px;
+  pointer-events:none;
+}
+
+.registration-guide-row{
+  border-bottom:1px dashed #e2e8f0;
+  display:flex;
+  justify-content:space-between;
+  padding-bottom:4px;
+}
+
+.registration-guide-row:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.registration-svg{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:auto;
+  margin-top:16px;
+  display:block;
+  color:#e2e8f0;
+}
+
+.registration-svg path,
+.registration-svg circle,
+.registration-svg line{
+  transition:opacity 0.2s ease, stroke-width 0.2s ease, r 0.2s ease;
+}
+
+.registration-hotspot{
+  cursor:pointer;
+}
+
+.registration-tooltip{
+  display:none;
+  position:absolute;
+  z-index:3;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111827;
+  color:white;
+  border-radius:10px;
+  padding:9px 10px;
+  min-width:130px;
+  font-size:11px;
+  line-height:1.45;
+  box-shadow:0 8px 18px rgba(15,23,42,0.22);
+  pointer-events:none;
+}
+
+.registration-tooltip.show{
+  display:block;
+}
+
+.registration-axis{
+  display:grid;
+  grid-template-columns:repeat(7, minmax(0, 1fr));
+  text-align:center;
+  color:#64748b;
+  font-size:12px;
+  font-weight:700;
+  margin:0 10px 14px;
+}
+
+.registration-axis span.active{
+  color:#fb8500;
+}
+
+.registration-readings{
+  background:#f8fafc;
+  border:1px solid #f1f5f9;
+  border-radius:12px;
+  padding:14px;
+}
+
+.registration-readings h4{
+  color:#94a3b8;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  margin:0 0 12px;
+}
+
+.registration-reading-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:12px;
+}
+
+.registration-reading{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+}
+
+.reading-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  flex:0 0 auto;
+}
+
+.reading-dot.cont{
+  background:#685bd6;
+}
+
+.reading-dot.f1{
+  background:#fb8500;
+}
+
+.reading-dot.odel{
+  background:#0ea5e9;
+}
+
+.registration-reading span{
+  display:block;
+  color:#94a3b8;
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+.registration-reading strong{
+  display:block;
+  color:#334155;
+  font-size:14px;
+}
+
+.registration-load-status{
+  margin-top:12px;
+  color:#64748b;
+  font-size:12px;
 }
 
 footer{
@@ -2792,6 +3263,49 @@ body.dark-mode .why{
   background:#101418;
 }
 
+body.dark-mode .holiday-card,
+body.dark-mode .registration-trend-card,
+body.dark-mode .registration-readings{
+  background:#171d24;
+  border-color:#303946;
+}
+
+body.dark-mode .holiday-card-body h2,
+body.dark-mode .holiday-empty-box,
+body.dark-mode .registration-trend-card h3,
+body.dark-mode .registration-reading strong{
+  color:#f5f7fa;
+}
+
+body.dark-mode .holiday-card-divider{
+  background:#303946;
+}
+
+body.dark-mode .holiday-empty-box{
+  border-color:#46515f;
+}
+
+body.dark-mode .registration-tabs,
+body.dark-mode .registration-svg-shell{
+  background:#101418;
+  border-color:#303946;
+}
+
+body.dark-mode .registration-tab.active{
+  background:#263241;
+  color:#f5f7fa;
+}
+
+body.dark-mode .registration-guide-row{
+  border-color:#303946;
+}
+
+body.dark-mode .registration-axis,
+body.dark-mode .registration-trend-card p,
+body.dark-mode .registration-load-status{
+  color:#aab4c0;
+}
+
 body.dark-mode .mobile-tool-link,
 body.dark-mode .nav-icon-btn,
 body.dark-mode .menu-toggle,
@@ -3290,6 +3804,7 @@ body.dark-mode .loan-offer-warning{
 }
 
 @media (max-width:900px){
+  .portal-insights-wrap,
   .loan-overview-card,
   .loan-dashboard-grid,
   .loan-apply-layout{
@@ -3379,6 +3894,40 @@ body.dark-mode .loan-offer-warning{
 
   .section{
     padding:30px 15px;
+  }
+
+  .why{
+    padding:24px 8px 34px;
+  }
+
+  .registration-trend-card{
+    padding:14px;
+  }
+
+  .registration-trend-header{
+    flex-direction:column;
+  }
+
+  .registration-tabs{
+    width:100%;
+    overflow-x:auto;
+  }
+
+  .registration-tab{
+    flex:1 0 auto;
+  }
+
+  .registration-reading-grid{
+    grid-template-columns:1fr;
+  }
+
+  .holiday-card-body{
+    padding:20px;
+  }
+
+  .reaction-face{
+    width:42px;
+    height:42px;
   }
 
   .booking-chart-section{
@@ -3531,7 +4080,6 @@ body.dark-mode .loan-offer-warning{
   </button>
 
   <div class="mobile-toolbar" aria-label="Quick actions">
-    <a class="mobile-tool-link" href="#" onclick="closeMobileMenu()">Start Guide</a>
     <button class="live-mode-toggle live-mode-on" type="button" onclick="toggleLiveMode(this)" aria-pressed="true">
       <span class="live-mode-label">Live Mode</span>
       <span class="live-switch" aria-hidden="true"></span>
@@ -3577,32 +4125,32 @@ body.dark-mode .loan-offer-warning{
 
   <ul id="navLinks">
     <li class="menu-item-active"><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-tachometer-alt"></i><span>DASHBOARD</span></a></li>
-    <li><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-home"></i><span>HOME</span></a></li>
-    <li><a href="#pickup" onclick="showBookingPageFromMenu()"><i class="fas fa-credit-card"></i><span>BOOKING</span></a></li>
+    <li><a href="#" onclick="showHomePageFromMenu()"><i class="fas fa-home"></i><span>Home</span></a></li>
+    <li><a href="#pickup" onclick="showBookingPageFromMenu()"><i class="fas fa-credit-card"></i><span>Booking</span></a></li>
     <li class="registration-item" id="registrationMenu">
       <a href="#" class="submenu-toggle" onclick="toggleRegistrationMenu(event)">
         <i class="fas fa-user-plus"></i>
-        <span>REGISTRATION</span>
+        <span>Registration</span>
         <i class="fas fa-chevron-down menu-chevron"></i>
       </a>
       <div class="registration-submenu">
-        <button type="button" onclick="openRegistrationPage('Odel')">ODEL</button>
-        <button type="button" onclick="openRegistrationPage('Preyearo')">FIRST YEAR</button>
-        <button type="button" onclick="openRegistrationPage('Conti')">CONTINUING</button>
+        <button type="button" onclick="openRegistrationPage('Odel')">Odel</button>
+        <button type="button" onclick="openRegistrationPage('Preyearo')">First Year</button>
+        <button type="button" onclick="openRegistrationPage('Conti')">Continuing</button>
       </div>
     </li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i><span>TRANSACTION</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
-    <li><a href="#" onclick="openCustomersPage()"><i class="fas fa-users"></i><span>CUSTOMERS</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-briefcase"></i><span>BALANCES</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-link"></i><span>PAYMENT LINK</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-clipboard"></i><span>PROJECT</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-exchange-alt"></i><span>TRANSFER</span></a></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-credit-card"></i><span>VIRTUAL CARD</span></a></li>
-    <li><a href="#" onclick="openBillDashboard()"><i class="far fa-money-bill-alt"></i><span>PAY BILL</span></a></li>
-    <li><a href="#" onclick="openInvoicePage()"><i class="far fa-file-alt"></i><span>INVOICE</span></a></li>
-    <li><a href="#" onclick="openLoanDashboard()"><i class="fas fa-university"></i><span>LOAN</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-desktop"></i><span>Transaction</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="openCustomersPage()"><i class="fas fa-users"></i><span>Customers</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-briefcase"></i><span>Balances</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-link"></i><span>Payment link</span><i class="fas fa-chevron-right menu-chevron"></i></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-clipboard"></i><span>Project</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-exchange-alt"></i><span>Transfer</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="far fa-credit-card"></i><span>Virtual card</span></a></li>
+    <li><a href="#" onclick="openBillDashboard()"><i class="far fa-money-bill-alt"></i><span>Pay bills</span></a></li>
+    <li><a href="#" onclick="openInvoicePage()"><i class="far fa-file-alt"></i><span>Iinvoice</span></a></li>
+    <li><a href="#" onclick="openLoanDashboard()"><i class="fas fa-university"></i><span>Loan</span></a></li>
     <li class="mobile-menu-spacer" aria-hidden="true"></li>
-    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-cog"></i><span>SETTINGS</span></a></li>
+    <li><a href="#" onclick="closeMobileMenu()"><i class="fas fa-cog"></i><span>Setting</span></a></li>
     <li class="mobile-account-item" id="mobileAccountMenu">
       <button class="mobile-account-button" type="button" onclick="toggleMobileAccountMenu()">
         <span class="mobile-account-avatar" id="mobileAccountAvatar">ST</span>
@@ -3650,7 +4198,7 @@ body.dark-mode .loan-offer-warning{
               <span>Invoices</span>
               <i class="fas fa-bars"></i>
             </div>
-            <div class="stat-number">84</div>
+            <div class="stat-number">0</div>
           </div>
 
           <div class="stat-card">
@@ -3698,7 +4246,7 @@ body.dark-mode .loan-offer-warning{
 <section class="booking-chart-section" aria-label="Bookings chart">
   <div class="booking-chart-wrap">
     <div class="booking-chart-card">
-      <h2 class="booking-chart-title">Booking Data</h2>
+      <h2 class="booking-chart-title">Booking Progress</h2>
       <div class="booking-chart-area">
         <div class="booking-bars" id="bookingBars">
           <span class="booking-axis-title">Axis Title</span>
@@ -3711,10 +4259,10 @@ body.dark-mode .loan-offer-warning{
           </thead>
           <tbody>
             <tr id="bookingBoysRow">
-              <td><span class="legend-swatch boys-swatch"></span>BOYS</td>
+              <td><span class="legend-swatch boys-swatch"></span>Boys</td>
             </tr>
             <tr id="bookingGirlsRow">
-              <td><span class="legend-swatch girls-swatch"></span>GIRLS</td>
+              <td><span class="legend-swatch girls-swatch"></span>Girls</td>
             </tr>
           </tbody>
         </table>
@@ -3820,26 +4368,132 @@ body.dark-mode .loan-offer-warning{
 </section>
 
 <section class="why">
-  <h2>DO YOU KNOW OUR SERVICES?</h2>
+  <div class="portal-insights-wrap">
+    <div class="holiday-panel">
+      <div class="holiday-card">
+        <div class="holiday-card-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="holiday-card-divider"></div>
+        <div class="holiday-card-body">
+          <h2>Business members</h2>
+          <div class="holiday-empty-box">No other business members.</div>
+        </div>
+      </div>
 
-  <div class="features">
-    <div class="feature">
-      <i class="fas fa-cookie"></i>
-      <h4>FREE SNACKS & DRINKS</h4>
-      <p>Enjoy free snacks and drinks on every trip.</p>
+      <div class="holiday-card">
+        <div class="holiday-card-icon">
+          <i class="fas fa-wand-magic-sparkles"></i>
+        </div>
+        <div class="holiday-card-divider"></div>
+        <div class="holiday-card-body">
+          <span class="holiday-eyebrow">Review rating</span>
+          <h2>How is holiday going on?</h2>
+          <div class="holiday-reaction-row" aria-label="Holiday mood reactions">
+            <button class="reaction-face face-cry face-bad" type="button" aria-label="Crying because it is bad">
+              <span class="face-mouth"></span>
+              <span class="tear"></span>
+            </button>
+            <button class="reaction-face face-neutral" type="button" aria-label="Bad">
+              <span class="face-mouth"></span>
+            </button>
+            <button class="reaction-face face-nod" type="button" aria-label="Nodding that it is okay">
+              <span class="face-mouth"></span>
+            </button>
+            <button class="reaction-face face-talk" type="button" aria-label="Talking and happy">
+              <span class="face-mouth"></span>
+            </button>
+            <button class="reaction-face face-laugh" type="button" aria-label="Laughing">
+              <span class="face-mouth"></span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="feature">
-      <i class="fas fa-tag"></i>
-      <h4>FAIR PRICES</h4>
-      <p>Affordable fares designed to suit students' budgets and help you save money.</p>
-    </div>
+    <article id="registration-trend-card" class="registration-trend-card">
+      <div class="registration-trend-header">
+        <div>
+          <span class="registration-eyebrow">
+            <i class="fas fa-arrow-trend-up"></i>
+            Portal Admittance Trends
+          </span>
+          <h3>Student Daily Registrations</h3>
 
-    <div class="feature">
-      <i class="fas fa-wifi"></i>
-      <h4>FREE WI-FI</h4>
-      <p>Remain connected during your entire journey.</p>
-    </div>
+        </div>
+
+        <div class="registration-tabs" aria-label="Registration graph filters">
+          <button class="registration-tab active" type="button" data-reg-tab="all">All Wave</button>
+          <button class="registration-tab" type="button" data-reg-tab="cont">Continuing</button>
+          <button class="registration-tab" type="button" data-reg-tab="f1">First Year</button>
+          <button class="registration-tab" type="button" data-reg-tab="odel">OdeL</button>
+        </div>
+      </div>
+
+      <div class="registration-svg-shell">
+        <div class="registration-guides" aria-hidden="true">
+          <div class="registration-guide-row"><span>Peak Range</span><span id="registrationPeakLabel">0</span></div>
+          <div class="registration-guide-row"><span>Median Enrolment</span><span id="registrationMedianLabel">0</span></div>
+          <div class="registration-guide-row"><span>Base Active</span><span>0</span></div>
+        </div>
+        <div class="registration-tooltip" id="registrationTooltip"></div>
+        <svg class="registration-svg" id="registrationTrendSvg" viewBox="0 0 600 160" preserveAspectRatio="none" aria-label="Registration trends">
+          <defs>
+            <linearGradient id="grad-cont" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#685bd6" stop-opacity="0.4"></stop>
+              <stop offset="100%" stop-color="#685bd6" stop-opacity="0"></stop>
+            </linearGradient>
+            <linearGradient id="grad-f1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fb8500" stop-opacity="0.4"></stop>
+              <stop offset="100%" stop-color="#fb8500" stop-opacity="0"></stop>
+            </linearGradient>
+            <linearGradient id="grad-odel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.4"></stop>
+              <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"></stop>
+            </linearGradient>
+          </defs>
+          <g id="registrationGrid"></g>
+          <path id="registrationAreaCont" fill="url(#grad-cont)"></path>
+          <path id="registrationAreaF1" fill="url(#grad-f1)"></path>
+          <path id="registrationAreaOdel" fill="url(#grad-odel)"></path>
+          <path id="registrationPathCont" fill="none" stroke="#685bd6" stroke-width="3.5" stroke-linecap="round"></path>
+          <path id="registrationPathF1" fill="none" stroke="#fb8500" stroke-width="3.5" stroke-linecap="round"></path>
+          <path id="registrationPathOdel" fill="none" stroke="#0ea5e9" stroke-width="3.5" stroke-linecap="round"></path>
+          <g id="registrationNodes"></g>
+          <g id="registrationHotspots"></g>
+        </svg>
+      </div>
+
+      <div class="registration-axis" id="registrationAxis"></div>
+
+      <div class="registration-readings">
+        <h4 id="registrationReadingsTitle">Portal Weekly Aggregates</h4>
+        <div class="registration-reading-grid">
+          <div class="registration-reading">
+            <span class="reading-dot cont"></span>
+            <div>
+              <span>Continuing</span>
+              <strong id="registrationContReading">0 Total</strong>
+            </div>
+          </div>
+          <div class="registration-reading">
+            <span class="reading-dot f1"></span>
+            <div>
+              <span>First Year (F1)</span>
+              <strong id="registrationF1Reading">0 Total</strong>
+            </div>
+          </div>
+          <div class="registration-reading">
+            <span class="reading-dot odel"></span>
+            <div>
+              <span>OdeL Students</span>
+              <strong id="registrationOdelReading">0 Total</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </article>
   </div>
 </section>
 
@@ -3862,7 +4516,7 @@ body.dark-mode .loan-offer-warning{
       <li>About Us</li>
       <li>FAQs</li>
       <li>Contact Us</li>
-      <li><button class="admin-footer-btn" type="button" onclick="openAdminBookings()">Admin</button></li>
+
     </ul>
   </div>
 </footer>
@@ -4306,7 +4960,7 @@ body.dark-mode .loan-offer-warning{
           <div class="invoice-doc-muted">
             <b>From:</b><br>
             MPOTO RIDE<br>
-            peleradahan09@gmail.com
+            peterdalton016@gmail.com
           </div>
         </div>
         <div>
@@ -4407,15 +5061,26 @@ body.dark-mode .loan-offer-warning{
         <i class="fas fa-ellipsis-h"></i>
       </button>
     </div>
-    <div class="chatbot-messages" id="chatbotMessages"></div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chatbot-typing-row hidden" id="chatbotTyping">
+        <div class="chatbot-mini-logo">M</div>
+        <div>
+          <div class="chatbot-bubble">
+            <div class="typing-dots" aria-label="MpotoRide Bot is typing">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="chatbot-meta">MpotoRide Bot is typing</div>
+        </div>
+      </div>
+    </div>
     <form class="chatbot-composer" onsubmit="sendChatbotMessage(event)">
       <div class="chatbot-input-shell">
         <input id="chatbotInput" type="text" placeholder="Enter your message here..." autocomplete="off">
         <button class="chatbot-send" type="button" aria-label="Emoji">
           <i class="far fa-smile"></i>
-        </button>
-        <button class="chatbot-send" type="button" aria-label="Attach">
-          <i class="fas fa-paperclip"></i>
         </button>
         <button class="chatbot-send" type="submit" aria-label="Send">
           <i class="fas fa-paper-plane"></i>
@@ -4660,6 +5325,372 @@ function renderBookingChart(totals) {
   });
 }
 
+const registrationTrendState = {
+  activeTab: "all",
+  hoveredIndex: null,
+  data: []
+};
+
+function getRegistrationDays(dayCount = 7) {
+  const days = [];
+  const today = new Date();
+
+  for (let index = dayCount - 1; index >= 0; index--) {
+    const date = new Date(today);
+    date.setHours(0, 0, 0, 0);
+    date.setDate(today.getDate() - index);
+    days.push({
+      key: date.toISOString().slice(0, 10),
+      day: date.toLocaleDateString([], { weekday: "short" }),
+      cont: 0,
+      f1: 0,
+      odel: 0
+    });
+  }
+
+  return days;
+}
+
+function getRegistrationDate(record) {
+  const value = record.createdAt ||
+    record.registeredAt ||
+    record.registrationDate ||
+    record.date ||
+    record.updatedAt ||
+    "";
+
+  if (value?.toDate) {
+    const date = value.toDate();
+    date.setHours(0, 0, 0, 0);
+    return date;
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
+
+  date.setHours(0, 0, 0, 0);
+  return date;
+}
+
+function getRegistrationCategory(record) {
+  const category = normalizeChartText(
+    record.category ||
+    record.registrationType ||
+    record.registration ||
+    record.studentType ||
+    record.type ||
+    record.level ||
+    record.year ||
+    record.program ||
+    record.intake ||
+    ""
+  );
+
+  if (["CONT", "CONTI", "CONTINUING", "CONTINUINGSTUDENT", "RETURNING"].includes(category)) {
+    return "cont";
+  }
+
+  if (["F1", "F1YEAR", "FIRSTYEAR", "FIRSTYEARO", "PREYEAR", "PREYEARO"].includes(category)) {
+    return "f1";
+  }
+
+  if (["ODEL", "OPENANDELEARNING", "DISTANCE", "ELEARNING"].includes(category)) {
+    return "odel";
+  }
+
+  return "";
+}
+
+function getSmoothPath(points) {
+  if (!points.length) return "";
+
+  let path = `M ${points[0].x} ${points[0].y}`;
+
+  for (let index = 0; index < points.length - 1; index++) {
+    const current = points[index];
+    const next = points[index + 1];
+    const cpX1 = current.x + (next.x - current.x) / 3;
+    const cpY1 = current.y;
+    const cpX2 = current.x + (2 * (next.x - current.x)) / 3;
+    const cpY2 = next.y;
+    path += ` C ${cpX1} ${cpY1}, ${cpX2} ${cpY2}, ${next.x} ${next.y}`;
+  }
+
+  return path;
+}
+
+function getRegistrationPoints(data, key, maxVal) {
+  const graphHeight = 160;
+  const graphWidth = 600;
+  const paddingX = 40;
+  const paddingY = 20;
+
+  return data.map((item, index) => {
+    const x = paddingX + (index * (graphWidth - paddingX * 2)) / Math.max(1, data.length - 1);
+    const y = graphHeight - paddingY - (item[key] / maxVal) * (graphHeight - paddingY * 2);
+
+    return {
+      x,
+      y,
+      value: item[key],
+      day: item.day
+    };
+  });
+}
+
+function getRegistrationAreaPath(points) {
+  if (!points.length) return "";
+
+  const graphHeight = 160;
+  const paddingY = 20;
+  const path = getSmoothPath(points);
+
+  return `${path} L ${points[points.length - 1].x} ${graphHeight - paddingY} L ${points[0].x} ${graphHeight - paddingY} Z`;
+}
+
+function setRegistrationVisibility(activeTab) {
+  const groups = [
+    { key: "cont", ids: ["registrationPathCont", "registrationAreaCont"] },
+    { key: "f1", ids: ["registrationPathF1", "registrationAreaF1"] },
+    { key: "odel", ids: ["registrationPathOdel", "registrationAreaOdel"] }
+  ];
+
+  groups.forEach((group) => {
+    const isVisible = activeTab === "all" || activeTab === group.key;
+
+    group.ids.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.style.opacity = isVisible ? "1" : "0";
+        element.setAttribute("stroke-width", activeTab === group.key ? "5" : "3.5");
+      }
+    });
+
+    document.querySelectorAll(`[data-node-group="${group.key}"]`).forEach((node) => {
+      node.style.opacity = isVisible ? "1" : "0";
+    });
+  });
+}
+
+function updateRegistrationReadings(index = null) {
+  const data = registrationTrendState.data;
+  const title = document.getElementById("registrationReadingsTitle");
+  const cont = document.getElementById("registrationContReading");
+  const f1 = document.getElementById("registrationF1Reading");
+  const odel = document.getElementById("registrationOdelReading");
+
+  if (!data.length || !title || !cont || !f1 || !odel) return;
+
+  if (index === null || !data[index]) {
+    const totals = data.reduce((result, item) => {
+      result.cont += item.cont;
+      result.f1 += item.f1;
+      result.odel += item.odel;
+      return result;
+    }, { cont: 0, f1: 0, odel: 0 });
+
+    title.textContent = "Portal Weekly Aggregates";
+    cont.textContent = `${totals.cont.toLocaleString()} Total`;
+    f1.textContent = `${totals.f1.toLocaleString()} Total`;
+    odel.textContent = `${totals.odel.toLocaleString()} Total`;
+    return;
+  }
+
+  const item = data[index];
+  title.textContent = `Metrics for ${item.day}`;
+  cont.textContent = `${item.cont.toLocaleString()} Regs`;
+  f1.textContent = `${item.f1.toLocaleString()} Regs`;
+  odel.textContent = `${item.odel.toLocaleString()} Regs`;
+}
+
+function showRegistrationTooltip(index, x) {
+  const tooltip = document.getElementById("registrationTooltip");
+  const item = registrationTrendState.data[index];
+
+  if (!tooltip || !item) return;
+
+  tooltip.classList.add("show");
+  tooltip.style.left = `${Math.min(92, Math.max(8, (x / 600) * 100))}%`;
+  tooltip.innerHTML = `
+    <strong>${escapeHtml(item.day)}</strong><br>
+    Cont: ${item.cont.toLocaleString()}<br>
+    F1: ${item.f1.toLocaleString()}<br>
+    ODeL: ${item.odel.toLocaleString()}
+  `;
+}
+
+function clearRegistrationHover() {
+  registrationTrendState.hoveredIndex = null;
+  document.getElementById("registrationTooltip")?.classList.remove("show");
+  document.querySelectorAll("#registrationAxis span").forEach((axisItem) => axisItem.classList.remove("active"));
+  updateRegistrationReadings(null);
+}
+
+function renderRegistrationTrend(data) {
+  registrationTrendState.data = data;
+
+  const maxVal = Math.max(1, ...data.flatMap((item) => [item.cont, item.f1, item.odel]));
+  const median = Math.round(maxVal / 2);
+  const pointsCont = getRegistrationPoints(data, "cont", maxVal);
+  const pointsF1 = getRegistrationPoints(data, "f1", maxVal);
+  const pointsOdel = getRegistrationPoints(data, "odel", maxVal);
+  const paths = {
+    registrationPathCont: getSmoothPath(pointsCont),
+    registrationPathF1: getSmoothPath(pointsF1),
+    registrationPathOdel: getSmoothPath(pointsOdel),
+    registrationAreaCont: getRegistrationAreaPath(pointsCont),
+    registrationAreaF1: getRegistrationAreaPath(pointsF1),
+    registrationAreaOdel: getRegistrationAreaPath(pointsOdel)
+  };
+
+  Object.entries(paths).forEach(([id, path]) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.setAttribute("d", path);
+    }
+  });
+
+  const peakLabel = document.getElementById("registrationPeakLabel");
+  const medianLabel = document.getElementById("registrationMedianLabel");
+  const grid = document.getElementById("registrationGrid");
+  const nodes = document.getElementById("registrationNodes");
+  const hotspots = document.getElementById("registrationHotspots");
+  const axis = document.getElementById("registrationAxis");
+
+  if (peakLabel) peakLabel.textContent = String(maxVal);
+  if (medianLabel) medianLabel.textContent = String(median);
+  if (grid) grid.innerHTML = "";
+  if (nodes) nodes.innerHTML = "";
+  if (hotspots) hotspots.innerHTML = "";
+  if (axis) axis.innerHTML = "";
+
+  data.forEach((item, index) => {
+    const x = pointsCont[index].x;
+
+    if (grid) {
+      grid.insertAdjacentHTML("beforeend", `
+        <line x1="${x}" y1="20" x2="${x}" y2="140" stroke="currentColor" stroke-width="1" stroke-dasharray="4"></line>
+      `);
+    }
+
+    if (nodes) {
+      nodes.insertAdjacentHTML("beforeend", `
+        <circle data-node-index="${index}" data-node-group="cont" cx="${x}" cy="${pointsCont[index].y}" r="4" fill="#685bd6" stroke="#ffffff" stroke-width="2"></circle>
+        <circle data-node-index="${index}" data-node-group="f1" cx="${x}" cy="${pointsF1[index].y}" r="4" fill="#fb8500" stroke="#ffffff" stroke-width="2"></circle>
+        <circle data-node-index="${index}" data-node-group="odel" cx="${x}" cy="${pointsOdel[index].y}" r="4" fill="#0ea5e9" stroke="#ffffff" stroke-width="2"></circle>
+      `);
+    }
+
+    if (hotspots) {
+      hotspots.insertAdjacentHTML("beforeend", `
+        <rect class="registration-hotspot" data-index="${index}" data-x="${x}" x="${x - 20}" y="0" width="40" height="160" fill="transparent"></rect>
+      `);
+    }
+
+    if (axis) {
+      axis.insertAdjacentHTML("beforeend", `<span data-axis-index="${index}">${escapeHtml(item.day)}</span>`);
+    }
+  });
+
+  bindRegistrationGraphEvents();
+  setRegistrationVisibility(registrationTrendState.activeTab);
+  updateRegistrationReadings(null);
+}
+
+function bindRegistrationGraphEvents() {
+  document.querySelectorAll(".registration-tab").forEach((button) => {
+    if (button.dataset.bound === "true") return;
+
+    button.dataset.bound = "true";
+    button.addEventListener("click", () => {
+      registrationTrendState.activeTab = button.dataset.regTab || "all";
+      document.querySelectorAll(".registration-tab").forEach((tab) => tab.classList.toggle("active", tab === button));
+      setRegistrationVisibility(registrationTrendState.activeTab);
+    });
+  });
+
+  document.querySelectorAll(".registration-hotspot").forEach((hotspot) => {
+    hotspot.addEventListener("mouseenter", () => {
+      const index = Number(hotspot.dataset.index);
+      const x = Number(hotspot.dataset.x);
+      registrationTrendState.hoveredIndex = index;
+      showRegistrationTooltip(index, x);
+      updateRegistrationReadings(index);
+      document.querySelectorAll("#registrationAxis span").forEach((axisItem) => {
+        axisItem.classList.toggle("active", Number(axisItem.dataset.axisIndex) === index);
+      });
+    });
+
+    hotspot.addEventListener("mouseleave", clearRegistrationHover);
+    hotspot.addEventListener("click", () => {
+      const index = Number(hotspot.dataset.index);
+      const x = Number(hotspot.dataset.x);
+      showRegistrationTooltip(index, x);
+      updateRegistrationReadings(index);
+    });
+  });
+}
+
+async function getRegistrationCollections() {
+  const snapshots = [];
+
+  for (const collectionName of ["registrations", "users"]) {
+    try {
+      snapshots.push(await getDocs(collection(db, collectionName)));
+    } catch (error) {
+      console.warn(`${collectionName} graph data unavailable:`, error);
+    }
+  }
+
+  return snapshots;
+}
+
+async function loadRegistrationTrendData() {
+  const data = getRegistrationDays(7);
+  const dayIndexByKey = data.reduce((result, item, index) => {
+    result[item.key] = index;
+    return result;
+  }, {});
+  const status = document.getElementById("registrationTrendStatus");
+
+  try {
+    const snapshots = await getRegistrationCollections();
+
+    snapshots.forEach((snapshot) => {
+      snapshot.forEach((recordDoc) => {
+        const record = recordDoc.data();
+        const date = getRegistrationDate(record);
+        const category = getRegistrationCategory(record);
+
+        if (!date || !category) return;
+
+        const dateKey = date.toISOString().slice(0, 10);
+        const dayIndex = dayIndexByKey[dateKey];
+
+        if (dayIndex !== undefined) {
+          data[dayIndex][category] += 1;
+        }
+      });
+    });
+
+    renderRegistrationTrend(data);
+
+    const total = data.reduce((sum, item) => sum + item.cont + item.f1 + item.odel, 0);
+    if (status) {
+      status.textContent = `${total.toLocaleString()} registration(s) loaded from Firestore for the last 7 days.`;
+    }
+  } catch (error) {
+    console.error("Registration graph error:", error);
+    renderRegistrationTrend(data);
+    if (status) {
+      status.textContent = "0 registration(s) loaded from Firestore for the last 7 days.";
+    }
+  }
+}
+
 async function loadBookingChartData() {
   const status = document.getElementById("bookingChartStatus");
   const dashboardBookingsCount = document.getElementById("dashboardBookingsCount");
@@ -4695,7 +5726,7 @@ async function loadBookingChartData() {
 
     if (status) {
       status.textContent = missingChartFields
-        ? `${totalBookings} bookings loaded. ${missingChartFields} booking(s) need location or gender to appear in the chart.`
+        ? `${totalBookings} bookings loaded. ${missingChartFields} booking(s) need location to appear in the chart.`
         : `${totalBookings} bookings loaded from Firestore.`;
     }
   } catch (error) {
@@ -5289,6 +6320,7 @@ onAuthStateChanged(auth, async (user) => {
 
   loadRegisteredStudentCount();
   loadBookingChartData();
+  loadRegistrationTrendData();
 });
 
 window.logoutUser = function () {
@@ -5413,6 +6445,7 @@ function getChatbotTime() {
 
 function addChatbotMessage(text, sender) {
   const messages = document.getElementById("chatbotMessages");
+  const typing = document.getElementById("chatbotTyping");
 
   if (!messages) return;
 
@@ -5436,8 +6469,25 @@ function addChatbotMessage(text, sender) {
     `;
   }
 
-  messages.appendChild(row);
+  if (typing) {
+    messages.insertBefore(row, typing);
+  } else {
+    messages.appendChild(row);
+  }
   messages.scrollTop = messages.scrollHeight;
+}
+
+function setChatbotTyping(isTyping) {
+  const messages = document.getElementById("chatbotMessages");
+  const typing = document.getElementById("chatbotTyping");
+
+  if (!typing) return;
+
+  typing.classList.toggle("hidden", !isTyping);
+
+  if (messages) {
+    messages.scrollTop = messages.scrollHeight;
+  }
 }
 
 function escapeChatbotHtml(value) {
@@ -5500,7 +6550,7 @@ function getMpotoRideLocalReply(message) {
   const name = getChatbotUserName();
 
   if (text.includes("register") || text.includes("registration") || text.includes("odel") || text.includes("preyearo") || text.includes("conti")) {
-    return `Hi ${name}, to register go to the dashboard, click Registration, choose Odel, Preyearo, or Conti, then fill in the register.html form and submit it.`;
+    return `Hi ${name}, to register go to the dashboard, click Registration, choose Odel, Preyearo, or Conti, then fill in the register form and submit it.`;
   }
 
   if (text.includes("book") || text.includes("booking") || text.includes("seat")) {
@@ -5515,6 +6565,20 @@ function getMpotoRideLocalReply(message) {
     return `Hi ${name}, click Loan on the dashboard, then Apply for a loan. Accept the terms and the system will show any loan offer available for your account.`;
   }
 
+  if (text.includes("graph") || text.includes("chart")) {
+    if (text.includes("registration")) {
+      return `Hi ${name}, the registration graph is on Home under Student Daily Registrations. It shows Continuing, First year, and ODeL registrations.`;
+    }
+
+    if (text.includes("booking")) {
+      return `Hi ${name}, the booking graph is on Home under Booking Data. Just scrow down the home.`;
+    }
+  }
+
+  if (text.includes("admin") || text.includes("whatsapp") || text.includes("contact")) {
+    return `Hi ${name}, contact the admin on WhatsApp by clicking the social media watsap symbol.`;
+  }
+
   if (text.includes("pay") || text.includes("deposit")) {
     return `Hi ${name}, deposits are paid from the booking form after you choose your location, travel date, and seat. The page will redirect you to the payment checkout.`;
   }
@@ -5523,7 +6587,7 @@ function getMpotoRideLocalReply(message) {
     return `Hi ${name}, click your profile circle at the top right, then choose Sign out.`;
   }
 
-  return `Hi ${name}, I am MpotoRide Bot. I can help with registration, bookings, seats, invoices, payments, loans, and signing out.`;
+  return `Hi ${name}, I can only help with MpotoRide registration, booking, loans, signout, booking graphs, registration graphs, and contacting the admin on WhatsApp.`;
 }
 
 async function getChatbotReply(message) {
@@ -5563,7 +6627,7 @@ async function sendChatbotMessage(event) {
     addChatbotMessage(reply, "bot");
   } catch (error) {
     console.error("Chatbot error:", error);
-    addChatbotMessage("Sorry, I could not reach the chatbot service right now. Please try again.", "bot");
+    addChatbotMessage("Sorry, I could not reach the mpotoride chat bot service right now. Please try again.", "bot");
   }
 }
 
@@ -5678,6 +6742,7 @@ function toggleRegistrationMenu(event) {
 
 function openRegistrationPage(type) {
   closeMobileMenu();
+  localStorage.setItem("selectedRegistrationType", type);
   window.location.href = `register.html?type=${encodeURIComponent(type)}`;
 }
 
@@ -5995,3 +7060,4 @@ function closeForm() {
 </script>
 </body>
 </html>
+
